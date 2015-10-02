@@ -12,5 +12,6 @@
 #import "JSAnimatedImagesView.h"
 #import "myUILabel.h"
 #import "GradientView.h"
+#import "UINavigationBar+Awesome.h"
 
 #endif /* Bridging_Header_h */

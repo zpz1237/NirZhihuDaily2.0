@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nuZ-13-cUA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bXp-3O-UUq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="05M-cv-VgX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="-64" width="600" height="664"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -30,7 +30,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="112.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBG-c7-Vj1" customClass="LocalPagedHorizontalView" customModule="zhihuNews">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBG-c7-Vj1" customClass="PagedHorizontalView" customModule="知乎日报" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="-56" width="600" height="168.5"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-9W-NlL">
@@ -43,7 +43,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionContentViewCell" id="YU6-6t-Hkv" customClass="PageCollectionViewCell" customModule="知乎日报" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionContentViewCell" id="YU6-6t-Hkv" customClass="CollectionContentViewCell" customModule="知乎日报" customModuleProvider="target">
                                                                     <rect key="frame" x="0.5" y="0.0" width="599.5" height="190"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -82,11 +82,14 @@
                                                                     </constraints>
                                                                     <size key="customSize" width="599.5" height="190"/>
                                                                     <connections>
-                                                                        <outlet property="imageView" destination="Lgy-Kk-gGR" id="oZ3-j6-gTn"/>
-                                                                        <outlet property="label" destination="Pzf-WI-lTc" id="U2t-9J-h74"/>
+                                                                        <outlet property="imageView" destination="Lgy-Kk-gGR" id="gkm-3U-uxc"/>
+                                                                        <outlet property="titleLabel" destination="Pzf-WI-lTc" id="xkI-Tk-DJT"/>
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="BYZ-38-t0r" id="Mc6-sr-K2q"/>
+                                                            </connections>
                                                         </collectionView>
                                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="enE-QG-SHZ">
                                                             <rect key="frame" x="0.0" y="131" width="600" height="37"/>
@@ -119,6 +122,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="pageView" destination="OBG-c7-Vj1" id="BRD-Uu-MGx"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="89" id="LKI-64-ERl" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="205" width="600" height="89"/>
@@ -143,14 +149,6 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="中国没有很蓝很梦幻的海，主要原因并不是污染（委屈脸）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-o0-yEq" customClass="myUILabel">
-                                                    <rect key="frame" x="15" y="67" width="480" height="61"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -164,6 +162,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="imagesView" destination="KYc-ZW-mE9" id="tRL-cG-THA"/>
+                                            <outlet property="titleLabel" destination="Dy8-fJ-Q9i" id="GOF-lU-29t"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -171,13 +173,33 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="05M-cv-VgX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Cs7-hD-wnj"/>
+                            <constraint firstItem="05M-cv-VgX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-64" id="Cs7-hD-wnj"/>
                             <constraint firstAttribute="trailing" secondItem="05M-cv-VgX" secondAttribute="trailing" id="Y8I-Sq-bZY"/>
                             <constraint firstItem="05M-cv-VgX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b4f-hY-mcp"/>
                             <constraint firstItem="05M-cv-VgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rgP-gz-ayK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Y50-YG-hga"/>
+                    <navigationItem key="navigationItem" id="Y50-YG-hga">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="hTj-S6-KNZ">
+                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日热闻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jc-u7-ygJ">
+                                    <rect key="frame" x="8" y="4" width="224" height="21"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainTableView" destination="05M-cv-VgX" id="oIX-aQ-NNv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		DB4518D41BBCE4270097A25A /* TableHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB4518D61BBCE4C70097A25A /* LocalPagedHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D51BBCE4C70097A25A /* LocalPagedHorizontalView.swift */; settings = {ASSET_TAGS = (); }; };
+		DB4518D61BBCE4C70097A25A /* PagedHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
 		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
+		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
+		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
+		DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F81BBCCC9400EDFF48 /* ViewController.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
@@ -24,13 +27,17 @@
 
 /* Begin PBXFileReference section */
 		DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderViewCell.swift; sourceTree = "<group>"; };
-		DB4518D51BBCE4C70097A25A /* LocalPagedHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPagedHorizontalView.swift; sourceTree = "<group>"; };
+		DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedHorizontalView.swift; sourceTree = "<group>"; };
 		DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentViewCell.swift; sourceTree = "<group>"; };
 		DB4518D91BBCE8820097A25A /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB4518DA1BBCE8820097A25A /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
 		DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		DB803A9F1BBE5BC50081E032 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		DB803AA01BBE5BC50081E032 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		DB803AA31BBE66E30081E032 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionContentViewCell.swift; sourceTree = "<group>"; };
 		DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "知乎日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC515F81BBCCC9400EDFF48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +81,24 @@
 			name = GradientView;
 			sourceTree = "<group>";
 		};
+		DB803AA21BBE66C40081E032 /* AwsomeNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				DB803AA31BBE66E30081E032 /* UINavigationBar+Awesome.h */,
+				DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */,
+			);
+			name = AwsomeNavigationBar;
+			sourceTree = "<group>";
+		};
+		DB803AA61BBE69260081E032 /* LaunchView */ = {
+			isa = PBXGroup;
+			children = (
+				DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */,
+				DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */,
+			);
+			name = LaunchView;
+			sourceTree = "<group>";
+		};
 		DBC515EA1BBCCC9400EDFF48 = {
 			isa = PBXGroup;
 			children = (
@@ -95,13 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				DBC516081BBCCDB300EDFF48 /* ThirdParty */,
+				DB803AA61BBE69260081E032 /* LaunchView */,
 				DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */,
+				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
 				DBC515F81BBCCC9400EDFF48 /* ViewController.swift */,
-				DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */,
 				DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */,
 				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
-				DB4518D51BBCE4C70097A25A /* LocalPagedHorizontalView.swift */,
-				DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */,
+				DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */,
+				DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
@@ -112,6 +138,7 @@
 		DBC516081BBCCDB300EDFF48 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				DB803AA21BBE66C40081E032 /* AwsomeNavigationBar */,
 				DB803A9E1BBE5BA30081E032 /* GradientView */,
 				DB4518DC1BBCE8870097A25A /* myUILabel */,
 				DBC516091BBCCFCF00EDFF48 /* JSAnimated */,
@@ -217,17 +244,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
 				DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */,
-				DB4518D61BBCE4C70097A25A /* LocalPagedHorizontalView.swift in Sources */,
+				DB4518D61BBCE4C70097A25A /* PagedHorizontalView.swift in Sources */,
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
 				DB4518D41BBCE4270097A25A /* TableHeaderViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
+				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,
 				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
 				DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */,
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
 				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
+				DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

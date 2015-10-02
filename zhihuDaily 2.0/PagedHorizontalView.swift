@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocalPagedHorizontalView: UIView {
+class PagedHorizontalView: UIView {
     
     var timer: NSTimer?
     var direction = 1
@@ -109,7 +109,7 @@ class LocalPagedHorizontalView: UIView {
 }
 
 
-extension LocalPagedHorizontalView : UICollectionViewDelegateFlowLayout {
+extension PagedHorizontalView : UICollectionViewDelegateFlowLayout {
     
     /**
     size of the collection view
@@ -167,7 +167,7 @@ extension LocalPagedHorizontalView : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        print(indexPath.item)
     }
 }
 

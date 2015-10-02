@@ -10,6 +10,8 @@ import UIKit
 
 class TableHeaderViewCell: UITableViewCell {
 
+    @IBOutlet weak var pageView: PagedHorizontalView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
