@@ -11,14 +11,15 @@
 		DB4518D61BBCE4C70097A25A /* LocalPagedHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D51BBCE4C70097A25A /* LocalPagedHorizontalView.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F81BBCCC9400EDFF48 /* ViewController.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
-		DBC515FE1BBCCC9400EDFF48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FD1BBCCC9400EDFF48 /* Assets.xcassets */; };
+		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DBE2B53B1BBCD83000AD5316 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE2B5391BBCD83000AD5316 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,19 +28,21 @@
 		DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentViewCell.swift; sourceTree = "<group>"; };
 		DB4518D91BBCE8820097A25A /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB4518DA1BBCE8820097A25A /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
-		DBC515F31BBCCC9400EDFF48 /* zhihuDaily 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zhihuDaily 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		DB803A9F1BBE5BC50081E032 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		DB803AA01BBE5BC50081E032 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "知乎日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC515F81BBCCC9400EDFF48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBC515FB1BBCCC9400EDFF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DBC515FD1BBCCC9400EDFF48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBC516021BBCCC9400EDFF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE2B52A1BBCD06400AD5316 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSAnimatedImagesView.h; path = ../../JSAnimatedImagesView.h; sourceTree = "<group>"; };
 		DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSAnimatedImagesView.m; path = ../../JSAnimatedImagesView.m; sourceTree = "<group>"; };
 		DBE2B5311BBCD0D700AD5316 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		DBE2B5341BBCD0FE00AD5316 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		DBE2B53A1BBCD83000AD5316 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,15 @@
 			name = myUILabel;
 			sourceTree = "<group>";
 		};
+		DB803A9E1BBE5BA30081E032 /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				DB803A9F1BBE5BC50081E032 /* GradientView.h */,
+				DB803AA01BBE5BC50081E032 /* GradientView.m */,
+			);
+			name = GradientView;
+			sourceTree = "<group>";
+		};
 		DBC515EA1BBCCC9400EDFF48 = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +86,7 @@
 		DBC515F41BBCCC9400EDFF48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DBC515F31BBCCC9400EDFF48 /* zhihuDaily 2.0.app */,
+				DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,9 +101,9 @@
 				DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */,
 				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
 				DB4518D51BBCE4C70097A25A /* LocalPagedHorizontalView.swift */,
+				DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */,
+				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
-				DBE2B5391BBCD83000AD5316 /* LaunchScreen.storyboard */,
-				DBC515FD1BBCCC9400EDFF48 /* Assets.xcassets */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 			);
 			path = "zhihuDaily 2.0";
@@ -100,6 +112,7 @@
 		DBC516081BBCCDB300EDFF48 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				DB803A9E1BBE5BA30081E032 /* GradientView */,
 				DB4518DC1BBCE8870097A25A /* myUILabel */,
 				DBC516091BBCCFCF00EDFF48 /* JSAnimated */,
 			);
@@ -151,7 +164,7 @@
 			);
 			name = "zhihuDaily 2.0";
 			productName = "zhihuDaily 2.0";
-			productReference = DBC515F31BBCCC9400EDFF48 /* zhihuDaily 2.0.app */;
+			productReference = DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,8 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBE2B53B1BBCD83000AD5316 /* LaunchScreen.storyboard in Resources */,
-				DBC515FE1BBCCC9400EDFF48 /* Assets.xcassets in Resources */,
+				DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */,
 				DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,12 +217,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
 				DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */,
 				DB4518D61BBCE4C70097A25A /* LocalPagedHorizontalView.swift in Sources */,
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
 				DB4518D41BBCE4270097A25A /* TableHeaderViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
+				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
 				DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */,
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
 				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
@@ -226,14 +240,6 @@
 				DBC515FB1BBCCC9400EDFF48 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DBE2B5391BBCD83000AD5316 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DBE2B53A1BBCD83000AD5316 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -326,10 +332,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "知乎日报";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Debug;
@@ -338,10 +345,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "知乎日报";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Release;

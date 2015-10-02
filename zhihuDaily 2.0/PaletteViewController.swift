@@ -1,22 +1,23 @@
 //
-//  LaunchViewController.swift
+//  PaletteViewController.swift
 //  zhihuDaily 2.0
 //
-//  Created by Nirvana on 10/1/15.
+//  Created by Nirvana on 10/2/15.
 //  Copyright © 2015 NSNirvana. All rights reserved.
 //
 
 import UIKit
 
-class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
+class PaletteViewController: UIViewController {
 
-    @IBOutlet weak var animatedImagesView: JSAnimatedImagesView!
-    
-    @IBOutlet weak var text: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        animatedImagesView.dataSource = self
+        self.view.backgroundColor = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
+        
+        let gradientMidView = GradientView(frame: CGRectMake(0, self.view.frame.height / 3 * 2, self.view.frame.width, self.view.frame.height / 3 ), type: TRANSPARENT_GRADIENT_TYPE)
+        self.view.addSubview(gradientMidView)
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -25,13 +26,6 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func animatedImagesNumberOfImages(animatedImagesView: JSAnimatedImagesView!) -> UInt {
-        return 2
-    }
-    
-    func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
-        return UIImage(named: "DemoLaunchImage")
-    }
 
     /*
     // MARK: - Navigation

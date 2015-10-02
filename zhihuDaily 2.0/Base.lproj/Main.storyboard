@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bXp-3O-UUq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nuZ-13-cUA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="zhihuDaily_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +23,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableHeaderViewCell" rowHeight="113" id="hjQ-CI-JwI" customClass="TableHeaderViewCell" customModule="zhihuDaily_2_0" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableHeaderViewCell" rowHeight="113" id="hjQ-CI-JwI" customClass="TableHeaderViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjQ-CI-JwI" id="nTa-4n-wcD">
@@ -42,7 +43,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionContentViewCell" id="YU6-6t-Hkv" customClass="PageCollectionViewCell" customModule="zhihuDaily_2_0" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionContentViewCell" id="YU6-6t-Hkv" customClass="PageCollectionViewCell" customModule="知乎日报" customModuleProvider="target">
                                                                     <rect key="frame" x="0.5" y="0.0" width="599.5" height="190"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -119,7 +120,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="89" id="LKI-64-ERl" customClass="TableContentViewCell" customModule="zhihuDaily_2_0" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="89" id="LKI-64-ERl" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="205" width="600" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LKI-64-ERl" id="02m-36-2rI">
@@ -182,10 +183,50 @@
             </objects>
             <point key="canvasLocation" x="1151" y="429"/>
         </scene>
+        <!--Palette View Controller-->
+        <scene sceneID="H09-AR-xfi">
+            <objects>
+                <viewController id="nuZ-13-cUA" customClass="PaletteViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oH3-nT-Biw"/>
+                        <viewControllerLayoutGuide type="bottom" id="hQH-9I-uvE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZUe-OA-5S8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DemoLaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="z6j-7i-Hrm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.20999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8My-se-wlv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8My-se-wlv" secondAttribute="trailing" id="7Bc-eS-rti"/>
+                            <constraint firstItem="8My-se-wlv" firstAttribute="height" secondItem="ZUe-OA-5S8" secondAttribute="height" multiplier="2:3" id="7dd-My-cV1"/>
+                            <constraint firstItem="z6j-7i-Hrm" firstAttribute="bottom" secondItem="hQH-9I-uvE" secondAttribute="top" id="9gq-nv-8Nx"/>
+                            <constraint firstItem="z6j-7i-Hrm" firstAttribute="top" secondItem="8My-se-wlv" secondAttribute="top" id="Wk6-PD-TOd"/>
+                            <constraint firstItem="z6j-7i-Hrm" firstAttribute="trailing" secondItem="8My-se-wlv" secondAttribute="trailing" id="j10-DJ-Y2B"/>
+                            <constraint firstItem="8My-se-wlv" firstAttribute="leading" secondItem="ZUe-OA-5S8" secondAttribute="leading" id="jdF-K0-xSn"/>
+                            <constraint firstItem="z6j-7i-Hrm" firstAttribute="leading" secondItem="8My-se-wlv" secondAttribute="leading" id="pB1-nO-MqN"/>
+                            <constraint firstItem="8My-se-wlv" firstAttribute="top" secondItem="ZUe-OA-5S8" secondAttribute="top" id="qSk-Yt-tco"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Hf-3N-Y5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151" y="1113"/>
+        </scene>
         <!--Launch View Controller-->
         <scene sceneID="gVX-Uq-Gjs">
             <objects>
-                <viewController storyboardIdentifier="launchViewController" id="dGD-VN-LjX" customClass="LaunchViewController" customModule="zhihuDaily_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="launchViewController" id="dGD-VN-LjX" customClass="LaunchViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ey5-mH-eXt"/>
                         <viewControllerLayoutGuide type="bottom" id="k6B-a2-Ylx"/>
@@ -193,9 +234,34 @@
                     <view key="view" contentMode="scaleToFill" id="eh1-Q1-cbp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhc-kx-CLp" customClass="JSAnimatedImagesView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Pink Landscape&quot; © Timothy Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0w-5W-FsM">
+                                <rect key="frame" x="201" y="577.5" width="198" height="14.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.34983672690000001" green="0.61470970660000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="k6B-a2-Ylx" firstAttribute="top" secondItem="G0w-5W-FsM" secondAttribute="bottom" constant="8" id="ASz-WS-IXy"/>
+                            <constraint firstAttribute="trailing" secondItem="Dhc-kx-CLp" secondAttribute="trailing" id="Hll-DO-b1E"/>
+                            <constraint firstItem="G0w-5W-FsM" firstAttribute="centerX" secondItem="eh1-Q1-cbp" secondAttribute="centerX" id="PE5-Sq-F6r"/>
+                            <constraint firstItem="Dhc-kx-CLp" firstAttribute="leading" secondItem="eh1-Q1-cbp" secondAttribute="leading" id="RDJ-k9-cz0"/>
+                            <constraint firstItem="Dhc-kx-CLp" firstAttribute="top" secondItem="eh1-Q1-cbp" secondAttribute="top" id="Thp-kK-0Df"/>
+                            <constraint firstItem="Dhc-kx-CLp" firstAttribute="bottom" secondItem="k6B-a2-Ylx" secondAttribute="top" id="Tnh-Aq-7WF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animatedImagesView" destination="Dhc-kx-CLp" id="14v-tM-eh7"/>
+                        <outlet property="text" destination="G0w-5W-FsM" id="giL-Bg-pk4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87x-Qh-xV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,4 +287,7 @@
             <point key="canvasLocation" x="339" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DemoLaunchImage" width="1080" height="1920"/>
+    </resources>
 </document>
