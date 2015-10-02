@@ -87,9 +87,6 @@
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="BYZ-38-t0r" id="Mc6-sr-K2q"/>
-                                                            </connections>
                                                         </collectionView>
                                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="enE-QG-SHZ">
                                                             <rect key="frame" x="0.0" y="131" width="600" height="37"/>

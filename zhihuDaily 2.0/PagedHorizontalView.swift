@@ -36,6 +36,7 @@ class PagedHorizontalView: UIView {
             collectionView.pagingEnabled = true
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.delegate = self
+            collectionView.dataSource = self
         }
     }
     
@@ -106,6 +107,10 @@ class PagedHorizontalView: UIView {
         pageControl?.numberOfPages = collectionView.numberOfItemsInSection(0)
         pageControl?.currentPage = currentIndex
     }
+    
+    func appCloud() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
 }
 
 
@@ -171,5 +176,23 @@ extension PagedHorizontalView : UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+extension PagedHorizontalView: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("appCloud().topStory.count:",appCloud().topStory.count)
+        return appCloud().topStory.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionContentViewCell", forIndexPath: indexPath) as! CollectionContentViewCell
+        
+        let data = appCloud().topStory[indexPath.item]
+        
+        cell.imageView.image = UIImage(named: data.image)
+        cell.titleLabel.text = data.title
+        cell.titleLabel.verticalAlignment = VerticalAlignmentBottom
+        
+        return cell
+    }
+}
 

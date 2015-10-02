@@ -57,27 +57,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func appCloud() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    
 }
-
-extension ViewController: UICollectionViewDataSource {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("appCloud().topStory.count:",appCloud().topStory.count)
-        return appCloud().topStory.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionContentViewCell", forIndexPath: indexPath) as! CollectionContentViewCell
-        
-        let data = appCloud().topStory[indexPath.item]
-        
-        cell.imageView.image = UIImage(named: data.image)
-        cell.titleLabel.text = data.title
-        cell.titleLabel.verticalAlignment = VerticalAlignmentBottom
-        
-        return cell
-    }
-}
-
 
