@@ -13,5 +13,7 @@
 #import "myUILabel.h"
 #import "GradientView.h"
 #import "UINavigationBar+Awesome.h"
+#import "SDCycleScrollView.h"
+#import "ParallaxHeaderView.h"
 
 #endif /* Bridging_Header_h */

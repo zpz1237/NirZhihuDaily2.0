@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB4518D41BBCE4270097A25A /* TableHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB4518D61BBCE4C70097A25A /* PagedHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */; settings = {ASSET_TAGS = (); }; };
+		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB01BBF8B1800713002 /* TADotView.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABD1BBF8B1800713002 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB21BBF8B1800713002 /* TAPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB41BBF8B1800713002 /* SDCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB61BBF8B1800713002 /* SDCycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEAC01BBF8B1800713002 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB81BBF8B1800713002 /* UIView+SDExtension.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC41BBF8C5000713002 /* ParallaxHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
 		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -17,7 +25,6 @@
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
-		DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F81BBCCC9400EDFF48 /* ViewController.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
 		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
@@ -26,8 +33,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderViewCell.swift; sourceTree = "<group>"; };
-		DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedHorizontalView.swift; sourceTree = "<group>"; };
+		DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
+		DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
+		DB2DEAAB1BBF8B1800713002 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		DB2DEAAD1BBF8B1800713002 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		DB2DEAAF1BBF8B1800713002 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		DB2DEAB01BBF8B1800713002 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		DB2DEAB11BBF8B1800713002 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		DB2DEAB21BBF8B1800713002 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		DB2DEAB31BBF8B1800713002 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		DB2DEAB41BBF8B1800713002 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		DB2DEAB51BBF8B1800713002 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		DB2DEAB61BBF8B1800713002 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		DB2DEAB71BBF8B1800713002 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		DB2DEAB81BBF8B1800713002 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		DB2DEAC31BBF8C5000713002 /* ParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxHeaderView.h; sourceTree = "<group>"; };
+		DB2DEAC41BBF8C5000713002 /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
+		DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentViewCell.swift; sourceTree = "<group>"; };
 		DB4518D91BBCE8820097A25A /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB4518DA1BBCE8820097A25A /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
@@ -40,7 +64,6 @@
 		DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionContentViewCell.swift; sourceTree = "<group>"; };
 		DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "知乎日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBC515F81BBCCC9400EDFF48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBC515FB1BBCCC9400EDFF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBC516021BBCCC9400EDFF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +86,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */,
+				DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */,
+				DB2DEAAA1BBF8B1800713002 /* PageControl */,
+				DB2DEAB31BBF8B1800713002 /* SDCollectionViewCell.h */,
+				DB2DEAB41BBF8B1800713002 /* SDCollectionViewCell.m */,
+				DB2DEAB51BBF8B1800713002 /* SDCycleScrollView.h */,
+				DB2DEAB61BBF8B1800713002 /* SDCycleScrollView.m */,
+				DB2DEAB71BBF8B1800713002 /* UIView+SDExtension.h */,
+				DB2DEAB81BBF8B1800713002 /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		DB2DEAAA1BBF8B1800713002 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DEAAB1BBF8B1800713002 /* TAAbstractDotView.h */,
+				DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */,
+				DB2DEAAD1BBF8B1800713002 /* TAAnimatedDotView.h */,
+				DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */,
+				DB2DEAAF1BBF8B1800713002 /* TADotView.h */,
+				DB2DEAB01BBF8B1800713002 /* TADotView.m */,
+				DB2DEAB11BBF8B1800713002 /* TAPageControl.h */,
+				DB2DEAB21BBF8B1800713002 /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
+		DB2DEAC21BBF8C4200713002 /* ParallaxHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DEAC31BBF8C5000713002 /* ParallaxHeaderView.h */,
+				DB2DEAC41BBF8C5000713002 /* ParallaxHeaderView.m */,
+			);
+			name = ParallaxHeaderView;
+			sourceTree = "<group>";
+		};
 		DB4518DC1BBCE8870097A25A /* myUILabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,10 +186,8 @@
 				DB803AA61BBE69260081E032 /* LaunchView */,
 				DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */,
 				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
-				DBC515F81BBCCC9400EDFF48 /* ViewController.swift */,
-				DB4518D31BBCE4270097A25A /* TableHeaderViewCell.swift */,
+				DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */,
 				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
-				DB4518D51BBCE4C70097A25A /* PagedHorizontalView.swift */,
 				DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
@@ -138,6 +199,8 @@
 		DBC516081BBCCDB300EDFF48 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				DB2DEAC21BBF8C4200713002 /* ParallaxHeaderView */,
+				DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */,
 				DB803AA21BBE66C40081E032 /* AwsomeNavigationBar */,
 				DB803A9E1BBE5BA30081E032 /* GradientView */,
 				DB4518DC1BBCE8870097A25A /* myUILabel */,
@@ -245,15 +308,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */,
+				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
+				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
-				DBC515F91BBCCC9400EDFF48 /* ViewController.swift in Sources */,
-				DB4518D61BBCE4C70097A25A /* PagedHorizontalView.swift in Sources */,
+				DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */,
+				DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */,
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
+				DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */,
+				DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
-				DB4518D41BBCE4270097A25A /* TableHeaderViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
 				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,
+				DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */,
 				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
+				DB2DEAC01BBF8B1800713002 /* UIView+SDExtension.m in Sources */,
+				DB2DEABD1BBF8B1800713002 /* TAPageControl.m in Sources */,
+				DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */,
 				DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */,
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
 				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
