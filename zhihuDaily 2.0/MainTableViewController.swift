@@ -13,6 +13,33 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //生成第二启动页背景
+        let launchView = UIView(frame: CGRectMake(0, -64, self.view.frame.width, self.view.frame.height))
+        launchView.alpha = 0.99
+        
+        //得到第二启动页控制器并设置为子控制器
+        let launchViewController = storyboard?.instantiateViewControllerWithIdentifier("launchViewController")
+        self.addChildViewController(launchViewController!)
+        
+        //将第二启动页放到背景上
+        launchView.addSubview(launchViewController!.view)
+        
+        //展示第二启动页并隐藏NavbarTitleView
+        self.view.addSubview(launchView)
+        self.navigationItem.titleView?.hidden = true
+        
+        //动画效果：第二启动页2.5s展示过后经0.2秒删除并恢复展示NavbarTitleView
+        UIView.animateWithDuration(2.5, animations: { () -> Void in
+            launchView.alpha = 1
+            }) { (finished) -> Void in
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    launchView.alpha = 0
+                    self.navigationItem.titleView?.hidden = false
+                    }, completion: { (finished) -> Void in
+                        launchView.removeFromSuperview()
+                })
+        }
+        
         //设置透明NavBar
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
         self.navigationController?.navigationBar.shadowImage = UIImage()
