@@ -23,7 +23,6 @@
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
-		DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
 		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
@@ -61,7 +60,6 @@
 		DB803AA31BBE66E30081E032 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
-		DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionContentViewCell.swift; sourceTree = "<group>"; };
 		DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "知乎日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC515FB1BBCCC9400EDFF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
 				DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */,
 				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
-				DB803AA91BBE6EFD0081E032 /* CollectionContentViewCell.swift */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
@@ -307,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB803AAA1BBE6EFD0081E032 /* CollectionContentViewCell.swift in Sources */,
 				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,

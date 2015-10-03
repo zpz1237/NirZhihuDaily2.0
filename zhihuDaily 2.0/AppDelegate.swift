@@ -16,10 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var contentStory: [ContentStoryModel] = []
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+        //获取启动页
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let launchViewController = mainStoryboard.instantiateViewControllerWithIdentifier("launchViewController")
+        
+        //加载启动页并停留2.5s
 //        self.window?.rootViewController = launchViewController
+//        NSThread.sleepForTimeInterval(2.5)
+        
+        //获取主页面
+        let mainTableViewControllerNav = mainStoryboard.instantiateViewControllerWithIdentifier("mainTableViewControllerNav")
+        
+        //加载主页面
+        self.window?.rootViewController = mainTableViewControllerNav
+        
+        
+        
         
         //配置测试数据
         topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))

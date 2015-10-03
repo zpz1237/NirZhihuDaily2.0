@@ -12,7 +12,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //设置透明NavBar
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -103,4 +103,18 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
 
+    //设置statusBar为白色
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+}
+
+//拓展NavigationController以设置statusBar
+extension UINavigationController {
+    public override func childViewControllerForStatusBarStyle() -> UIViewController? {
+        return self.topViewController
+    }
+    public override func childViewControllerForStatusBarHidden() -> UIViewController? {
+        return self.topViewController
+    }
 }

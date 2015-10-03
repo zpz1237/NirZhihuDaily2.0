@@ -11,18 +11,23 @@ import UIKit
 class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
 
     @IBOutlet weak var animatedImagesView: JSAnimatedImagesView!
-    
     @IBOutlet weak var text: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         animatedImagesView.dataSource = self
+        
+        //半透明遮罩层
+        let blurView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height / 3 * 2))
+        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.21)
+        animatedImagesView.addSubview(blurView)
+        
+        //渐变遮罩层
+        let gradientView = GradientView(frame: CGRectMake(0, self.view.frame.height / 3 * 2, self.view.frame.width, self.view.frame.height / 3 ), type: TRANSPARENT_GRADIENT_TYPE)
+        animatedImagesView.addSubview(gradientView)
+        
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func animatedImagesNumberOfImages(animatedImagesView: JSAnimatedImagesView!) -> UInt {

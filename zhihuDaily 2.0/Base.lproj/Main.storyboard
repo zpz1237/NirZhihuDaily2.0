@@ -143,8 +143,16 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GwW-49-Ldt">
+                                <rect key="frame" x="225.5" y="499" width="155" height="62"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="m0a-Wj-qoY"/>
+                                    <constraint firstAttribute="width" constant="155" id="qSI-ap-j4Q"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Pink Landscape&quot; © Timothy Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0w-5W-FsM">
-                                <rect key="frame" x="201" y="577.5" width="198" height="14.5"/>
+                                <rect key="frame" x="201" y="577" width="198" height="14.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,10 +167,12 @@
                             <constraint firstItem="Dhc-kx-CLp" firstAttribute="leading" secondItem="eh1-Q1-cbp" secondAttribute="leading" id="RDJ-k9-cz0"/>
                             <constraint firstItem="Dhc-kx-CLp" firstAttribute="top" secondItem="eh1-Q1-cbp" secondAttribute="top" id="Thp-kK-0Df"/>
                             <constraint firstItem="Dhc-kx-CLp" firstAttribute="bottom" secondItem="k6B-a2-Ylx" secondAttribute="top" id="Tnh-Aq-7WF"/>
+                            <constraint firstItem="GwW-49-Ldt" firstAttribute="centerX" secondItem="Dhc-kx-CLp" secondAttribute="centerX" constant="3" id="Yqe-0h-KGG"/>
+                            <constraint firstItem="GwW-49-Ldt" firstAttribute="bottom" secondItem="Dhc-kx-CLp" secondAttribute="bottom" constant="-39" id="gKU-QX-w5a"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="animatedImagesView" destination="Dhc-kx-CLp" id="14v-tM-eh7"/>
+                        <outlet property="animatedImagesView" destination="Dhc-kx-CLp" id="cOi-Mg-YOw"/>
                         <outlet property="text" destination="G0w-5W-FsM" id="giL-Bg-pk4"/>
                     </connections>
                 </viewController>
@@ -173,7 +183,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3yj-7e-TfO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eJm-Aj-C4A" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainTableViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="eJm-Aj-C4A" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NHB-iq-m9C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -192,5 +202,6 @@
     </scenes>
     <resources>
         <image name="DemoLaunchImage" width="1080" height="1920"/>
+        <image name="Logo" width="311" height="154"/>
     </resources>
 </document>
