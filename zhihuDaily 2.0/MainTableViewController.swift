@@ -9,7 +9,7 @@
 import UIKit
 
 class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate, ParallaxHeaderViewDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +44,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        //tableView基础配置
+        //TableView基础配置
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.showsVerticalScrollIndicator = false
@@ -63,7 +63,10 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         cycleScrollView.titleLabelTextFont = UIFont(name: "STHeitiSC-Medium", size: 21)
         cycleScrollView.titleLabelBackgroundColor = UIColor.clearColor()
         cycleScrollView.titleLabelHeight = 60
-
+        
+        //alpha在未设置的状态下默认为0
+        cycleScrollView.titleLabelAlpha = 1
+        
         //将其添加到ParallaxView
         let headerSubview: ParallaxHeaderView = ParallaxHeaderView.parallaxHeaderViewWithSubView(cycleScrollView, forSize: CGSizeMake(self.tableView.frame.width, 154)) as! ParallaxHeaderView
         headerSubview.delegate  = self
@@ -88,7 +91,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
         
         let data = appCloud().contentStory[indexPath.row]
@@ -112,34 +114,40 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     //实现Parallax效果以及NavBar透明度渐变
     override func  scrollViewDidScroll(scrollView: UIScrollView) {
         
-        let color = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
-        let offsetY = scrollView.contentOffset.y
-
-        let prelude: CGFloat = 25
-        
-        if offsetY > prelude {
-            let alpha = min(1, 1 - ((prelude + 64 - offsetY) / 64))
-            self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(alpha))
-        } else {
-            self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(0))
-        }
-        
+        //Parallax效果
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
         header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
+        
+        //NavBar及TitleLabel透明度渐变
+        let color = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
+        let offsetY = scrollView.contentOffset.y
+        let prelude: CGFloat = 90
+        
+        if offsetY >= -64 {
+            let alpha = min(1, (64 + offsetY) / (64 + prelude))
+            //TitleLabel透明度渐变
+            (header.subviews[0].subviews[0] as! SDCycleScrollView).titleLabelAlpha = 1 - alpha
+            (header.subviews[0].subviews[0].subviews[0] as! UICollectionView).reloadData()
+            //NavBar透明度渐变
+            self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(alpha))
+        } else {
+            
+            self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(0))
+        }
     }
     
     //获取总代理
     func appCloud() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-
-    //设置statusBar为白色
+    
+    //设置StatusBar为白色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
 }
 
-//拓展NavigationController以设置statusBar
+//拓展NavigationController以设置StatusBar
 extension UINavigationController {
     public override func childViewControllerForStatusBarStyle() -> UIViewController? {
         return self.topViewController

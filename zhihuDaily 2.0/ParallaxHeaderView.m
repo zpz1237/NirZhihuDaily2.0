@@ -50,19 +50,15 @@
     {
         CGFloat delta = 0.0f;
         CGRect rect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        delta = fabs(MIN(0.0f, offset.y));
-        rect.origin.y -= delta;
-        rect.size.height += delta;
+
+        delta = offset.y;
+        rect.origin.y += delta;
+        rect.size.height -= delta;
+        
         self.imageScrollView.frame = rect;
-        
-        
-//        //headerTitleLabel
-//        CGRect titleRect = CGRectMake(23, 23, self.imageScrollView.bounds.size.width - 46, 104);
-//        titleRect.origin.y += delta;
-//        self.headerTitleLabel.frame = titleRect;
-        
         self.clipsToBounds = NO;
     }
+    
 }
 
 - (void)initialSetupForCustomSubView:(UIView *)subView
@@ -78,25 +74,6 @@
     
     //将内容层View添加到scrollView上
     [self.imageScrollView addSubview:subView];
-    
-//    CGRect labelRect = self.imageScrollView.bounds;
-//    labelRect.origin.x = labelRect.origin.y = kLabelPaddingDist;
-//    labelRect.size.width = labelRect.size.width - 2 * kLabelPaddingDist;
-//    labelRect.size.height = labelRect.size.height - 2 * kLabelPaddingDist;
-//    myUILabel *headerLabel = [[myUILabel alloc] initWithFrame:labelRect];
-//    headerLabel.textAlignment = NSTextAlignmentLeft;
-//    headerLabel.numberOfLines = 0;
-//    headerLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    headerLabel.verticalAlignment = VerticalAlignmentBottom;
-//    headerLabel.shadowColor = [UIColor blackColor];
-//    headerLabel.shadowOffset = CGSizeMake(0, 1);
-//    
-////    headerLabel.autoresizingMask = imageView.autoresizingMask;
-//    headerLabel.textColor = [UIColor whiteColor];
-//    headerLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:21.0];
-//    self.headerTitleLabel = headerLabel;
-//    [self.imageScrollView addSubview:self.headerTitleLabel];
-    
     
     [self addSubview:self.imageScrollView];
 }
