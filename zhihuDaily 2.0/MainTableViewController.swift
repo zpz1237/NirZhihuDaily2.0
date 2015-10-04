@@ -60,6 +60,9 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         cycleScrollView.autoScrollTimeInterval = 6.0;
         cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic
         cycleScrollView.titlesGroup = [appCloud().topStory[0].title, appCloud().topStory[1].title, appCloud().topStory[2].title, appCloud().topStory[3].title, appCloud().topStory[4].title]
+        cycleScrollView.titleLabelTextFont = UIFont(name: "STHeitiSC-Medium", size: 21)
+        cycleScrollView.titleLabelBackgroundColor = UIColor.clearColor()
+        cycleScrollView.titleLabelHeight = 60
 
         //将其添加到ParallaxView
         let headerSubview: ParallaxHeaderView = ParallaxHeaderView.parallaxHeaderViewWithSubView(cycleScrollView, forSize: CGSizeMake(self.tableView.frame.width, 154)) as! ParallaxHeaderView

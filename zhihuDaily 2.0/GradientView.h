@@ -10,6 +10,7 @@
 
 #define TRANSPARENT_GRADIENT_TYPE 1
 #define COLOR_GRADIENT_TYPE 2
+#define TRANSPARENT_GRADIENT_TWICE_TYPE 3
 
 @interface GradientView : UIView
 
