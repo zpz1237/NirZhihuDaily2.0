@@ -25,6 +25,7 @@
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
+		DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC9BF101BC2268000B72D69 /* WebViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; settings = {ASSET_TAGS = (); }; };
@@ -64,6 +65,7 @@
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC515FB1BBCCC9400EDFF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBC516021BBCCC9400EDFF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBC9BF101BC2268000B72D69 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE2B52A1BBCD06400AD5316 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSAnimatedImagesView.h; path = ../../JSAnimatedImagesView.h; sourceTree = "<group>"; };
 		DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSAnimatedImagesView.m; path = ../../JSAnimatedImagesView.m; sourceTree = "<group>"; };
@@ -84,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB1728EE1BC125A300D28822 /* MainTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */,
+				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
+			);
+			name = MainTableViewController;
+			sourceTree = "<group>";
+		};
 		DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,13 +162,13 @@
 			name = AwsomeNavigationBar;
 			sourceTree = "<group>";
 		};
-		DB803AA61BBE69260081E032 /* LaunchView */ = {
+		DB803AA61BBE69260081E032 /* LaunchViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */,
 				DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */,
 			);
-			name = LaunchView;
+			name = LaunchViewController;
 			sourceTree = "<group>";
 		};
 		DBC515EA1BBCCC9400EDFF48 = {
@@ -180,15 +191,15 @@
 		DBC515F51BBCCC9400EDFF48 /* zhihuDaily 2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				DBC516081BBCCDB300EDFF48 /* ThirdParty */,
-				DB803AA61BBE69260081E032 /* LaunchView */,
 				DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */,
 				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
-				DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */,
-				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
+				DBC516081BBCCDB300EDFF48 /* ThirdParty */,
+				DB803AA61BBE69260081E032 /* LaunchViewController */,
+				DB1728EE1BC125A300D28822 /* MainTableViewController */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
+				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
 			);
 			path = "zhihuDaily 2.0";
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
 				DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */,
+				DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */,
 				DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */,
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */,
