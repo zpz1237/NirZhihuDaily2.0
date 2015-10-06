@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJm-Aj-C4A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6rh-4x-mHf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -85,6 +85,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5X-Mz-bv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1151" y="407"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="DVn-sv-E7e">
+            <objects>
+                <viewController id="6rh-4x-mHf" customClass="WebViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1MM-8R-3Xh"/>
+                        <viewControllerLayoutGuide type="bottom" id="rJd-xL-ofz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="USb-n7-DVa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXY-UL-UXd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IXY-UL-UXd" firstAttribute="top" secondItem="USb-n7-DVa" secondAttribute="top" id="E0M-2M-9or"/>
+                            <constraint firstItem="IXY-UL-UXd" firstAttribute="bottom" secondItem="rJd-xL-ofz" secondAttribute="top" id="LCQ-Dj-u5A"/>
+                            <constraint firstItem="IXY-UL-UXd" firstAttribute="leading" secondItem="USb-n7-DVa" secondAttribute="leading" id="LMp-7Q-ExV"/>
+                            <constraint firstAttribute="trailing" secondItem="IXY-UL-UXd" secondAttribute="trailing" id="oBE-kc-egc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="IXY-UL-UXd" id="bZ9-9u-UkK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Phl-3V-79S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905" y="407"/>
         </scene>
         <!--Palette View Controller-->
         <scene sceneID="H09-AR-xfi">

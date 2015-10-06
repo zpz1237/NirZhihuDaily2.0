@@ -15,11 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @end
 
-//#define kDefaultHeaderFrame CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-
-//static CGFloat kParallaxDeltaFactor = 0.5f;
-//static CGFloat kLabelPaddingDist = 8.0f;
-
 @implementation ParallaxHeaderView
 
 + (id)parallaxHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
@@ -51,6 +46,35 @@
         CGFloat delta = 0.0f;
         CGRect rect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 
+        delta = offset.y;
+        rect.origin.y += delta;
+        rect.size.height -= delta;
+        
+        self.imageScrollView.frame = rect;
+        self.clipsToBounds = NO;
+    }
+    
+}
+
+- (void)layoutWebHeaderViewForScrollViewOffset:(CGPoint)offset
+{
+    CGRect frame = self.imageScrollView.frame;
+    
+    if (offset.y > 0)
+    {
+//        frame.origin.y = MAX(offset.y *0.5, 0);
+//        self.imageScrollView.frame = frame;
+//        self.clipsToBounds = YES;
+    }
+    else if (offset.y < -154) {
+        //只是留个位置供接触到父ViewController的方法
+        [self.delegate lockDirection];
+    }
+    else
+    {
+        CGFloat delta = 0.0f;
+        CGRect rect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        
         delta = offset.y;
         rect.origin.y += delta;
         rect.size.height -= delta;

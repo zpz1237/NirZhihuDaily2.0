@@ -24,4 +24,5 @@
 
 + (id)parallaxHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset;
+- (void)layoutWebHeaderViewForScrollViewOffset:(CGPoint)offset;
 @end
