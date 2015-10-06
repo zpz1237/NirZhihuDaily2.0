@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXY-UL-UXd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -107,7 +107,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IXY-UL-UXd" firstAttribute="top" secondItem="USb-n7-DVa" secondAttribute="top" id="E0M-2M-9or"/>
+                            <constraint firstItem="IXY-UL-UXd" firstAttribute="top" secondItem="USb-n7-DVa" secondAttribute="top" constant="20" id="E0M-2M-9or"/>
                             <constraint firstItem="IXY-UL-UXd" firstAttribute="bottom" secondItem="rJd-xL-ofz" secondAttribute="top" id="LCQ-Dj-u5A"/>
                             <constraint firstItem="IXY-UL-UXd" firstAttribute="leading" secondItem="USb-n7-DVa" secondAttribute="leading" id="LMp-7Q-ExV"/>
                             <constraint firstAttribute="trailing" secondItem="IXY-UL-UXd" secondAttribute="trailing" id="oBE-kc-egc"/>

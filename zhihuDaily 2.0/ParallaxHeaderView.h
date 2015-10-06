@@ -23,6 +23,7 @@
 @property (nonatomic, weak) id<ParallaxHeaderViewDelegate> delegate;
 
 + (id)parallaxHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
++ (id)parallaxWebHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset;
 - (void)layoutWebHeaderViewForScrollViewOffset:(CGPoint)offset;
 @end

@@ -77,7 +77,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     }
 
     //TableView数据源
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -101,7 +100,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         return cell
     }
     
-    //TableView滑动到极限
+    //设置滑动极限修改该值需要一并更改layoutHeaderViewForScrollViewOffset中的对应值
     func lockDirection() {
         self.tableView.contentOffset.y = -154
     }
