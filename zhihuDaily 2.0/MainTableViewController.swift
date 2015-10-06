@@ -44,12 +44,12 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        //TableView基础配置
+        //tableView基础配置
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.showsVerticalScrollIndicator = false
         
-        //配置无限循环ScrollView
+        //配置无限循环scrollView
         let images = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image].map { return UIImage(named: $0)! }
         
         let cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.tableView.frame.width, 154), imagesGroup: images)
@@ -71,12 +71,12 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let headerSubview: ParallaxHeaderView = ParallaxHeaderView.parallaxHeaderViewWithSubView(cycleScrollView, forSize: CGSizeMake(self.tableView.frame.width, 154)) as! ParallaxHeaderView
         headerSubview.delegate  = self
         
-        //将ParallaxView设置为HeaderView
+        //将ParallaxView设置为tableHeaderView
         self.tableView.tableHeaderView = headerSubview
         
     }
 
-    //TableView数据源
+    //tableView数据源
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -105,7 +105,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.contentOffset.y = -154
     }
     
-    //CollectionView点击事件
+    //collectionView点击事件
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
         print(index)
     }
@@ -117,14 +117,14 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
         header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
         
-        //NavBar及TitleLabel透明度渐变
+        //NavBar及titleLabel透明度渐变
         let color = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
         let offsetY = scrollView.contentOffset.y
         let prelude: CGFloat = 90
         
         if offsetY >= -64 {
             let alpha = min(1, (64 + offsetY) / (64 + prelude))
-            //TitleLabel透明度渐变
+            //titleLabel透明度渐变
             (header.subviews[0].subviews[0] as! SDCycleScrollView).titleLabelAlpha = 1 - alpha
             (header.subviews[0].subviews[0].subviews[0] as! UICollectionView).reloadData()
             //NavBar透明度渐变
