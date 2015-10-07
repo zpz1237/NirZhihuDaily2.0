@@ -103,17 +103,29 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAq-p3-pYE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ht7-Wo-UOO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IXY-UL-UXd" firstAttribute="top" secondItem="USb-n7-DVa" secondAttribute="top" constant="20" id="E0M-2M-9or"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MAq-p3-pYE" secondAttribute="trailing" constant="-20" id="E9y-EE-Ase"/>
+                            <constraint firstItem="MAq-p3-pYE" firstAttribute="top" secondItem="USb-n7-DVa" secondAttribute="topMargin" id="Gxv-OI-SR8"/>
                             <constraint firstItem="IXY-UL-UXd" firstAttribute="bottom" secondItem="rJd-xL-ofz" secondAttribute="top" id="LCQ-Dj-u5A"/>
                             <constraint firstItem="IXY-UL-UXd" firstAttribute="leading" secondItem="USb-n7-DVa" secondAttribute="leading" id="LMp-7Q-ExV"/>
+                            <constraint firstItem="MAq-p3-pYE" firstAttribute="leading" secondItem="USb-n7-DVa" secondAttribute="leadingMargin" constant="-20" id="eiB-rh-E32"/>
                             <constraint firstAttribute="trailing" secondItem="IXY-UL-UXd" secondAttribute="trailing" id="oBE-kc-egc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="statusBarBackground" destination="MAq-p3-pYE" id="xFi-Pd-cSZ"/>
                         <outlet property="webView" destination="IXY-UL-UXd" id="bZ9-9u-UkK"/>
                     </connections>
                 </viewController>

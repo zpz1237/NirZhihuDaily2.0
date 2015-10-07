@@ -13,6 +13,7 @@ import SwiftyJSON
 class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var statusBarBackground: UIView!
     
     var webHeaderView: ParallaxHeaderView!
     var imageView: UIImageView!
@@ -20,6 +21,15 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var titleLabel: myUILabel!
     var sourceLabel: UILabel!
     var blurView: GradientView!
+    
+    //滑到对应位置时调整StatusBar
+    var statusBarFlag = true {
+        didSet {
+            UIView.animateWithDuration(0.2) { () -> Void in
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +118,20 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             imageView.bringSubviewToFront(titleLabel)
         }
         
+        //监听contentOffsetY以改变StatusBarUI
+        if incrementY > 223 {
+            if statusBarFlag {
+                statusBarFlag = false
+            }
+            statusBarBackground.backgroundColor = UIColor.whiteColor()
+        } else {
+            guard statusBarFlag else {
+                statusBarFlag = true
+                return
+            }
+            statusBarBackground.backgroundColor = UIColor.clearColor()
+        }
+        
         webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
     }
     
@@ -116,8 +140,12 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         self.webView.scrollView.contentOffset.y = -85
     }
     
+    //依据statusBarFlag返回StatusBar颜色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        if statusBarFlag {
+            return .LightContent
+        }
+        return .Default
     }
     
     /*
