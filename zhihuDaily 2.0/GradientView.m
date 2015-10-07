@@ -66,15 +66,15 @@
 
 //Transparent Gradient Layer
 - (void) insertTwiceTransparentGradient {
-    UIColor *colorOne = [UIColor colorWithRed:(0/255.0)  green:(0/255.0)  blue:(0/255.0)  alpha:0.36];
+    UIColor *colorOne = [UIColor colorWithRed:(0/255.0)  green:(0/255.0)  blue:(0/255.0)  alpha:0.70];
     UIColor *colorTwo = [UIColor colorWithRed:(0/255.0)  green:(0/255.0)  blue:(0/255.0)  alpha:0.15];
     UIColor *colorThree = [UIColor colorWithRed:(0/255.0)  green:(0/255.0)  blue:(0/255.0)  alpha:0.15];
     UIColor *colorFour = [UIColor colorWithRed:(0/255.0)  green:(0/255.0)  blue:(0/255.0)  alpha:0.75];
     NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, colorThree.CGColor, colorFour.CGColor, nil];
     
     NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
-    NSNumber *stopTwo = [NSNumber numberWithFloat:0.06];
-    NSNumber *stopThree = [NSNumber numberWithFloat:0.48];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:0.20];
+    NSNumber *stopThree = [NSNumber numberWithFloat:0.50];
     NSNumber *stopFour = [NSNumber numberWithFloat:1.0];
     NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, stopThree, stopFour, nil];
     

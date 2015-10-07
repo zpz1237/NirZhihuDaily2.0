@@ -63,7 +63,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         imageView.addSubview(sourceLabel)
         
         //设置Image上的blurView
-        blurView = GradientView(frame: CGRectMake(0, -30, self.view.frame.width, orginalHeight + 30), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
+        blurView = GradientView(frame: CGRectMake(0, -85, self.view.frame.width, orginalHeight + 85), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
         imageView.addSubview(blurView)
         
         //使Label不被遮挡
@@ -111,7 +111,14 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             
             //不断添加删除blurView以保证frame正确
             blurView.removeFromSuperview()
-            let tempBlurView = GradientView(frame: CGRectMake(0, -30, self.view.frame.width, orginalHeight + 30 - incrementY), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
+            let tempBlurView = GradientView(frame: CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
+            //在blurView上添加"载入上一篇"Label
+            let refreshLabel = UILabel(frame: CGRectMake(0, 15, self.view.frame.width, 45))
+            refreshLabel.text = "载入上一篇"
+            refreshLabel.textAlignment = NSTextAlignment.Center
+            refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+            refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
+            tempBlurView.addSubview(refreshLabel)
             imageView.addSubview(tempBlurView)
             blurView = tempBlurView
             

@@ -32,6 +32,7 @@
 		DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DBE96A5C1BC4CAA60004A591 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		DBE2B5341BBCD0FE00AD5316 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EB632050F7B7B84C3E92C5F2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 				DB1728EE1BC125A300D28822 /* MainTableViewController */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
+				DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
 			);
@@ -335,6 +338,7 @@
 			files = (
 				DBB2FAB81BC3597100AA90FB /* podfile in Resources */,
 				DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */,
+				DBE96A5C1BC4CAA60004A591 /* Launch Screen.storyboard in Resources */,
 				DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,7 +524,6 @@
 			baseConfigurationReference = 7153B3F99A238DC7B68AE0E4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";
@@ -534,7 +537,6 @@
 			baseConfigurationReference = EB632050F7B7B84C3E92C5F2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";
