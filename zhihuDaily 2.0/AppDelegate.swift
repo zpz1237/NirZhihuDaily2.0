@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var topStory: [TopStoryModel] = []
     var contentStory: [ContentStoryModel] = []
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        print(UIScreen.mainScreen().bounds)
         
         //配置测试数据
         topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))

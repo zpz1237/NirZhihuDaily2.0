@@ -54,9 +54,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         imageView.addSubview(titleLabel)
         
         //设置Image上的Image_sourceLabel
-        sourceLabel = UILabel(frame: CGRectMake(15, orginalHeight - 20, self.view.frame.width - 30, 15))
-        sourceLabel.font = UIFont(name: "Helvetica", size: 9)
-        sourceLabel.textColor = UIColor.whiteColor()
+        sourceLabel = UILabel(frame: CGRectMake(15, orginalHeight - 22, self.view.frame.width - 30, 15))
+        sourceLabel.font = UIFont(name: "HelveticaNeue", size: 9)
+        sourceLabel.textColor = UIColor.lightTextColor()
         sourceLabel.textAlignment = NSTextAlignment.Right
         let sourceLabelText = "Ton Rulkens / CC BY"
         sourceLabel.text = "图片：" + sourceLabelText
@@ -66,8 +66,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         blurView = GradientView(frame: CGRectMake(0, -30, self.view.frame.width, orginalHeight + 30), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
         imageView.addSubview(blurView)
         
-        //使titleLabel不被遮挡
+        //使Label不被遮挡
         imageView.bringSubviewToFront(titleLabel)
+        imageView.bringSubviewToFront(sourceLabel)
         
         //将其添加到ParallaxView
         webHeaderView = ParallaxHeaderView.parallaxWebHeaderViewWithSubView(imageView, forSize: CGSizeMake(self.view.frame.width, 223)) as! ParallaxHeaderView
@@ -114,8 +115,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             imageView.addSubview(tempBlurView)
             blurView = tempBlurView
             
-            //使titleLabel不被遮挡
+            //使Label不被遮挡
             imageView.bringSubviewToFront(titleLabel)
+            imageView.bringSubviewToFront(sourceLabel)
         }
         
         //监听contentOffsetY以改变StatusBarUI
