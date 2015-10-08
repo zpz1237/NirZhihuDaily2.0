@@ -89,7 +89,7 @@
         <!--Web View Controller-->
         <scene sceneID="DVn-sv-E7e">
             <objects>
-                <viewController id="6rh-4x-mHf" customClass="WebViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webViewController" id="6rh-4x-mHf" customClass="WebViewController" customModule="知乎日报" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1MM-8R-3Xh"/>
                         <viewControllerLayoutGuide type="bottom" id="rJd-xL-ofz"/>

@@ -22,11 +22,14 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var sourceLabel: UILabel!
     var blurView: GradientView!
     var refreshImageView: UIImageView!
+    var dragging = false
+    var triggered = false
     
     //滑到对应位置时调整StatusBar
-    var statusBarFlag = true {
+    var statusBarFlag = false {
         didSet {
             UIView.animateWithDuration(0.2) { () -> Void in
+                print("statusdiaoyong")
                 self.setNeedsStatusBarAppearanceUpdate()
             }
         }
@@ -48,6 +51,10 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusBarFlag = true
+        
+        self.view.clipsToBounds = true
         
         //设置展示的imageView
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 223))
@@ -143,8 +150,14 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             blurView.insertTwiceTransparentGradient()
 
             //如果下拉超过65pixels则改变图片方向
-            if incrementY < -65 {
+            if incrementY <= -65 {
                 arrowState = true
+                //如果此时是第一次检测到松手则加载上一篇
+                guard dragging || triggered else {
+                    loadNewArticle(true)
+                    triggered = true
+                    return
+                }
             } else {
                 arrowState = false
             }
@@ -171,14 +184,55 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
     }
     
+    //记录下拉状态
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        dragging = false
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        dragging = true
+    }
+    
     //设置滑动极限 修改该值需要一并更改layoutWebHeaderViewForScrollViewOffset中的对应值
     func lockDirection() {
         self.webView.scrollView.contentOffset.y = -85
     }
     
+    //加载新文章
+    func loadNewArticle(previous: Bool) {
+        //生成动画初始位置
+        //let offScreenUp = CGAffineTransformMakeTranslation(0, -self.view.frame.height - 85)
+        let offScreenUp = CGAffineTransformMakeTranslation(0, -self.view.frame.height)
+        let offScreenDown = CGAffineTransformMakeTranslation(0, self.view.frame.height)
+        
+        //生成新View并传入新数据
+        let toWebViewController = self.storyboard!.instantiateViewControllerWithIdentifier("webViewController") as! WebViewController
+        let toView = toWebViewController.view
+        toView.frame = self.view.frame
+        
+        //将新View放置到屏幕之外并添加到ScrollView上
+        toView.transform = offScreenUp
+        //webView.scrollView.addSubview(toView)
+        self.view.addSubview(toView)
+        webView.removeFromSuperview()
+        statusBarBackground.removeFromSuperview()
+        self.addChildViewController(toWebViewController)
+        
+        //动画开始
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            //当前View下滑出屏幕，新View滑入屏幕
+//            self.view.transform = offScreenDown
+//            self.view.alpha = 0.5
+            toView.transform = CGAffineTransformIdentity
+            }, completion: { (success) -> Void in
+                print("动画执行完成")
+        })
+    }
+    
     //依据statusBarFlag返回StatusBar颜色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         if statusBarFlag {
+            //bug：当切换页面后statusBarFlag即便被设置为false，执行该函数时会却变成true.. 待解决
             return .LightContent
         }
         return .Default
