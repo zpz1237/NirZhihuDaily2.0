@@ -21,12 +21,27 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var titleLabel: myUILabel!
     var sourceLabel: UILabel!
     var blurView: GradientView!
+    var refreshImageView: UIImageView!
     
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
         didSet {
             UIView.animateWithDuration(0.2) { () -> Void in
                 self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
+    //滑到对应位置时调整arrow方向
+    var arrowState = false {
+        didSet {
+            if arrowState == true {
+                UIView.animateWithDuration(0.2) { () -> Void in
+                    self.refreshImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+                }
+            } else {
+                UIView.animateWithDuration(0.2) { () -> Void in
+                    self.refreshImageView.transform = CGAffineTransformIdentity
+                }
             }
         }
     }
@@ -64,6 +79,19 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         
         //设置Image上的blurView
         blurView = GradientView(frame: CGRectMake(0, -85, self.view.frame.width, orginalHeight + 85), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
+        //在blurView上添加"载入上一篇"Label
+        let refreshLabel = UILabel(frame: CGRectMake(12, 15, self.view.frame.width, 45))
+        refreshLabel.text = "载入上一篇"
+        refreshLabel.textAlignment = NSTextAlignment.Center
+        refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+        refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
+        blurView.addSubview(refreshLabel)
+        //在blurView上添加"载入上一篇"图片
+        refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, 30, 15, 15))
+        refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
+        refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+        blurView.addSubview(refreshImageView)
         imageView.addSubview(blurView)
         
         //使Label不被遮挡
@@ -109,18 +137,17 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             titleLabel.frame = CGRectMake(15, orginalHeight - 80 - incrementY, self.view.frame.width - 30, 60)
             sourceLabel.frame = CGRectMake(15, orginalHeight - 20 - incrementY, self.view.frame.width - 30, 15)
             
-            //不断添加删除blurView以保证frame正确
-            blurView.removeFromSuperview()
-            let tempBlurView = GradientView(frame: CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85), type: TRANSPARENT_GRADIENT_TWICE_TYPE)
-            //在blurView上添加"载入上一篇"Label
-            let refreshLabel = UILabel(frame: CGRectMake(0, 15, self.view.frame.width, 45))
-            refreshLabel.text = "载入上一篇"
-            refreshLabel.textAlignment = NSTextAlignment.Center
-            refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
-            refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
-            tempBlurView.addSubview(refreshLabel)
-            imageView.addSubview(tempBlurView)
-            blurView = tempBlurView
+            //不断添加删除blurView.layer.sublayers![0]以保证frame正确
+            blurView.frame = CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85)
+            blurView.layer.sublayers![0].removeFromSuperlayer()
+            blurView.insertTwiceTransparentGradient()
+
+            //如果下拉超过65pixels则改变图片方向
+            if incrementY < -65 {
+                arrowState = true
+            } else {
+                arrowState = false
+            }
             
             //使Label不被遮挡
             imageView.bringSubviewToFront(titleLabel)

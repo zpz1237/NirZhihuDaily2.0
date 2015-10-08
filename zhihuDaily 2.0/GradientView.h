@@ -15,4 +15,5 @@
 @interface GradientView : UIView
 
 - (id)initWithFrame:(CGRect)frame type:(int) type;
+- (void) insertTwiceTransparentGradient;
 @end
