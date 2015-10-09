@@ -25,11 +25,13 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var dragging = false
     var triggered = false
     
+    //为了解决statusBar的bug
+    var hasChanged = false
+    
     //滑到对应位置时调整StatusBar
-    var statusBarFlag = false {
+    var statusBarFlag = true {
         didSet {
             UIView.animateWithDuration(0.2) { () -> Void in
-                print("statusdiaoyong")
                 self.setNeedsStatusBarAppearanceUpdate()
             }
         }
@@ -52,8 +54,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statusBarFlag = true
-        
+        //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
         //设置展示的imageView
@@ -137,7 +138,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let incrementY = scrollView.contentOffset.y
-        
         if incrementY < 0 {
             
             //不断设置titleLabel及sourceLabel以保证frame正确
@@ -200,8 +200,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //加载新文章
     func loadNewArticle(previous: Bool) {
+        hasChanged = true
+        print(hasChanged)
         //生成动画初始位置
-        //let offScreenUp = CGAffineTransformMakeTranslation(0, -self.view.frame.height - 85)
         let offScreenUp = CGAffineTransformMakeTranslation(0, -self.view.frame.height)
         let offScreenDown = CGAffineTransformMakeTranslation(0, self.view.frame.height)
         
@@ -210,29 +211,33 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         let toView = toWebViewController.view
         toView.frame = self.view.frame
         
-        //将新View放置到屏幕之外并添加到ScrollView上
+        //生成原View截图并添加到主View上
+        let fromView = self.view.snapshotViewAfterScreenUpdates(true)
+        self.view.addSubview(fromView)
+        
+        //将toView放置到屏幕之外并添加到主View上
         toView.transform = offScreenUp
-        //webView.scrollView.addSubview(toView)
         self.view.addSubview(toView)
-        webView.removeFromSuperview()
-        statusBarBackground.removeFromSuperview()
         self.addChildViewController(toWebViewController)
         
         //动画开始
         UIView.animateWithDuration(0.2, animations: { () -> Void in
-            //当前View下滑出屏幕，新View滑入屏幕
-//            self.view.transform = offScreenDown
-//            self.view.alpha = 0.5
+            //fromView下滑出屏幕，新View滑入屏幕
+            fromView.transform = offScreenDown
             toView.transform = CGAffineTransformIdentity
             }, completion: { (success) -> Void in
-                print("动画执行完成")
+                //动画完成后清理底层webView、statusBarBackground，以及滑出屏幕的fromView，这里也有问题，多次加载新文章会每次留一层UIView 待解决
+                self.webView.removeFromSuperview()
+                self.statusBarBackground.removeFromSuperview()
+                fromView.removeFromSuperview()
         })
     }
     
     //依据statusBarFlag返回StatusBar颜色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        print("status hasChanged",hasChanged)
         if statusBarFlag {
-            //bug：当切换页面后statusBarFlag即便被设置为false，执行该函数时会却变成true.. 待解决
+            //bug：当切换页面后statusBarFlag即便被设置为false，执行该函数时会却变成true.. 暂采取折中方法解决 待研究
             return .LightContent
         }
         return .Default
