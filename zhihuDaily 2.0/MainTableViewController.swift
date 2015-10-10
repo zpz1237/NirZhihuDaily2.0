@@ -48,6 +48,8 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.showsVerticalScrollIndicator = false
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
         
         //配置无限循环scrollView
         let images = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image].map { return UIImage(named: $0)! }
@@ -81,18 +83,40 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         return 1
     }
 
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 93
+//    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appCloud().contentStory.count
-    }
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 92
+        return appCloud().contentStory.count + appCloud().pastContentStory.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row < appCloud().contentStory.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
+            
+            let data = appCloud().contentStory[indexPath.row]
+            
+            cell.imagesView.image = UIImage(named: data.images[0])
+            cell.titleLabel.text = data.title
+            
+            return cell
+        }
+        
+        let newIndex = indexPath.row - appCloud().contentStory.count
+        
+        if appCloud().pastContentStory[newIndex] is DateHeaderModel {
+            let cell = tableView.dequeueReusableCellWithIdentifier("tableSeparatorViewCell") as! TableSeparatorViewCell
+            
+            cell.contentView.backgroundColor = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
+            cell.dateLabel.text = (appCloud().pastContentStory[newIndex] as! DateHeaderModel).date
+            
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
         
-        let data = appCloud().contentStory[indexPath.row]
+        let data = appCloud().pastContentStory[newIndex] as! ContentStoryModel
         
         cell.imagesView.image = UIImage(named: data.images[0])
         cell.titleLabel.text = data.title

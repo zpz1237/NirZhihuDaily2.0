@@ -19,7 +19,11 @@ struct TopStoryModel {
     }
 }
 
-struct ContentStoryModel {
+protocol PastContentStoryItem {
+    
+}
+
+struct ContentStoryModel: PastContentStoryItem {
     var images: [String]
     var id: String
     var title: String
@@ -27,5 +31,12 @@ struct ContentStoryModel {
         self.images = images
         self.id = id
         self.title = title
+    }
+}
+
+struct DateHeaderModel:PastContentStoryItem {
+    var date: String
+    init (dateString: String) {
+        date = dateString
     }
 }

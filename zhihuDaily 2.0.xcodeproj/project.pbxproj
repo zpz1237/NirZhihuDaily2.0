@@ -20,6 +20,7 @@
 		DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
@@ -60,6 +61,7 @@
 		DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentViewCell.swift; sourceTree = "<group>"; };
 		DB4518D91BBCE8820097A25A /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB4518DA1BBCE8820097A25A /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
+		DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSeparatorViewCell.swift; sourceTree = "<group>"; };
 		DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		DB803A9F1BBE5BC50081E032 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		DB803AA01BBE5BC50081E032 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */,
 				DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */,
+				DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */,
 			);
 			name = MainTableViewController;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */,
 				DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */,
+				DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
 				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,

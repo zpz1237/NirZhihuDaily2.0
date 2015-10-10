@@ -25,9 +25,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var dragging = false
     var triggered = false
     
-    //为了解决statusBar的bug
-    var hasChanged = false
-    
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
         didSet {
@@ -53,7 +50,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
@@ -200,8 +196,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //加载新文章
     func loadNewArticle(previous: Bool) {
-        hasChanged = true
-        print(hasChanged)
         //生成动画初始位置
         let offScreenUp = CGAffineTransformMakeTranslation(0, -self.view.frame.height)
         let offScreenDown = CGAffineTransformMakeTranslation(0, self.view.frame.height)
@@ -234,10 +228,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     //依据statusBarFlag返回StatusBar颜色
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        print("status hasChanged",hasChanged)
+     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         if statusBarFlag {
-            //bug：当切换页面后statusBarFlag即便被设置为false，执行该函数时会却变成true.. 暂采取折中方法解决 待研究
+            //bug：当切换页面后该函数调用的self是最初的self，其他更改的都是新self，所以这里会有问题
             return .LightContent
         }
         return .Default

@@ -20,14 +20,19 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         
         //半透明遮罩层
         let blurView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height / 3 * 2))
-        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.21)
+        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.35)
         animatedImagesView.addSubview(blurView)
         
         //渐变遮罩层
         let gradientView = GradientView(frame: CGRectMake(0, self.view.frame.height / 3 * 2, self.view.frame.width, self.view.frame.height / 3 ), type: TRANSPARENT_GRADIENT_TYPE)
         animatedImagesView.addSubview(gradientView)
         
-        // Do any additional setup after loading the view.
+        //遮罩层透明度渐变
+        UIView.animateWithDuration(2.5) { () -> Void in
+            blurView.alpha = 0.7
+            gradientView.alpha = 0.7
+        }
+        
     }
     
     func animatedImagesNumberOfImages(animatedImagesView: JSAnimatedImagesView!) -> UInt {

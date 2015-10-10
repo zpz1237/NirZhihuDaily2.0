@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6rh-4x-mHf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJm-Aj-C4A">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -17,15 +17,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="90" id="dAT-gO-dGZ" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="93" id="dAT-gO-dGZ" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAT-gO-dGZ" id="ehw-CV-q4a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国没有很蓝很梦幻的海，主要原因并不是污染（委屈脸）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kde-KL-4gF" customClass="myUILabel">
-                                            <rect key="frame" x="16" y="14" width="478" height="60"/>
+                                            <rect key="frame" x="16" y="16" width="478" height="60"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,7 +33,7 @@
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-yV-dSC">
-                                            <rect key="frame" x="509" y="14" width="75" height="60"/>
+                                            <rect key="frame" x="509" y="16" width="75" height="60"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="75" id="a8h-YW-AnZ"/>
@@ -44,17 +44,46 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="uLc-yV-dSC" firstAttribute="leading" secondItem="Kde-KL-4gF" secondAttribute="trailing" constant="15" id="0xz-74-oI5"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="uLc-yV-dSC" secondAttribute="bottom" constant="7" id="Ylt-Ox-OVE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="uLc-yV-dSC" secondAttribute="bottom" constant="8" id="Ylt-Ox-OVE"/>
                                         <constraint firstItem="Kde-KL-4gF" firstAttribute="centerY" secondItem="uLc-yV-dSC" secondAttribute="centerY" id="ZgA-IU-MqA"/>
                                         <constraint firstItem="Kde-KL-4gF" firstAttribute="height" secondItem="uLc-yV-dSC" secondAttribute="height" id="cdw-A6-UjY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="uLc-yV-dSC" secondAttribute="trailing" constant="8" id="fnX-BF-0Ck"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="Kde-KL-4gF" secondAttribute="leading" constant="-8" id="tgc-i5-m50"/>
+                                        <constraint firstItem="uLc-yV-dSC" firstAttribute="top" secondItem="ehw-CV-q4a" secondAttribute="topMargin" constant="8" id="tvg-kB-I6o"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="imagesView" destination="uLc-yV-dSC" id="Rg6-3b-LPJ"/>
                                     <outlet property="titleLabel" destination="Kde-KL-4gF" id="W1X-25-bHK"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableSeparatorViewCell" id="g34-M4-bI7" customClass="TableSeparatorViewCell" customModule="知乎日报" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="185" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g34-M4-bI7" id="Fhn-gb-174">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcZ-N8-tcc">
+                                            <rect key="frame" x="15" y="8" width="570" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="GcZ-N8-tcc" secondAttribute="trailing" constant="15" id="8Sb-dO-DvQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="GcZ-N8-tcc" secondAttribute="bottom" id="Uzl-F7-FFJ"/>
+                                        <constraint firstItem="GcZ-N8-tcc" firstAttribute="top" secondItem="Fhn-gb-174" secondAttribute="topMargin" id="hJB-wr-tFy"/>
+                                        <constraint firstItem="GcZ-N8-tcc" firstAttribute="leading" secondItem="Fhn-gb-174" secondAttribute="leading" constant="15" id="uPY-NS-wh0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="GcZ-N8-tcc" id="Zqb-OZ-dY6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
