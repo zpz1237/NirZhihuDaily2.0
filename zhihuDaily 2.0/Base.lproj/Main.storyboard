@@ -110,6 +110,9 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateLabel" destination="sGS-Tw-Wou" id="Hqp-L6-cCv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5X-Mz-bv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

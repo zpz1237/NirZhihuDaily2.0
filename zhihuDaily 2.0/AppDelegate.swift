@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var contentStory: [ContentStoryModel] = []
     var pastContentStory: [PastContentStoryItem] = []
     
+    //我也不知道该怎么办
+    var offsetYValue: CGFloat = 0
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //配置测试数据
         topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))
@@ -30,13 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         contentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
         contentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
         
-        pastContentStory.append(DateHeaderModel(dateString: "十月九日  星期五"))
+        pastContentStory.append(DateHeaderModel(dateString: "10月9日  星期五"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage1"], id: "", title: "胳膊上中了一枪"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage2"], id: "", title: "哭的时候，为什么眼睛会变红？"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage3"], id: "", title: "光是看着都很累，这些铁路线实在太忙了"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
         
+        pastContentStory.append(DateHeaderModel(dateString: "10月8日  星期四"))
+        pastContentStory.append(ContentStoryModel(images: ["ContentImage1"], id: "", title: "胳膊上中了一枪"))
+        pastContentStory.append(ContentStoryModel(images: ["ContentImage2"], id: "", title: "哭的时候，为什么眼睛会变红？"))
+        pastContentStory.append(ContentStoryModel(images: ["ContentImage3"], id: "", title: "光是看着都很累，这些铁路线实在太忙了"))
+        pastContentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
+        pastContentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
         return true
     }
 

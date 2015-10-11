@@ -19,8 +19,8 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         animatedImagesView.dataSource = self
         
         //半透明遮罩层
-        let blurView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height / 3 * 2))
-        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.35)
+        let blurView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.21)
         animatedImagesView.addSubview(blurView)
         
         //渐变遮罩层
@@ -29,8 +29,7 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         
         //遮罩层透明度渐变
         UIView.animateWithDuration(2.5) { () -> Void in
-            blurView.alpha = 0.7
-            gradientView.alpha = 0.7
+            blurView.backgroundColor = UIColor.clearColor()
         }
         
     }

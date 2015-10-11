@@ -10,6 +10,8 @@ import UIKit
 
 class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate, ParallaxHeaderViewDelegate {
     
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,10 +84,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 93
-//    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appCloud().contentStory.count + appCloud().pastContentStory.count
@@ -94,7 +92,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row < appCloud().contentStory.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
-            
             let data = appCloud().contentStory[indexPath.row]
             
             cell.imagesView.image = UIImage(named: data.images[0])
@@ -107,15 +104,15 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         if appCloud().pastContentStory[newIndex] is DateHeaderModel {
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSeparatorViewCell") as! TableSeparatorViewCell
+            let data = appCloud().pastContentStory[newIndex] as! DateHeaderModel
             
             cell.contentView.backgroundColor = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
-            cell.dateLabel.text = (appCloud().pastContentStory[newIndex] as! DateHeaderModel).date
+            cell.dateLabel.text = data.date
             
             return cell
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
-        
         let data = appCloud().pastContentStory[newIndex] as! ContentStoryModel
         
         cell.imagesView.image = UIImage(named: data.images[0])
@@ -134,9 +131,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         print(index)
     }
     
-    //实现Parallax效果以及NavBar透明度渐变
     override func  scrollViewDidScroll(scrollView: UIScrollView) {
-        
         //Parallax效果
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
         header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
@@ -154,7 +149,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             //NavBar透明度渐变
             self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(alpha))
         } else {
-            
             self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(0))
         }
     }
