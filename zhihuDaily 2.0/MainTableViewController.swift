@@ -151,6 +151,14 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         } else {
             self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(0))
         }
+        
+        //依据contentOffsetY设置titleView的标题
+        for separatorData in appCloud().offsetYValue {
+            guard offsetY > separatorData.0 else {
+                dateLabel.text = separatorData.1
+                return
+            }
+        }
     }
     
     //获取总代理
