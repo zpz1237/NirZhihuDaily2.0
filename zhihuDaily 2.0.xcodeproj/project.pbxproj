@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		59A2C857D4471928CAC6EDAF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E146B6A006CAA43AC853C4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1438731BCB3E1300620843 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
+		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
@@ -39,6 +41,9 @@
 /* Begin PBXFileReference section */
 		68E146B6A006CAA43AC853C4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7153B3F99A238DC7B68AE0E4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DB1438721BCB3E1300620843 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		DB1438731BCB3E1300620843 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		DB1438751BCB45E100620843 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		DB2DEAAB1BBF8B1800713002 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -112,6 +117,15 @@
 				EB632050F7B7B84C3E92C5F2 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DB1438711BCB3E1300620843 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB1438721BCB3E1300620843 /* SWRevealViewController.h */,
+				DB1438731BCB3E1300620843 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		DB1728EE1BC125A300D28822 /* MainTableViewController */ = {
@@ -225,7 +239,7 @@
 			children = (
 				DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */,
 				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
-				DBC516081BBCCDB300EDFF48 /* ThirdParty */,
+				DBC516081BBCCDB300EDFF48 /* FrameWork */,
 				DB803AA61BBE69260081E032 /* LaunchViewController */,
 				DB1728EE1BC125A300D28822 /* MainTableViewController */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
@@ -233,13 +247,15 @@
 				DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
+				DB1438751BCB45E100620843 /* SideMenuViewController.swift */,
 			);
 			path = "zhihuDaily 2.0";
 			sourceTree = "<group>";
 		};
-		DBC516081BBCCDB300EDFF48 /* ThirdParty */ = {
+		DBC516081BBCCDB300EDFF48 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				DB1438711BCB3E1300620843 /* SWRevealViewController */,
 				DB2DEAC21BBF8C4200713002 /* ParallaxHeaderView */,
 				DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */,
 				DB803AA21BBE66C40081E032 /* AwsomeNavigationBar */,
@@ -247,7 +263,7 @@
 				DB4518DC1BBCE8870097A25A /* myUILabel */,
 				DBC516091BBCCFCF00EDFF48 /* JSAnimated */,
 			);
-			name = ThirdParty;
+			name = FrameWork;
 			sourceTree = "<group>";
 		};
 		DBC516091BBCCFCF00EDFF48 /* JSAnimated */ = {
@@ -404,6 +420,7 @@
 				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
+				DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */,
 				DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */,
 				DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */,
 				DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */,
@@ -416,6 +433,7 @@
 				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,
 				DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */,
 				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
+				DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */,
 				DB2DEAC01BBF8B1800713002 /* UIView+SDExtension.m in Sources */,
 				DB2DEABD1BBF8B1800713002 /* TAPageControl.m in Sources */,
 				DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */,
