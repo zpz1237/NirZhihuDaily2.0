@@ -19,8 +19,10 @@
             [self insertColorGradient];
         }else if (type == TRANSPARENT_GRADIENT_TWICE_TYPE){
             [self insertTwiceTransparentGradient];
-        }else {
-        
+        }else if (type == TRANSPARENT_ANOTHER_GRADIENT_TYPE){
+            [self insertAnotherTransparentGradient];
+        }else{
+            
         }
     }
     return self;
@@ -53,7 +55,24 @@
     NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
     NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
     NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
+    //crate gradient layer
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
     
+    headerLayer.colors = colors;
+    headerLayer.locations = locations;
+    headerLayer.frame = self.bounds;
+    
+    [self.layer insertSublayer:headerLayer atIndex:0];
+}
+
+//Transparent Gradient Layer
+- (void) insertAnotherTransparentGradient {
+    UIColor *colorOne = [UIColor colorWithRed:(19/255.0)  green:(26/255.0)  blue:(32/255.0)  alpha:0.0];
+    UIColor *colorTwo = [UIColor colorWithRed:(19/255.0)  green:(26/255.0)  blue:(32/255.0)  alpha:1.0];
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
+    NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
     //crate gradient layer
     CAGradientLayer *headerLayer = [CAGradientLayer layer];
     

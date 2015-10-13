@@ -37,6 +37,17 @@ struct ContentStoryModel: PastContentStoryItem {
 struct DateHeaderModel:PastContentStoryItem {
     var date: String
     init (dateString: String) {
-        date = dateString
+        self.date = dateString
+    }
+}
+
+struct ThemeModel {
+    var thumbnail: String
+    var id: String
+    var name: String
+    init (thumbnail: String, id: String, name: String) {
+        self.thumbnail = thumbnail
+        self.id = id
+        self.name = name
     }
 }

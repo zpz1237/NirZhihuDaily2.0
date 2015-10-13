@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var contentStory: [ContentStoryModel] = []
     var pastContentStory: [PastContentStoryItem] = []
     var offsetYValue: [(CGFloat, String)] = []
+    var themes: [ThemeModel] = []
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //配置测试数据
@@ -47,6 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pastContentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
         pastContentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
         offsetYValue.append((offsetYValue.last!.0 + 30 + 5 * 93, "10月8日  星期四"))
+        
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "日常心理学"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "用户推荐日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "电影日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "不许无聊"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "设计日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "大公司日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "财经日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "互联网安全"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "开始游戏"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "音乐日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "动漫日报"))
+        themes.append(ThemeModel(thumbnail: "", id: "", name: "体育日报"))
         
         return true
     }

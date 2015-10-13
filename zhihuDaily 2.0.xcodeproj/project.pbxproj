@@ -10,6 +10,8 @@
 		59A2C857D4471928CAC6EDAF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E146B6A006CAA43AC853C4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1438731BCB3E1300620843 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
 		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438771BCBBDEB00620843 /* HomeSideCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438791BCBBE0800620843 /* ContentSideCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
@@ -44,6 +46,8 @@
 		DB1438721BCB3E1300620843 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DB1438731BCB3E1300620843 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DB1438751BCB45E100620843 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		DB1438771BCBBDEB00620843 /* HomeSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSideCell.swift; sourceTree = "<group>"; };
+		DB1438791BCBBE0800620843 /* ContentSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSideCell.swift; sourceTree = "<group>"; };
 		DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		DB2DEAAB1BBF8B1800713002 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -126,6 +130,16 @@
 				DB1438731BCB3E1300620843 /* SWRevealViewController.m */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		DB14387B1BCBBE1000620843 /* SideViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB1438751BCB45E100620843 /* SideMenuViewController.swift */,
+				DB1438771BCBBDEB00620843 /* HomeSideCell.swift */,
+				DB1438791BCBBE0800620843 /* ContentSideCell.swift */,
+			);
+			name = SideViewController;
 			sourceTree = "<group>";
 		};
 		DB1728EE1BC125A300D28822 /* MainTableViewController */ = {
@@ -242,12 +256,12 @@
 				DBC516081BBCCDB300EDFF48 /* FrameWork */,
 				DB803AA61BBE69260081E032 /* LaunchViewController */,
 				DB1728EE1BC125A300D28822 /* MainTableViewController */,
+				DB14387B1BCBBE1000620843 /* SideViewController */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
 				DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
-				DB1438751BCB45E100620843 /* SideMenuViewController.swift */,
 			);
 			path = "zhihuDaily 2.0";
 			sourceTree = "<group>";
@@ -417,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */,
 				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
@@ -426,6 +441,7 @@
 				DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */,
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */,
+				DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */,
 				DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */,
 				DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
