@@ -11,9 +11,14 @@ import UIKit
 class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate, ParallaxHeaderViewDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //创建leftBarButtonItem以及添加手势识别
+        let leftButton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self.revealViewController(), action: "revealToggle:")
+        leftButton.tintColor = UIColor.whiteColor()
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         //生成第二启动页背景
         let launchView = UIView(frame: CGRectMake(0, -64, self.view.frame.width, self.view.frame.height))
@@ -37,6 +42,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
                 UIView.animateWithDuration(0.2, animations: { () -> Void in
                     launchView.alpha = 0
                     self.navigationItem.titleView?.hidden = false
+                    self.navigationItem.setLeftBarButtonItem(leftButton, animated: false)
                     }, completion: { (finished) -> Void in
                         launchView.removeFromSuperview()
                 })

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Uf-XC-sul">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4ba-nh-i6M">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -99,7 +99,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日热闻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGS-Tw-Wou">
-                                    <rect key="frame" x="8" y="12" width="224" height="21"/>
+                                    <rect key="frame" x="8" y="4" width="224" height="21"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -275,7 +275,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolderB" translatesAutoresizingMaskIntoConstraints="NO" id="xeA-G9-O3O">
-                                        <rect key="frame" x="0.0" y="-1" width="225" height="126"/>
+                                        <rect key="frame" x="-1" y="-1" width="225" height="126"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="CcD-Ao-nfT"/>
@@ -288,7 +288,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Ij9-a4-DC2"/>
                                     <constraint firstAttribute="bottom" secondItem="xeA-G9-O3O" secondAttribute="bottom" id="UOZ-Sh-jyN"/>
-                                    <constraint firstItem="xeA-G9-O3O" firstAttribute="leading" secondItem="bre-Vx-jSP" secondAttribute="leading" id="ZSO-HR-E1U"/>
+                                    <constraint firstItem="xeA-G9-O3O" firstAttribute="leading" secondItem="bre-Vx-jSP" secondAttribute="leading" constant="-1" id="ZSO-HR-E1U"/>
                                     <constraint firstItem="xeA-G9-O3O" firstAttribute="top" secondItem="bre-Vx-jSP" secondAttribute="top" constant="-1" id="afR-mg-nfa"/>
                                 </constraints>
                             </view>
@@ -428,6 +428,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THe-cY-I6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-463" y="407"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="PDx-x5-Vl6">
+            <objects>
+                <viewController id="4ba-nh-i6M" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NEb-xE-Ur7"/>
+                        <viewControllerLayoutGuide type="bottom" id="w0a-8w-b3v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zQV-7o-q9N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="9Uf-XC-sul" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="wgx-xy-w13"/>
+                        <segue destination="eJm-Aj-C4A" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="PgJ-Sp-ZXF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XwT-8z-ru7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-463" y="-333"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3yj-7e-TfO">

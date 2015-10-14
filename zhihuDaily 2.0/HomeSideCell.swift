@@ -14,8 +14,6 @@ class HomeSideCell: UITableViewCell {
     @IBOutlet weak var homeTitleLabel: UILabel!
     @IBOutlet weak var homeSwitchImageView: UIImageView!
     
-    var configured = true
-    
     override func awakeFromNib() {
         super.awakeFromNib()
 
