@@ -12,6 +12,7 @@
 		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438771BCBBDEB00620843 /* HomeSideCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438791BCBBE0800620843 /* ContentSideCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
@@ -48,6 +49,7 @@
 		DB1438751BCB45E100620843 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		DB1438771BCBBDEB00620843 /* HomeSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSideCell.swift; sourceTree = "<group>"; };
 		DB1438791BCBBE0800620843 /* ContentSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSideCell.swift; sourceTree = "<group>"; };
+		DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		DB2DEAAB1BBF8B1800713002 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
+				DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */,
 			);
 			path = "zhihuDaily 2.0";
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */,
 				DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */,
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
+				DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */,
 				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
 				DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */,
 			);

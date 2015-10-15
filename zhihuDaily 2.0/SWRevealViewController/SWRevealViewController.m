@@ -644,7 +644,8 @@ const int FrontViewPositionNone = 0xff;
     _frontViewPosition = FrontViewPositionLeft;
     _rearViewPosition = FrontViewPositionLeft;
     _rightViewPosition = FrontViewPositionLeft;
-    _rearViewRevealWidth = 260.0f;
+    //这里改动过
+    _rearViewRevealWidth = 225.0f;
     _rearViewRevealOverdraw = 60.0f;
     _rearViewRevealDisplacement = 40.0f;
     _rightViewRevealWidth = 260.0f;
@@ -1707,7 +1708,7 @@ const int FrontViewPositionNone = 0xff;
             [self performSegueWithIdentifier:SWSegueFrontIdentifier sender:nil];
         }
         @catch(NSException *exception) {}
-        
+        //这里改动过
 //        @try
 //        {
 //            [self performSegueWithIdentifier:SWSegueRightIdentifier sender:nil];
