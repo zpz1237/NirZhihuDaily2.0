@@ -12,6 +12,7 @@
 		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438771BCBBDEB00620843 /* HomeSideCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438791BCBBE0800620843 /* ContentSideCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DB1B6BF21BD0B5920054741B /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1B6BF11BD0B5920054741B /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
 		DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
 		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
@@ -49,6 +50,8 @@
 		DB1438751BCB45E100620843 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		DB1438771BCBBDEB00620843 /* HomeSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSideCell.swift; sourceTree = "<group>"; };
 		DB1438791BCBBE0800620843 /* ContentSideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSideCell.swift; sourceTree = "<group>"; };
+		DB1B6BF01BD0B5920054741B /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		DB1B6BF11BD0B5920054741B /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		DB2DEAA81BBF8B1800713002 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
@@ -152,6 +155,15 @@
 				DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */,
 			);
 			name = MainTableViewController;
+			sourceTree = "<group>";
+		};
+		DB1B6BF41BD0B6350054741B /* AeroEffect */ = {
+			isa = PBXGroup;
+			children = (
+				DB1B6BF01BD0B5920054741B /* UIImage+ImageEffects.h */,
+				DB1B6BF11BD0B5920054741B /* UIImage+ImageEffects.m */,
+			);
+			name = AeroEffect;
 			sourceTree = "<group>";
 		};
 		DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */ = {
@@ -272,6 +284,7 @@
 		DBC516081BBCCDB300EDFF48 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				DB1B6BF41BD0B6350054741B /* AeroEffect */,
 				DB1438711BCB3E1300620843 /* SWRevealViewController */,
 				DB2DEAC21BBF8C4200713002 /* ParallaxHeaderView */,
 				DB2DEAA71BBF8B1800713002 /* SDCycleScrollView */,
@@ -450,6 +463,7 @@
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
 				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,
+				DB1B6BF21BD0B5920054741B /* UIImage+ImageEffects.m in Sources */,
 				DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */,
 				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
 				DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */,

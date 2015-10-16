@@ -37,6 +37,16 @@
     return headerView;
 }
 
++ (id)parallaxThemeHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
+{
+    //根据传入的参数确定frame
+    ParallaxHeaderView *headerView = [[ParallaxHeaderView alloc] initWithFrame:CGRectMake(0, 0, headerSize.width, headerSize.height)];
+    
+    //初始化设置并返回
+    [headerView initialSetupForCustomSubView:subView];
+    return headerView;
+}
+
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset
 {
 //    CGRect frame = self.imageScrollView.frame;
@@ -92,6 +102,32 @@
         self.clipsToBounds = NO;
     }
     
+}
+
+- (void)layoutThemeHeaderViewForScrollViewOffset:(CGPoint)offset;
+{
+    CGRect frame = self.imageScrollView.frame;
+    if (offset.y > 0)
+    {
+        frame.origin.y = offset.y;
+        self.imageScrollView.frame = frame;
+        self.clipsToBounds = NO;
+    }
+    else if (offset.y < -95) {
+        [self.delegate lockDirection];
+    }
+    else
+    {
+        CGFloat delta = 0.0f;
+        CGRect rect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        
+        delta = offset.y;
+        rect.origin.y += delta;
+        rect.size.height -= delta;
+        
+        self.imageScrollView.frame = rect;
+        self.clipsToBounds = NO;
+    }
 }
 
 - (void)initialSetupForCustomSubView:(UIView *)subView

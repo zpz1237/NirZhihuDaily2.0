@@ -474,7 +474,7 @@
                             <rect key="frame" x="180" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户推荐日报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p15-qr-Sde">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户推荐日报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p15-qr-Sde">
                                     <rect key="frame" x="8" y="4" width="224" height="21"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -484,6 +484,12 @@
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="p15-qr-Sde" firstAttribute="top" secondItem="Wnf-h3-mZm" secondAttribute="top" constant="4" id="3hu-YK-31u"/>
+                                <constraint firstItem="p15-qr-Sde" firstAttribute="leading" secondItem="Wnf-h3-mZm" secondAttribute="leadingMargin" id="7Ed-9n-1o3"/>
+                                <constraint firstItem="p15-qr-Sde" firstAttribute="bottom" secondItem="Wnf-h3-mZm" secondAttribute="bottomMargin" id="fRn-NY-nnC"/>
+                                <constraint firstItem="p15-qr-Sde" firstAttribute="trailing" secondItem="Wnf-h3-mZm" secondAttribute="trailingMargin" id="kfd-bC-Lns"/>
+                            </constraints>
                         </view>
                     </navigationItem>
                 </viewController>

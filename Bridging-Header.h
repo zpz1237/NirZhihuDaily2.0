@@ -16,6 +16,6 @@
 #import "SDCycleScrollView.h"
 #import "ParallaxHeaderView.h"
 #import "SWRevealViewController.h"
-
+#import "UIImage+ImageEffects.h"
 
 #endif /* Bridging_Header_h */
