@@ -20,11 +20,12 @@ class ThemeViewController: UIViewController {
         let navImageView = UIImageView(frame: CGRectMake(-100, 0, 500, 64))
         navImageView.contentMode = UIViewContentMode.ScaleAspectFill
         navImageView.clipsToBounds = true
-        let image = UIImage(named: "ThemeImage")!.applyBlurWithRadius(5, tintColor: nil, saturationDeltaFactor: 1.0, maskImage: nil)
-        //.applyBlurWithRadius(5, tintColor: UIColor(white: 0.1, alpha: 0.2), saturationDeltaFactor: 1.0, maskImage: nil)
+        let image = UIImage(named: "ThemeImage")!
+        //.applyBlurWithRadius(5, tintColor: nil, saturationDeltaFactor: 1.0, maskImage: nil)
         navImageView.image = image
         
-        let themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64)) as! ParallaxHeaderView
+        //let themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64)) as! ParallaxHeaderView
+        let themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: image) as! ParallaxHeaderView
         themeSubview.delegate = self
         
         self.tableView.tableHeaderView = themeSubview

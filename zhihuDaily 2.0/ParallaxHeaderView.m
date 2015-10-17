@@ -9,11 +9,15 @@
 
 #import "ParallaxHeaderView.h"
 #import "myUILabel.h"
+#import "UIImage+ImageEffects.h"
 
 @interface ParallaxHeaderView ()
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIView *subView;
+@property (nonatomic) IBOutlet UIImageView *bluredImageView;
 @end
+
+#define kDefaultHeaderFrame CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 
 @implementation ParallaxHeaderView
 
@@ -37,13 +41,13 @@
     return headerView;
 }
 
-+ (id)parallaxThemeHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize;
++ (id)parallaxThemeHeaderViewWithSubView:(UIView *)subView forSize:(CGSize)headerSize andImage: (UIImage *)blurViewImageParam;
 {
     //根据传入的参数确定frame
     ParallaxHeaderView *headerView = [[ParallaxHeaderView alloc] initWithFrame:CGRectMake(0, 0, headerSize.width, headerSize.height)];
     
     //初始化设置并返回
-    [headerView initialSetupForCustomSubView:subView];
+    [headerView initialThemeSetupForCustomSubView:subView andImage:blurViewImageParam ];
     return headerView;
 }
 
@@ -125,6 +129,9 @@
         rect.origin.y += delta;
         rect.size.height -= delta;
         
+        //调整透明度实现模糊渐变
+        self.bluredImageView.alpha =  (95+offset.y) / 95;
+        
         self.imageScrollView.frame = rect;
         self.clipsToBounds = NO;
     }
@@ -145,6 +152,49 @@
     [self.imageScrollView addSubview:subView];
     
     [self addSubview:self.imageScrollView];
+}
+
+- (void)initialThemeSetupForCustomSubView:(UIView *)subView andImage: (UIImage *)blurViewImageParam;
+{
+    //初始化中间层imageScrollView
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    scrollView.backgroundColor = [UIColor yellowColor];
+    self.imageScrollView = scrollView;
+    
+    //设置内容层的自动布局并存储
+    subView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.subView = subView;
+    
+    //将内容层View添加到scrollView上
+    [self.imageScrollView addSubview:subView];
+    
+    //将模糊层添加到scrollView上
+    self.bluredImageView = [[UIImageView alloc] initWithFrame:self.subView.frame];
+    self.bluredImageView.autoresizingMask = self.subView.autoresizingMask;
+    self.bluredImageView.alpha = 1.0f;
+    self.bluredImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.imageScrollView addSubview:self.bluredImageView];
+    
+    [self addSubview:self.imageScrollView];
+    
+    self.blurViewImage = blurViewImageParam;
+    
+    [self refreshBlurViewForNewImage];
+}
+
+//为模糊效果新加的函数
+- (void)refreshBlurViewForNewImage
+{
+//    UIImage *screenShot = [self screenShotOfView:self];
+//    screenShot = [screenShot applyBlurWithRadius:5 tintColor:nil saturationDeltaFactor:1.0 maskImage:nil];
+    
+    if (self.blurViewImage != nil) {
+        UIImage *screenShot = [self.blurViewImage applyBlurWithRadius:5 tintColor:nil saturationDeltaFactor:1.0 maskImage:nil];
+        self.bluredImageView.image = screenShot;
+    }
+    
+    //self.bluredImageView.image = screenShot;
+    //self.bluredImageView.image = self.blurViewImage;
 }
 
 @end
