@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var pastContentStory: [PastContentStoryItem] = []
     var offsetYValue: [(CGFloat, String)] = []
     var themes: [ThemeModel] = []
+    var firstDisplay = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //配置测试数据

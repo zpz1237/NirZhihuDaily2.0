@@ -11,7 +11,7 @@ import UIKit
 class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate, ParallaxHeaderViewDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,33 +20,41 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         leftButton.tintColor = UIColor.whiteColor()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-        //生成第二启动页背景
-        let launchView = UIView(frame: CGRectMake(0, -64, self.view.frame.width, self.view.frame.height))
-        launchView.alpha = 0.99
-        
-        //得到第二启动页控制器并设置为子控制器
-        let launchViewController = storyboard?.instantiateViewControllerWithIdentifier("launchViewController")
-        self.addChildViewController(launchViewController!)
-        
-        //将第二启动页放到背景上
-        launchView.addSubview(launchViewController!.view)
-        
-        //展示第二启动页并隐藏NavbarTitleView
-        self.view.addSubview(launchView)
-        self.navigationItem.titleView?.hidden = true
-        
-        //动画效果：第二启动页2.5s展示过后经0.2秒删除并恢复展示NavbarTitleView
-        UIView.animateWithDuration(2.5, animations: { () -> Void in
-            launchView.alpha = 1
-            }) { (finished) -> Void in
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
-                    launchView.alpha = 0
-                    self.navigationItem.titleView?.hidden = false
-                    self.navigationItem.setLeftBarButtonItem(leftButton, animated: false)
-                    }, completion: { (finished) -> Void in
-                        launchView.removeFromSuperview()
-                })
+        //如果是第一次启动
+        if appCloud().firstDisplay {
+            //生成第二启动页背景
+            let launchView = UIView(frame: CGRectMake(0, -64, self.view.frame.width, self.view.frame.height))
+            launchView.alpha = 0.99
+            
+            //得到第二启动页控制器并设置为子控制器
+            let launchViewController = storyboard?.instantiateViewControllerWithIdentifier("launchViewController")
+            self.addChildViewController(launchViewController!)
+            
+            //将第二启动页放到背景上
+            launchView.addSubview(launchViewController!.view)
+            
+            //展示第二启动页并隐藏NavbarTitleView
+            self.view.addSubview(launchView)
+            self.navigationItem.titleView?.hidden = true
+            
+            //动画效果：第二启动页2.5s展示过后经0.2秒删除并恢复展示NavbarTitleView
+            UIView.animateWithDuration(2.5, animations: { () -> Void in
+                launchView.alpha = 1
+                }) { (finished) -> Void in
+                    UIView.animateWithDuration(0.2, animations: { () -> Void in
+                        launchView.alpha = 0
+                        self.navigationItem.titleView?.hidden = false
+                        self.navigationItem.setLeftBarButtonItem(leftButton, animated: false)
+                        }, completion: { (finished) -> Void in
+                            launchView.removeFromSuperview()
+                    })
+            }
+            //展示完成后更改为false
+            appCloud().firstDisplay = false
+        } else {
+            self.navigationItem.setLeftBarButtonItem(leftButton, animated: false)
         }
+        
         
         //设置透明NavBar
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
@@ -112,7 +120,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSeparatorViewCell") as! TableSeparatorViewCell
             let data = appCloud().pastContentStory[newIndex] as! DateHeaderModel
             
-            cell.contentView.backgroundColor = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
+            cell.contentView.backgroundColor = UIColor(red: 1/255.0, green: 131/255.0, blue: 209/255.0, alpha: 1)
             cell.dateLabel.text = data.date
             
             return cell
@@ -143,7 +151,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
         
         //NavBar及titleLabel透明度渐变
-        let color = UIColor(red: 0/255.0, green: 139/255.0, blue: 255/255.0, alpha: 1)
+        let color = UIColor(red: 1/255.0, green: 131/255.0, blue: 209/255.0, alpha: 1)
         let offsetY = scrollView.contentOffset.y
         let prelude: CGFloat = 90
         
