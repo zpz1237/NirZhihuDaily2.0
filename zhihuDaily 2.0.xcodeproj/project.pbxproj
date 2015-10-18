@@ -32,6 +32,8 @@
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
 		DBB2FAB81BC3597100AA90FB /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB2FAB71BC3597100AA90FB /* podfile */; settings = {ASSET_TAGS = (); }; };
+		DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
 		DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC9BF101BC2268000B72D69 /* WebViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -83,6 +85,8 @@
 		DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		DBB2FAB71BC3597100AA90FB /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
+		DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeContentTableViewCell.swift; sourceTree = "<group>"; };
+		DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEditorTableViewCell.swift; sourceTree = "<group>"; };
 		DBC515F31BBCCC9400EDFF48 /* 知乎日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "知乎日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC515FB1BBCCC9400EDFF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,6 +246,16 @@
 			name = LaunchViewController;
 			sourceTree = "<group>";
 		};
+		DBB4B3511BD245280059B654 /* ThemeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */,
+				DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */,
+				DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */,
+			);
+			name = ThemeViewController;
+			sourceTree = "<group>";
+		};
 		DBC515EA1BBCCC9400EDFF48 = {
 			isa = PBXGroup;
 			children = (
@@ -271,12 +285,12 @@
 				DB803AA61BBE69260081E032 /* LaunchViewController */,
 				DB1728EE1BC125A300D28822 /* MainTableViewController */,
 				DB14387B1BCBBE1000620843 /* SideViewController */,
+				DBB4B3511BD245280059B654 /* ThemeViewController */,
 				DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */,
 				DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */,
 				DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */,
 				DBC516021BBCCC9400EDFF48 /* Info.plist */,
 				DBC9BF101BC2268000B72D69 /* WebViewController.swift */,
-				DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */,
 			);
 			path = "zhihuDaily 2.0";
 			sourceTree = "<group>";
@@ -463,6 +477,7 @@
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
 				DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */,
 				DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */,
+				DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */,
 				DB1B6BF21BD0B5920054741B /* UIImage+ImageEffects.m in Sources */,
 				DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */,
 				DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */,
@@ -472,6 +487,7 @@
 				DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */,
 				DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */,
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
+				DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */,
 				DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */,
 				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
 				DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */,

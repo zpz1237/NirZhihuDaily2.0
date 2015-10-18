@@ -10,7 +10,7 @@ import UIKit
 
 class ThemeViewController: UIViewController {
     
-    var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,8 @@ class ThemeViewController: UIViewController {
         //为当前view添加手势识别
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-        //初始化tableView
-        tableView = UITableView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
-        
         //生成并配置HeaderImageView
-        let navImageView = UIImageView(frame: CGRectMake(-100, 0, 500, 64))
+        let navImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 64))
         navImageView.contentMode = UIViewContentMode.ScaleAspectFill
         navImageView.clipsToBounds = true
         let image = UIImage(named: "ThemeImage")!
@@ -47,13 +44,20 @@ class ThemeViewController: UIViewController {
         
         //tableView基础设置
         self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.tableView.separatorStyle = .None
+        self.tableView.showsVerticalScrollIndicator = false
     }
 
 
     //设置StatusBar颜色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+    
+    //获取总代理
+    func appCloud() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     /*
@@ -68,7 +72,7 @@ class ThemeViewController: UIViewController {
 
 }
 
-extension ThemeViewController: UITableViewDelegate, ParallaxHeaderViewDelegate {
+extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, ParallaxHeaderViewDelegate {
     
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -79,5 +83,38 @@ extension ThemeViewController: UITableViewDelegate, ParallaxHeaderViewDelegate {
     //设置滑动极限
     func lockDirection() {
         self.tableView.contentOffset.y = -95
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return appCloud().themeContent!.stories.count + 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("themeEditorTableViewCell") as! ThemeEditorTableViewCell
+            for (index, editorsAvatar) in appCloud().themeContent!.editorsAvatars.enumerate() {
+                let avatar = UIImageView(frame: CGRectMake(62 + CGFloat(37 * index), 12.5, 20, 20))
+                avatar.contentMode = .ScaleAspectFill
+                avatar.layer.cornerRadius = 10
+                avatar.clipsToBounds = true
+                avatar.image = UIImage(named: editorsAvatar)
+                cell.contentView.addSubview(avatar)
+            }
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("themeContentTableViewCell") as! ThemeContentTableViewCell
+        
+        let tempContentStoryItem = appCloud().themeContent!.stories[indexPath.row - 1]
+        cell.themeContentLabel.text = tempContentStoryItem.title
+        cell.themeContentImageView.image = UIImage(named: tempContentStoryItem.images[0])
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 45
+        }
+        return 92
     }
 }

@@ -51,3 +51,16 @@ struct ThemeModel {
         self.name = name
     }
 }
+
+struct ThemeContentModel {
+    var stories: [ContentStoryModel]
+    var background: String
+    var name: String
+    var editorsAvatars: [String]
+    init (stories: [ContentStoryModel], background: String, name: String, editorsAvatars: [String]) {
+        self.stories = stories
+        self.background = background
+        self.name = name
+        self.editorsAvatars = editorsAvatars
+    }
+}

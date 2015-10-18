@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var pastContentStory: [PastContentStoryItem] = []
     var offsetYValue: [(CGFloat, String)] = []
     var themes: [ThemeModel] = []
+    var themeContent: ThemeContentModel?
     var firstDisplay = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -62,6 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         themes.append(ThemeModel(thumbnail: "", id: "", name: "音乐日报"))
         themes.append(ThemeModel(thumbnail: "", id: "", name: "动漫日报"))
         themes.append(ThemeModel(thumbnail: "", id: "", name: "体育日报"))
+        
+        //暂时使用首页contentStory里的数据
+        let themeStory: [ContentStoryModel] = contentStory + contentStory
+        
+        themeContent = ThemeContentModel(stories: themeStory, background: "", name: "", editorsAvatars: ["avatar"])
         
         return true
     }

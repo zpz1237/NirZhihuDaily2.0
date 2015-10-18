@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAT-gO-dGZ" id="ehw-CV-q4a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国没有很蓝很梦幻的海，主要原因并不是污染（委屈脸）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kde-KL-4gF" customClass="myUILabel">
@@ -62,11 +62,11 @@
                                 <rect key="frame" x="0.0" y="185" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g34-M4-bI7" id="Fhn-gb-174">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcZ-N8-tcc">
-                                            <rect key="frame" x="15" y="8" width="570" height="27.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcZ-N8-tcc">
+                                            <rect key="frame" x="15" y="8" width="570" height="28"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" id="wlk-KP-0Ce">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="TCI-fa-fiB">
-                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <rect key="frame" x="180" y="6" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日热闻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGS-Tw-Wou">
@@ -223,7 +223,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GwW-49-Ldt">
-                                <rect key="frame" x="225.5" y="499" width="155" height="62"/>
+                                <rect key="frame" x="226" y="499" width="155" height="62"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="m0a-Wj-qoY"/>
@@ -231,7 +231,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Pink Landscape&quot; © Timothy Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0w-5W-FsM">
-                                <rect key="frame" x="201" y="577" width="198" height="14.5"/>
+                                <rect key="frame" x="201" y="577" width="198" height="15"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,7 +321,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzT-Gi-oKW" id="1Yj-oW-2xN">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="BSJ-4F-GR2">
@@ -370,11 +370,11 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Re-Z0-XTi" id="Jpp-fM-WGs">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日常心理学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r1-KN-CYU">
-                                                    <rect key="frame" x="15" y="13.5" width="75" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="日常心理学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r1-KN-CYU">
+                                                    <rect key="frame" x="15" y="14" width="75" height="18"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -465,13 +465,106 @@
                     <view key="view" contentMode="scaleToFill" id="5NH-aL-HeM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jfz-eR-Rlb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeEditorTableViewCell" rowHeight="45" id="iw5-rh-GGP" customClass="ThemeEditorTableViewCell" customModule="知乎日报" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iw5-rh-GGP" id="bOe-KO-eLq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主编" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-vr-bLC">
+                                                    <rect key="frame" x="15" y="13" width="30" height="18"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="switch" translatesAutoresizingMaskIntoConstraints="NO" id="bbC-5b-FKc">
+                                                    <rect key="frame" x="565" y="11" width="20" height="22"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="KXQ-wj-ytk"/>
+                                                        <constraint firstAttribute="height" constant="22" id="iHh-zl-rn0"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="x5f-vr-bLC" firstAttribute="leading" secondItem="bOe-KO-eLq" secondAttribute="leading" constant="15" id="Ey5-Rb-n2S"/>
+                                                <constraint firstAttribute="trailing" secondItem="bbC-5b-FKc" secondAttribute="trailing" constant="15" id="KmY-OS-bNf"/>
+                                                <constraint firstItem="bbC-5b-FKc" firstAttribute="centerY" secondItem="bOe-KO-eLq" secondAttribute="centerY" id="edf-6G-OuO"/>
+                                                <constraint firstItem="x5f-vr-bLC" firstAttribute="centerY" secondItem="bOe-KO-eLq" secondAttribute="centerY" id="yJf-k9-8q8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="accessorySign" destination="bbC-5b-FKc" id="its-Rj-0rf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeContentTableViewCell" rowHeight="93" id="rS9-XA-QyY" customClass="ThemeContentTableViewCell" customModule="知乎日报" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="137" width="600" height="93"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rS9-XA-QyY" id="2pk-uR-R6o">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国没有很蓝很梦幻的海，主要原因并不是污染（委屈脸）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN2-hZ-0k0" customClass="myUILabel">
+                                                    <rect key="frame" x="16" y="16" width="478" height="60"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-p8-Y9g">
+                                                    <rect key="frame" x="509" y="16" width="75" height="60"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="fEb-xB-vuM"/>
+                                                        <constraint firstAttribute="height" constant="60" id="vZ8-SQ-ikW"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gLc-p8-Y9g" secondAttribute="bottom" constant="8" id="5Ge-cA-tOu"/>
+                                                <constraint firstItem="gLc-p8-Y9g" firstAttribute="top" secondItem="2pk-uR-R6o" secondAttribute="topMargin" constant="8" id="Maf-a1-b7l"/>
+                                                <constraint firstItem="FN2-hZ-0k0" firstAttribute="centerY" secondItem="gLc-p8-Y9g" secondAttribute="centerY" id="MbA-Dl-PBR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gLc-p8-Y9g" secondAttribute="trailing" constant="8" id="Mu3-4D-skZ"/>
+                                                <constraint firstItem="gLc-p8-Y9g" firstAttribute="leading" secondItem="FN2-hZ-0k0" secondAttribute="trailing" constant="15" id="bO1-2s-aT9"/>
+                                                <constraint firstItem="FN2-hZ-0k0" firstAttribute="height" secondItem="gLc-p8-Y9g" secondAttribute="height" id="kgu-Vr-AM5"/>
+                                                <constraint firstItem="FN2-hZ-0k0" firstAttribute="leading" secondItem="2pk-uR-R6o" secondAttribute="leadingMargin" constant="8" id="zNI-Nm-DZL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="themeContentImageView" destination="gLc-p8-Y9g" id="Y0F-uG-7Ig"/>
+                                            <outlet property="themeContentLabel" destination="FN2-hZ-0k0" id="6FO-wv-Ivy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jfz-eR-Rlb" secondAttribute="trailing" id="4OY-ch-XT1"/>
+                            <constraint firstItem="Jfz-eR-Rlb" firstAttribute="centerX" secondItem="5NH-aL-HeM" secondAttribute="centerX" id="lkN-QD-TVd"/>
+                            <constraint firstItem="Jfz-eR-Rlb" firstAttribute="leading" secondItem="5NH-aL-HeM" secondAttribute="leading" id="tHE-7u-2k8"/>
+                            <constraint firstItem="Jfz-eR-Rlb" firstAttribute="top" secondItem="tVN-28-KG8" secondAttribute="bottom" constant="-64" id="us6-U7-Ucr"/>
+                            <constraint firstItem="Vvv-39-6uR" firstAttribute="top" secondItem="Jfz-eR-Rlb" secondAttribute="bottom" id="xDB-Mr-Hk9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C17-Vb-w5A">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="Wnf-h3-mZm">
-                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <rect key="frame" x="180" y="6" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户推荐日报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p15-qr-Sde">
@@ -492,6 +585,9 @@
                             </constraints>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Jfz-eR-Rlb" id="8Pl-Hk-Tld"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pek-he-wIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
