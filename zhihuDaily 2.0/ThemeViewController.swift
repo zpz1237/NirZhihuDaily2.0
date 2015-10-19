@@ -85,6 +85,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         self.tableView.contentOffset.y = -95
     }
     
+    //处理UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appCloud().themeContent!.stories.count + 1
     }
@@ -103,11 +104,21 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("themeContentTableViewCell") as! ThemeContentTableViewCell
-        
+        //取到Story数据
         let tempContentStoryItem = appCloud().themeContent!.stories[indexPath.row - 1]
+        
+        //保证图片一定存在
+        guard let image = UIImage(named: tempContentStoryItem.images[0]) else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("themeTextTableViewCell") as! ThemeTextTableViewCell
+            cell.themeTextLabel.text = tempContentStoryItem.title
+            return cell
+        }
+
+        //处理图片存在的情况
+        let cell = tableView.dequeueReusableCellWithIdentifier("themeContentTableViewCell") as! ThemeContentTableViewCell
         cell.themeContentLabel.text = tempContentStoryItem.title
-        cell.themeContentImageView.image = UIImage(named: tempContentStoryItem.images[0])
+        cell.themeContentImageView.image = image
+
         return cell
     }
     

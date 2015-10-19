@@ -27,6 +27,7 @@
 		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
 		DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DB7488BE1BD46F6D0052041C /* ThemeTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7488BD1BD46F6D0052041C /* ThemeTextTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
@@ -78,6 +79,7 @@
 		DB4518D91BBCE8820097A25A /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB4518DA1BBCE8820097A25A /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
 		DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSeparatorViewCell.swift; sourceTree = "<group>"; };
+		DB7488BD1BD46F6D0052041C /* ThemeTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTextTableViewCell.swift; sourceTree = "<group>"; };
 		DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		DB803A9F1BBE5BC50081E032 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		DB803AA01BBE5BC50081E032 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */,
 				DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */,
 				DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */,
+				DB7488BD1BD46F6D0052041C /* ThemeTextTableViewCell.swift */,
 			);
 			name = ThemeViewController;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */,
 				DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */,
 				DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */,
+				DB7488BE1BD46F6D0052041C /* ThemeTextTableViewCell.swift in Sources */,
 				DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */,
 				DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */,
 				DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */,
