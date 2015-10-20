@@ -17,5 +17,6 @@
 #import "ParallaxHeaderView.h"
 #import "SWRevealViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "ZFModalTransitionAnimator.h"
 
 #endif /* Bridging_Header_h */
