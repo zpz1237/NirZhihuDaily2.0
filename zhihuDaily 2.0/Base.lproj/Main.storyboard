@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="93" id="dAT-gO-dGZ" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tableContentViewCell" rowHeight="93" id="dAT-gO-dGZ" customClass="TableContentViewCell" customModule="知乎日报" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAT-gO-dGZ" id="ehw-CV-q4a">
@@ -58,7 +58,7 @@
                                     <outlet property="titleLabel" destination="Kde-KL-4gF" id="W1X-25-bHK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableSeparatorViewCell" id="g34-M4-bI7" customClass="TableSeparatorViewCell" customModule="知乎日报" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tableSeparatorViewCell" id="g34-M4-bI7" customClass="TableSeparatorViewCell" customModule="知乎日报" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="185" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g34-M4-bI7" id="Fhn-gb-174">

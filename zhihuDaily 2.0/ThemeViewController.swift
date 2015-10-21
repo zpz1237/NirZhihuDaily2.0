@@ -12,6 +12,9 @@ class ThemeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var animator: ZFModalTransitionAnimator!
+    var selectedNewsId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +52,10 @@ class ThemeViewController: UIViewController {
         self.tableView.showsVerticalScrollIndicator = false
     }
 
+    override func viewWillAppear(animated: Bool) {
+//        let rect = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+//        self.tableView.frame = rect
+    }
 
     //设置StatusBar颜色
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -73,7 +80,6 @@ class ThemeViewController: UIViewController {
 }
 
 extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, ParallaxHeaderViewDelegate {
-    
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
@@ -127,5 +133,29 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
             return 45
         }
         return 92
+    }
+    
+    //处理UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //拿到webViewController
+        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
+        
+        //对animator进行初始化
+        animator = ZFModalTransitionAnimator(modalViewController: webViewController)
+        self.animator.dragable = true
+        self.animator.bounces = false
+        self.animator.behindViewAlpha = 0.7
+        self.animator.behindViewScale = 0.7
+        self.animator.transitionDuration = 0.7
+        self.animator.direction = ZFModalTransitonDirection.Right
+        
+        //设置webViewController
+        webViewController.transitioningDelegate = self.animator
+        webViewController.newsId = "Jst Try"
+        
+        //实施转场
+        self.presentViewController(webViewController, animated: true) { () -> Void in
+            
+        }
     }
 }

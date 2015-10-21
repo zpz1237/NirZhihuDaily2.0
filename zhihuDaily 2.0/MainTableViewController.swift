@@ -14,6 +14,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     var animator: ZFModalTransitionAnimator!
     var selectedNewsId = ""
+    var selectedIndex: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +111,13 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
             let data = appCloud().contentStory[indexPath.row]
             
+            //验证是否已被点击过
+            if let _ = selectedIndex.indexOf(indexPath.row) {
+                cell.titleLabel.textColor = UIColor.lightGrayColor()
+            } else {
+                cell.titleLabel.textColor = UIColor.blackColor()
+            }
+            
             cell.imagesView.image = UIImage(named: data.images[0])
             cell.titleLabel.text = data.title
             
@@ -131,6 +139,13 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
         let data = appCloud().pastContentStory[newIndex] as! ContentStoryModel
         
+        //验证是否已被点击过
+        if let _ = selectedIndex.indexOf(indexPath.row) {
+            cell.titleLabel.textColor = UIColor.lightGrayColor()
+        } else {
+            cell.titleLabel.textColor = UIColor.blackColor()
+        }
+        
         cell.imagesView.image = UIImage(named: data.images[0])
         cell.titleLabel.text = data.title
         
@@ -144,6 +159,16 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     //tableView点击事件
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //保证点击的是TableContentViewCell
+        guard tableView.cellForRowAtIndexPath(indexPath) is TableContentViewCell else {
+            return
+        }
+        
+        //记录已被选中的indexPath并改变其textColor
+        selectedIndex.append(indexPath.row)
+        (tableView.cellForRowAtIndexPath(indexPath) as! TableContentViewCell).titleLabel.textColor = UIColor.lightGrayColor()
+        
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
         webViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen

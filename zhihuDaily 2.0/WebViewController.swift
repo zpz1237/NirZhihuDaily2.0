@@ -25,6 +25,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var dragging = false
     var triggered = false
     var newsId = ""
+    var hasImage = false
 
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
@@ -55,6 +56,10 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
+        if hasImage == false {
+            statusBarBackground.backgroundColor = UIColor.whiteColor()
+        }
+        
         //对scrollView做基本配置
         self.webView.scrollView.delegate = self
         self.webView.scrollView.clipsToBounds = false
@@ -63,8 +68,30 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     override func viewWillAppear(animated: Bool) {
-        //loadParallaxHeader("")
         loadWebView("")
+        if hasImage {
+            loadParallaxHeader("")
+        } else {
+            loadNormalHeader()
+        }
+    }
+    
+    //加载普通header
+    func loadNormalHeader() {
+        //"载入上一篇"imageView
+        refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, -30, 15, 15))
+        refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
+        refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+        self.webView.scrollView.addSubview(refreshImageView)
+        
+        //载入上一篇Label
+        let refreshLabel = UILabel(frame: CGRectMake(12, -45, self.view.frame.width, 45))
+        refreshLabel.text = "载入上一篇"
+        refreshLabel.textAlignment = NSTextAlignment.Center
+        refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+        refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
+        self.webView.scrollView.addSubview(refreshLabel)
     }
     
     //加载图片
@@ -129,7 +156,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     //加载WebView
     func loadWebView(newsId: String) {
         //获取网络数据，包括body css image image_source title 并拼接body与css后加载
-        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7235309").responseJSON { (_, _, dataResult) -> Void in
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7287535").responseJSON { (_, _, dataResult) -> Void in
             let body = JSON(dataResult.value!)["body"].string!
             let css = JSON(dataResult.value!)["css"][0].string!
             
@@ -149,20 +176,56 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        let incrementY = scrollView.contentOffset.y
-        if incrementY < 0 {
+        //判断是否含图
+        if hasImage {
+            let incrementY = scrollView.contentOffset.y
+            if incrementY < 0 {
+                
+                //不断设置titleLabel及sourceLabel以保证frame正确
+                titleLabel.frame = CGRectMake(15, orginalHeight - 80 - incrementY, self.view.frame.width - 30, 60)
+                sourceLabel.frame = CGRectMake(15, orginalHeight - 20 - incrementY, self.view.frame.width - 30, 15)
+                
+                //不断添加删除blurView.layer.sublayers![0]以保证frame正确
+                blurView.frame = CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85)
+                blurView.layer.sublayers![0].removeFromSuperlayer()
+                blurView.insertTwiceTransparentGradient()
+                
+                //如果下拉超过65pixels则改变图片方向
+                if incrementY <= -65 {
+                    arrowState = true
+                    //如果此时是第一次检测到松手则加载上一篇
+                    guard dragging || triggered else {
+                        loadNewArticle(true)
+                        triggered = true
+                        return
+                    }
+                } else {
+                    arrowState = false
+                }
+                
+                //使Label不被遮挡
+                imageView.bringSubviewToFront(titleLabel)
+                imageView.bringSubviewToFront(sourceLabel)
+            }
             
-            //不断设置titleLabel及sourceLabel以保证frame正确
-            titleLabel.frame = CGRectMake(15, orginalHeight - 80 - incrementY, self.view.frame.width - 30, 60)
-            sourceLabel.frame = CGRectMake(15, orginalHeight - 20 - incrementY, self.view.frame.width - 30, 15)
+            //监听contentOffsetY以改变StatusBarUI
+            if incrementY > 223 {
+                if statusBarFlag {
+                    statusBarFlag = false
+                }
+                statusBarBackground.backgroundColor = UIColor.whiteColor()
+            } else {
+                guard statusBarFlag else {
+                    statusBarFlag = true
+                    return
+                }
+                statusBarBackground.backgroundColor = UIColor.clearColor()
+            }
             
-            //不断添加删除blurView.layer.sublayers![0]以保证frame正确
-            blurView.frame = CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85)
-            blurView.layer.sublayers![0].removeFromSuperlayer()
-            blurView.insertTwiceTransparentGradient()
-
+            webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
+        } else {
             //如果下拉超过65pixels则改变图片方向
-            if incrementY <= -65 {
+            if self.webView.scrollView.contentOffset.y <= -50 {
                 arrowState = true
                 //如果此时是第一次检测到松手则加载上一篇
                 guard dragging || triggered else {
@@ -173,27 +236,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             } else {
                 arrowState = false
             }
-            
-            //使Label不被遮挡
-            imageView.bringSubviewToFront(titleLabel)
-            imageView.bringSubviewToFront(sourceLabel)
         }
-        
-        //监听contentOffsetY以改变StatusBarUI
-        if incrementY > 223 {
-            if statusBarFlag {
-                statusBarFlag = false
-            }
-            statusBarBackground.backgroundColor = UIColor.whiteColor()
-        } else {
-            guard statusBarFlag else {
-                statusBarFlag = true
-                return
-            }
-            statusBarBackground.backgroundColor = UIColor.clearColor()
-        }
-        
-        webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
     }
     
     //记录下拉状态
@@ -245,6 +288,11 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //依据statusBarFlag返回StatusBar颜色
      override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        //无图的情况
+        guard hasImage else {
+            return .Default
+        }
+        
         if statusBarFlag {
             //bug：当切换页面后该函数调用的self是最初的self，其他更改的都是新self，所以这里会有问题
             return .LightContent
