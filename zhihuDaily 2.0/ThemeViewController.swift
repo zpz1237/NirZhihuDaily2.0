@@ -107,7 +107,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         //取到Story数据
         let tempContentStoryItem = appCloud().themeContent!.stories[indexPath.row - 1]
         
-        //保证图片一定存在
+        //保证图片一定存在，选择合适的Cell类型
         guard let image = UIImage(named: tempContentStoryItem.images[0]) else {
             let cell = tableView.dequeueReusableCellWithIdentifier("themeTextTableViewCell") as! ThemeTextTableViewCell
             cell.themeTextLabel.text = tempContentStoryItem.title

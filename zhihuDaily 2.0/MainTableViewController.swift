@@ -12,6 +12,9 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     @IBOutlet weak var dateLabel: UILabel!
     
+    var animator: ZFModalTransitionAnimator!
+    var selectedNewsId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +57,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         } else {
             self.navigationItem.setLeftBarButtonItem(leftButton, animated: false)
         }
-        
         
         //设置透明NavBar
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
@@ -140,9 +142,54 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.contentOffset.y = -154
     }
     
+    //tableView点击事件
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //拿到webViewController
+        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
+        webViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        
+        //对animator进行初始化
+        animator = ZFModalTransitionAnimator(modalViewController: webViewController)
+        self.animator.dragable = true
+        self.animator.bounces = false
+        self.animator.behindViewAlpha = 0.7
+        self.animator.behindViewScale = 0.7
+        self.animator.transitionDuration = 0.7
+        self.animator.direction = ZFModalTransitonDirection.Right
+        
+        //设置webViewController
+        webViewController.transitioningDelegate = self.animator
+        webViewController.newsId = "Jst Try"
+        
+        //实施转场
+        self.presentViewController(webViewController, animated: true) { () -> Void in
+            
+        }
+    }
+    
     //collectionView点击事件
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
-        print(index)
+        //拿到webViewController
+        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
+        webViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        
+        //对animator进行初始化
+        animator = ZFModalTransitionAnimator(modalViewController: webViewController)
+        self.animator.dragable = true
+        self.animator.bounces = false
+        self.animator.behindViewAlpha = 0.7
+        self.animator.behindViewScale = 0.7
+        self.animator.transitionDuration = 0.7
+        self.animator.direction = ZFModalTransitonDirection.Right
+        
+        //设置webViewController
+        webViewController.transitioningDelegate = self.animator
+        webViewController.newsId = "Jst Try"
+        
+        //实施转场
+        self.presentViewController(webViewController, animated: true) { () -> Void in
+            
+        }
     }
     
     override func  scrollViewDidScroll(scrollView: UIScrollView) {

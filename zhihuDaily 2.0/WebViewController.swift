@@ -24,7 +24,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var refreshImageView: UIImageView!
     var dragging = false
     var triggered = false
-    
+    var newsId = ""
+
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
         didSet {
@@ -50,14 +51,29 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
+        //对scrollView做基本配置
+        self.webView.scrollView.delegate = self
+        self.webView.scrollView.clipsToBounds = false
+        self.webView.scrollView.showsVerticalScrollIndicator = false
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        //loadParallaxHeader("")
+        loadWebView("")
+    }
+    
+    //加载图片
+    func loadParallaxHeader(imageURL: String) {
         //设置展示的imageView
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 223))
         imageView.contentMode = .ScaleAspectFill
         imageView.image = UIImage(named: "WebTopImage")
-       
+        
         //保存初始frame
         orginalHeight = imageView.frame.height
         
@@ -106,12 +122,12 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         webHeaderView = ParallaxHeaderView.parallaxWebHeaderViewWithSubView(imageView, forSize: CGSizeMake(self.view.frame.width, 223)) as! ParallaxHeaderView
         webHeaderView.delegate = self
         
-        //将ParallaxView添加到webView下层的scrollView上并对scrollView做基本配置
+        //将ParallaxView添加到webView下层的scrollView上
         self.webView.scrollView.addSubview(webHeaderView)
-        self.webView.scrollView.delegate = self
-        self.webView.scrollView.clipsToBounds = false
-        self.webView.scrollView.showsVerticalScrollIndicator = false
-        
+    }
+
+    //加载WebView
+    func loadWebView(newsId: String) {
         //获取网络数据，包括body css image image_source title 并拼接body与css后加载
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7235309").responseJSON { (_, _, dataResult) -> Void in
             let body = JSON(dataResult.value!)["body"].string!
@@ -130,7 +146,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             self.webView.loadHTMLString(html, baseURL: nil)
         }
     }
-
+    
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let incrementY = scrollView.contentOffset.y
