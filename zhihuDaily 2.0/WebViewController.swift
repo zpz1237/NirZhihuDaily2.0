@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderViewDelegate {
+class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var statusBarBackground: UIView!
@@ -56,9 +56,10 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
-        if hasImage == false {
-            statusBarBackground.backgroundColor = UIColor.whiteColor()
-        }
+        //隐藏默认返回button但保留左划返回
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         //对scrollView做基本配置
         self.webView.scrollView.delegate = self
@@ -68,12 +69,13 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     override func viewWillAppear(animated: Bool) {
-        loadWebView("")
         if hasImage {
             loadParallaxHeader("")
         } else {
+            statusBarBackground.backgroundColor = UIColor.whiteColor()
             loadNormalHeader()
         }
+        loadWebView("")
     }
     
     //加载普通header

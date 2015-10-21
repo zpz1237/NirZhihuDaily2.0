@@ -12,7 +12,6 @@ class ThemeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var animator: ZFModalTransitionAnimator!
     var selectedNewsId = ""
     
     override func viewDidLoad() {
@@ -53,8 +52,9 @@ class ThemeViewController: UIViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-//        let rect = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
-//        self.tableView.frame = rect
+        
+        let rect = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        self.tableView.frame = rect
     }
 
     //设置StatusBar颜色
@@ -140,22 +140,9 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
         
-        //对animator进行初始化
-        animator = ZFModalTransitionAnimator(modalViewController: webViewController)
-        self.animator.dragable = true
-        self.animator.bounces = false
-        self.animator.behindViewAlpha = 0.7
-        self.animator.behindViewScale = 0.7
-        self.animator.transitionDuration = 0.7
-        self.animator.direction = ZFModalTransitonDirection.Right
-        
-        //设置webViewController
-        webViewController.transitioningDelegate = self.animator
         webViewController.newsId = "Jst Try"
         
         //实施转场
-        self.presentViewController(webViewController, animated: true) { () -> Void in
-            
-        }
+        self.navigationController?.pushViewController(webViewController, animated: true)
     }
 }
