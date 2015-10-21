@@ -13,6 +13,7 @@ class ThemeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedNewsId = ""
+    var selectedIndex: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,7 @@ class ThemeViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         
-        let rect = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
-        self.tableView.frame = rect
+        self.navigationController?.navigationBarHidden = false
     }
 
     //设置StatusBar颜色
@@ -66,17 +66,6 @@ class ThemeViewController: UIViewController {
     func appCloud() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, ParallaxHeaderViewDelegate {
@@ -116,12 +105,24 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         //保证图片一定存在，选择合适的Cell类型
         guard let image = UIImage(named: tempContentStoryItem.images[0]) else {
             let cell = tableView.dequeueReusableCellWithIdentifier("themeTextTableViewCell") as! ThemeTextTableViewCell
+            //验证是否已被点击过
+            if let _ = selectedIndex.indexOf(indexPath.row) {
+                cell.themeTextLabel.textColor = UIColor.lightGrayColor()
+            } else {
+                cell.themeTextLabel.textColor = UIColor.blackColor()
+            }
             cell.themeTextLabel.text = tempContentStoryItem.title
             return cell
         }
 
         //处理图片存在的情况
         let cell = tableView.dequeueReusableCellWithIdentifier("themeContentTableViewCell") as! ThemeContentTableViewCell
+        //验证是否已被点击过
+        if let _ = selectedIndex.indexOf(indexPath.row) {
+            cell.themeContentLabel.textColor = UIColor.lightGrayColor()
+        } else {
+            cell.themeContentLabel.textColor = UIColor.blackColor()
+        }
         cell.themeContentLabel.text = tempContentStoryItem.title
         cell.themeContentImageView.image = image
 
@@ -137,10 +138,21 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
     
     //处理UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            return
+        }
+        
+        selectedIndex.append(indexPath.row)
+        if tableView.cellForRowAtIndexPath(indexPath) is ThemeContentTableViewCell {
+            (tableView.cellForRowAtIndexPath(indexPath) as! ThemeContentTableViewCell).themeContentLabel.textColor = UIColor.lightGrayColor()
+        } else {
+            (tableView.cellForRowAtIndexPath(indexPath) as! ThemeTextTableViewCell).themeTextLabel.textColor = UIColor.lightGrayColor()
+        }
+        
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
-        
         webViewController.newsId = "Jst Try"
+        webViewController.pushed = true
         
         //实施转场
         self.navigationController?.pushViewController(webViewController, animated: true)

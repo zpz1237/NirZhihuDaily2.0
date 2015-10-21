@@ -25,7 +25,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var dragging = false
     var triggered = false
     var newsId = ""
-    var hasImage = false
+    var hasImage = true
+    var pushed = false
 
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
@@ -65,10 +66,14 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         self.webView.scrollView.delegate = self
         self.webView.scrollView.clipsToBounds = false
         self.webView.scrollView.showsVerticalScrollIndicator = false
-
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        if pushed {
+            self.navigationController?.navigationBarHidden = true
+        }
+        
         if hasImage {
             loadParallaxHeader("")
         } else {
@@ -158,7 +163,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     //加载WebView
     func loadWebView(newsId: String) {
         //获取网络数据，包括body css image image_source title 并拼接body与css后加载
-        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7287535").responseJSON { (_, _, dataResult) -> Void in
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7235309").responseJSON { (_, _, dataResult) -> Void in
             let body = JSON(dataResult.value!)["body"].string!
             let css = JSON(dataResult.value!)["css"][0].string!
             
@@ -178,6 +183,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        print(self.webView.scrollView.contentOffset.y)
+        
         //判断是否含图
         if hasImage {
             let incrementY = scrollView.contentOffset.y
@@ -227,7 +234,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
         } else {
             //如果下拉超过65pixels则改变图片方向
-            if self.webView.scrollView.contentOffset.y <= -50 {
+            if self.webView.scrollView.contentOffset.y <= -40 {
                 arrowState = true
                 //如果此时是第一次检测到松手则加载上一篇
                 guard dragging || triggered else {

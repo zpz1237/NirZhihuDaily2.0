@@ -471,7 +471,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeEditorTableViewCell" rowHeight="45" id="iw5-rh-GGP" customClass="ThemeEditorTableViewCell" customModule="知乎日报" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="themeEditorTableViewCell" rowHeight="45" id="iw5-rh-GGP" customClass="ThemeEditorTableViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iw5-rh-GGP" id="bOe-KO-eLq">
@@ -507,7 +507,7 @@
                                             <outlet property="accessorySign" destination="bbC-5b-FKc" id="its-Rj-0rf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeContentTableViewCell" rowHeight="92" id="rS9-XA-QyY" customClass="ThemeContentTableViewCell" customModule="知乎日报" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="themeContentTableViewCell" rowHeight="92" id="rS9-XA-QyY" customClass="ThemeContentTableViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="137" width="600" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rS9-XA-QyY" id="2pk-uR-R6o">
@@ -551,7 +551,7 @@
                                             <outlet property="themeContentLabel" destination="FN2-hZ-0k0" id="6FO-wv-Ivy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeTextTableViewCell" rowHeight="92" id="PgH-ii-Jbq" customClass="ThemeTextTableViewCell" customModule="知乎日报" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="themeTextTableViewCell" rowHeight="92" id="PgH-ii-Jbq" customClass="ThemeTextTableViewCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="229" width="600" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PgH-ii-Jbq" id="quZ-Ve-tYI">
