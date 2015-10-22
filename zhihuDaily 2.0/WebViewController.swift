@@ -26,7 +26,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var triggered = false
     var newsId = ""
     var hasImage = true
-    var pushed = false
 
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
@@ -54,6 +53,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         //避免webScrollView的ContentView过长 挡住底层View
         self.view.clipsToBounds = true
         
@@ -69,11 +70,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        if pushed {
-            self.navigationController?.navigationBarHidden = true
-        }
-        
         if hasImage {
             loadParallaxHeader("")
         } else {

@@ -54,7 +54,7 @@ class ThemeViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         
-        self.navigationController?.navigationBarHidden = false
+        //self.navigationController?.navigationBarHidden = false
     }
 
     //设置StatusBar颜色
@@ -152,8 +152,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
         webViewController.newsId = "Jst Try"
-        webViewController.pushed = true
-        
+
         //实施转场
         self.navigationController?.pushViewController(webViewController, animated: true)
     }
