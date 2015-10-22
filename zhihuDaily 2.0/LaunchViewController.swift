@@ -26,10 +26,16 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
             text.text = NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) as! String
         }
         
-        //下载下次的启动图像及版权文字
+        //下载下一次所需的启动页数据
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/start-image/1080*1776").responseJSON { (_, _, dataResult) -> Void in
+            guard dataResult.error == nil else {
+                print("获取数据失败")
+                return
+            }
+            
             //拿到text并保存
             let text = JSON(dataResult.value!)["text"].string!
+            self.text.text = text
             NSUserDefaults.standardUserDefaults().setObject(text, forKey: self.launchTextKey)
             
             //拿到图像URL后取出图像并保存
@@ -68,6 +74,7 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         if NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) != nil {
             return UIImage(data: NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) as! NSData)
         }
+        
         return UIImage(named: "DemoLaunchImage")
     }
 

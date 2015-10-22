@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firstDisplay = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+//        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
+//            let data = JSON(resultData.value!)
+//            //取到本日文章列表数据
+//            let topStoryData = data["top_stories"]
+//            let contentStoryData = data["stories"]
+//            
+//            //注入topStory
+//            for i in 0 ..< topStoryData.count {
+//                self.topStory.append(TopStoryModel(image: topStoryData[i]["image"].string!, id: String(topStoryData[i]["id"]), title: topStoryData[i]["title"].string!))
+//            }
+//            //注入contentStoryData
+//            for i in 0 ..< contentStoryData.count {
+//                self.contentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+//            }
+//            //设置offsetYValue
+//            self.offsetYValue.append((120 + CGFloat(contentStoryData.count) * 93, "今日热闻"))
+//        }
+        
+        print(getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 86400).description))
         
         //配置测试数据
         topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))
@@ -70,8 +91,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let themeStory: [ContentStoryModel] = contentStory + contentStory
         
         themeContent = ThemeContentModel(stories: themeStory, background: "", name: "", editorsAvatars: ["avatar"])
-        
         return true
+    }
+    
+    func getCalenderString(dateString: String) -> String {
+        var calenderString = ""
+        for character in dateString.characters {
+            if character != " " && character != "-"{
+                calenderString += "\(character)"
+            } else if character == " " {
+                break
+            }
+        }
+        return calenderString
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -162,6 +162,11 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     func loadWebView(newsId: String) {
         //获取网络数据，包括body css image image_source title 并拼接body与css后加载
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7235309").responseJSON { (_, _, dataResult) -> Void in
+            guard dataResult.error == nil else {
+                print("获取数据失败")
+                return
+            }
+            
             let body = JSON(dataResult.value!)["body"].string!
             let css = JSON(dataResult.value!)["css"][0].string!
             
