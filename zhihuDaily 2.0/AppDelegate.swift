@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firstDisplay = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         //配置测试数据
         topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))
         topStory.append(TopStoryModel(image: "TopImage2", id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))

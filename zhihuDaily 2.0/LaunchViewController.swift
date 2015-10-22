@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
 
     @IBOutlet weak var animatedImagesView: JSAnimatedImagesView!
     @IBOutlet weak var text: UILabel!
     
+    let launchImgKey = "launchImgKey"
+    let launchTextKey = "launchTextKey"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //如果已有下载好的文字则使用
+        if NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) != nil {
+            text.text = NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) as! String
+        }
+        
+        //下载下次的启动图像及版权文字
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/start-image/1080*1776").responseJSON { (_, _, dataResult) -> Void in
+            //拿到text并保存
+            let text = JSON(dataResult.value!)["text"].string!
+            NSUserDefaults.standardUserDefaults().setObject(text, forKey: self.launchTextKey)
+            
+            //拿到图像URL后取出图像并保存
+            let launchImageURL = JSON(dataResult.value!)["img"].string!
+            Alamofire.request(.GET, launchImageURL).responseData({ (_, _, imgResult) -> Void in
+                let imgData = imgResult.value!
+                NSUserDefaults.standardUserDefaults().setObject(imgData, forKey: self.launchImgKey)
+            })
+        }
+        
+        //设置自己为JSAnimatedImagesView的数据源
         animatedImagesView.dataSource = self
         
         //半透明遮罩层
@@ -39,6 +64,10 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
     }
     
     func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
+        //如果已有下载好的图片则使用
+        if NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) != nil {
+            return UIImage(data: NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) as! NSData)
+        }
         return UIImage(named: "DemoLaunchImage")
     }
 

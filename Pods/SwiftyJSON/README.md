@@ -57,7 +57,7 @@ With SwiftyJSON all you have to do is:
 ```swift
 
 let json = JSON(data: dataFromNetworking)
-if let userName = json[0]["user"]["name"].string{
+if let userName = json[0]["user"]["name"].string {
   //Now you got your value
 }
 
@@ -68,11 +68,11 @@ And don't worry about the Optional Wrapping thing. It's done for you automatical
 ```swift
 
 let json = JSON(data: dataFromNetworking)
-if let userName = json[999999]["wrong_key"]["wrong_name"].string{
+if let userName = json[999999]["wrong_key"]["wrong_name"].string {
     //Calm down, take it easy, the ".string" property still produces the correct Optional String type with safety
 } else {
     //Print the error
-    println(json[999999]["wrong_key"]["wrong_name"])
+    print(json[999999]["wrong_key"]["wrong_name"])
 }
 
 ```
@@ -91,15 +91,15 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'MyApp' do
-	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode7'
+	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
 ```
-Note that it needs you to install CocoaPods 36 version, and requires your iOS deploy target >= 8.0:
+Note that this requires CocoaPods version 36, and your iOS deployment target to be at least 8.0:
 
 ####Carthage (iOS 8+, OS X 10.9+)
 You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyJSON` by adding it to your `Cartfile`:
 ```
-github "SwiftyJSON/SwiftyJSON" "xcode7"
+github "SwiftyJSON/SwiftyJSON"
 ```
 
 ####Manually (iOS 7+, OS X 10.9+)
@@ -172,19 +172,19 @@ for (key,subJson):(String, JSON) in json {
 ####Error
 Use a subscript to get/set a value in an Array or Dictionary
 
-If the json is:
+If the JSON is:
 *  an array, the app may crash with "index out-of-bounds."
-*  a dictionary, it will get `nil` without a reason.
+*  a dictionary, it will be assigned `nil` without a reason.
 *  not an array or a dictionary, the app may crash with an "unrecognised selector" exception.
 
-It will never happen in SwiftyJSON.
+This will never happen in SwiftyJSON.
 
 ```swift
 let json = JSON(["name", "age"])
 if let name = json[999].string {
     //Do something you want
 } else {
-    println(json[999].error) // "Array[999] is out of bounds"
+    print(json[999].error) // "Array[999] is out of bounds"
 }
 ```
 ```swift
@@ -192,7 +192,7 @@ let json = JSON(["name":"Jack", "age": 25])
 if let name = json["address"].string {
     //Do something you want
 } else {
-    println(json["address"].error) // "Dictionary["address"] does not exist"
+    print(json["address"].error) // "Dictionary["address"] does not exist"
 }
 ```
 ```swift
@@ -200,15 +200,15 @@ let json = JSON(12345)
 if let age = json[0].string {
     //Do something you want
 } else {
-    println(json[0])       // "Array[0] failure, It is not an array"
-    println(json[0].error) // "Array[0] failure, It is not an array"
+    print(json[0])       // "Array[0] failure, It is not an array"
+    print(json[0].error) // "Array[0] failure, It is not an array"
 }
 
 if let name = json["name"].string {
     //Do something you want
 } else {
-    println(json["name"])       // "Dictionary[\"name"] failure, It is not an dictionary"
-    println(json["name"].error) // "Dictionary[\"name"] failure, It is not an dictionary"
+    print(json["name"])       // "Dictionary[\"name"] failure, It is not an dictionary"
+    print(json["name"].error) // "Dictionary[\"name"] failure, It is not an dictionary"
 }
 ```
 
@@ -219,7 +219,7 @@ if let id = json["user"]["favourites_count"].number {
    //Do something you want
 } else {
    //Print the error
-   println(json["user"]["favourites_count"].error)
+   print(json["user"]["favourites_count"].error)
 }
 ```
 ```swift
@@ -228,7 +228,7 @@ if let id = json["user"]["name"].string {
    //Do something you want
 } else {
    //Print the error
-   println(json["user"]["name"])
+   print(json["user"]["name"])
 }
 ```
 ```swift
@@ -237,7 +237,7 @@ if let id = json["user"]["is_translator"].bool {
    //Do something you want
 } else {
    //Print the error
-   println(json["user"]["is_translator"])
+   print(json["user"]["is_translator"])
 }
 ```
 ```swift
@@ -246,7 +246,7 @@ if let id = json["user"]["id"].int {
    //Do something you want
 } else {
    //Print the error
-   println(json["user"]["id"])
+   print(json["user"]["id"])
 }
 ...
 ```
@@ -300,6 +300,12 @@ if let data = json.rawData() {
 if let string = json.rawString() {
     //Do something you want
 }
+
+####Existance
+```swift
+//shows you whether value specified in JSON or not
+if json["name"].isExists()
+```
 ```
 ####Literal convertibles
 For more info about literal convertibles: [Swift Literal Convertibles](http://nshipster.com/swift-literal-convertible/)
@@ -362,8 +368,8 @@ Alamofire.request(.GET, url, parameters: parameters)
   .responseJSON { (req, res, json, error) in
     if(error != nil) {
       NSLog("Error: \(error)")
-      println(req)
-      println(res)
+      print(req)
+      print(res)
     }
     else {
       NSLog("Success: \(url)")

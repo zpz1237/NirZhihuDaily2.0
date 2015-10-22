@@ -53,6 +53,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //避免因含有navBar而对scrollInsets做自动调整
         self.automaticallyAdjustsScrollViewInsets = false
         
         //避免webScrollView的ContentView过长 挡住底层View
@@ -63,6 +64,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         self.navigationController?.interactivePopGestureRecognizer?.enabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
+        self.webView.delegate = self
         //对scrollView做基本配置
         self.webView.scrollView.delegate = self
         self.webView.scrollView.clipsToBounds = false
@@ -304,7 +306,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         }
         return .Default
     }
-    
     /*
     // MARK: - Navigation
 
@@ -315,4 +316,17 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     */
 
+}
+
+extension WebViewController: UIWebViewDelegate {
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        //暂时的处理方法，只允许查看文章内容 而不允许将其当做浏览器跳转，待修改
+        guard webView.request != nil else {
+            return true
+        }
+        if request != webView.request {
+            return false
+        }
+        return true
+    }
 }

@@ -1,23 +1,27 @@
 PODS:
   - Alamofire (2.0.0)
-  - SwiftyJSON (2.2.1)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
-  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`, branch `xcode7`)
+  - SDWebImage (~> 3.7)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
   SwiftyJSON:
-    :branch: xcode7
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
   SwiftyJSON:
-    :commit: 6eb4cda062fa09c4658e4184f92d822058f226e3
+    :commit: 83dc3138b14571200ea7f070933a2a510491e997
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Alamofire: 2f13548b29d25a58ecd91c9225fb51493e2b782b
-  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SwiftyJSON: cacfe0373d584585716bd1d43202c24cc66afd65
 
 COCOAPODS: 0.38.2
