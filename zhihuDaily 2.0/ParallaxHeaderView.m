@@ -141,7 +141,7 @@
 {
     //初始化中间层imageScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    scrollView.backgroundColor = [UIColor yellowColor];
+    scrollView.backgroundColor = [UIColor whiteColor];
     self.imageScrollView = scrollView;
     
     //设置内容层的自动布局并存储
@@ -158,7 +158,7 @@
 {
     //初始化中间层imageScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    scrollView.backgroundColor = [UIColor yellowColor];
+    scrollView.backgroundColor = [UIColor whiteColor];
     self.imageScrollView = scrollView;
     
     //设置内容层的自动布局并存储

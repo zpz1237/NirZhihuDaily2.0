@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
 class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderViewDelegate, UIGestureRecognizerDelegate {
 
@@ -72,14 +73,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     override func viewWillAppear(animated: Bool) {
-        print(newsId)
-        if hasImage {
-            loadParallaxHeader("")
-        } else {
-            statusBarBackground.backgroundColor = UIColor.whiteColor()
-            loadNormalHeader()
-        }
-        loadWebView("")
+        loadWebView(newsId)
     }
     
     //加载普通header
@@ -101,11 +95,11 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     //加载图片
-    func loadParallaxHeader(imageURL: String) {
+    func loadParallaxHeader(imageURL: String, imageSource: String, titleString: String) {
         //设置展示的imageView
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 223))
         imageView.contentMode = .ScaleAspectFill
-        imageView.image = UIImage(named: "WebTopImage")
+        imageView.sd_setImageWithURL(NSURL(string: imageURL))
         
         //保存初始frame
         orginalHeight = imageView.frame.height
@@ -118,7 +112,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         titleLabel.shadowOffset = CGSizeMake(0, 1)
         titleLabel.verticalAlignment = VerticalAlignmentBottom
         titleLabel.numberOfLines = 0
-        titleLabel.text = "青蒿素的研发方法，早有先例，也不会是最后一例"
+        titleLabel.text = titleString
         imageView.addSubview(titleLabel)
         
         //设置Image上的Image_sourceLabel
@@ -126,7 +120,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         sourceLabel.font = UIFont(name: "HelveticaNeue", size: 9)
         sourceLabel.textColor = UIColor.lightTextColor()
         sourceLabel.textAlignment = NSTextAlignment.Right
-        let sourceLabelText = "Ton Rulkens / CC BY"
+        let sourceLabelText = imageSource
         sourceLabel.text = "图片：" + sourceLabelText
         imageView.addSubview(sourceLabel)
         
@@ -160,9 +154,9 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
 
     //加载WebView
-    func loadWebView(newsId: String) {
+    func loadWebView(id: String) {
         //获取网络数据，包括body css image image_source title 并拼接body与css后加载
-        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/7235309").responseJSON { (_, _, dataResult) -> Void in
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/" + id).responseJSON { (_, _, dataResult) -> Void in
             guard dataResult.error == nil else {
                 print("获取数据失败")
                 return
@@ -170,6 +164,17 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             
             let body = JSON(dataResult.value!)["body"].string!
             let css = JSON(dataResult.value!)["css"][0].string!
+            
+            if let image = JSON(dataResult.value!)["image"].string {
+                if let imageSource = JSON(dataResult.value!)["image_source"].string {
+                    if let titleString = JSON(dataResult.value!)["title"].string {
+                        self.loadParallaxHeader(image, imageSource: imageSource, titleString: titleString)
+                    }
+                }
+            } else {
+                self.statusBarBackground.backgroundColor = UIColor.whiteColor()
+                self.loadNormalHeader()
+            }
             
             var html = "<html>"
             html += "<head>"
@@ -187,8 +192,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print(self.webView.scrollView.contentOffset.y)
-        
+
         //判断是否含图
         if hasImage {
             let incrementY = scrollView.contentOffset.y
