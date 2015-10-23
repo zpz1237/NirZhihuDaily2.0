@@ -187,7 +187,16 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
-        webViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        
+        //找到对应newsID
+        if indexPath.row < appCloud().contentStory.count {
+            let id = appCloud().contentStory[indexPath.row].id
+            webViewController.newsId = id
+        } else {
+            let newIndex = indexPath.row - appCloud().contentStory.count
+            let id = (appCloud().pastContentStory[newIndex] as! ContentStoryModel).id
+            webViewController.newsId = id
+        }
         
         //对animator进行初始化
         animator = ZFModalTransitionAnimator(modalViewController: webViewController)
@@ -200,7 +209,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         //设置webViewController
         webViewController.transitioningDelegate = self.animator
-        webViewController.newsId = "Jst Try"
         
         //实施转场
         self.presentViewController(webViewController, animated: true) { () -> Void in
@@ -225,7 +233,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         //设置webViewController
         webViewController.transitioningDelegate = self.animator
-        webViewController.newsId = "Jst Try"
+        webViewController.newsId = appCloud().topStory[index].id
         
         //实施转场
         self.presentViewController(webViewController, animated: true) { () -> Void in
