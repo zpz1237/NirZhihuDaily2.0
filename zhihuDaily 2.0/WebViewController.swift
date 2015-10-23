@@ -72,6 +72,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     }
     
     override func viewWillAppear(animated: Bool) {
+        print(newsId)
         if hasImage {
             loadParallaxHeader("")
         } else {

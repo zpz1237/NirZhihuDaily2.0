@@ -23,56 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firstDisplay = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-//        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
-//            let data = JSON(resultData.value!)
-//            //取到本日文章列表数据
-//            let topStoryData = data["top_stories"]
-//            let contentStoryData = data["stories"]
-//            
-//            //注入topStory
-//            for i in 0 ..< topStoryData.count {
-//                self.topStory.append(TopStoryModel(image: topStoryData[i]["image"].string!, id: String(topStoryData[i]["id"]), title: topStoryData[i]["title"].string!))
-//            }
-//            //注入contentStoryData
-//            for i in 0 ..< contentStoryData.count {
-//                self.contentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
-//            }
-//            //设置offsetYValue
-//            self.offsetYValue.append((120 + CGFloat(contentStoryData.count) * 93, "今日热闻"))
-//        }
-        
-        print(getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 86400).description))
-        
-        //配置测试数据
-        topStory.append(TopStoryModel(image: "TopImage1", id: "", title: "胳膊上中了一枪"))
-        topStory.append(TopStoryModel(image: "TopImage2", id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
-        topStory.append(TopStoryModel(image: "TopImage3", id: "", title: "我的恋爱对象是……打印机和羊驼"))
-        topStory.append(TopStoryModel(image: "TopImage4", id: "", title: "大厨怎么都是男的？女大厨哪儿去了？"))
-        topStory.append(TopStoryModel(image: "TopImage5", id: "", title: "喏，拿去，生蚝的正确打开方式"))
-        
-        contentStory.append(ContentStoryModel(images: ["ContentImage1"], id: "", title: "胳膊上中了一枪"))
-        contentStory.append(ContentStoryModel(images: ["ContentImage2"], id: "", title: "哭的时候，为什么眼睛会变红？"))
-        contentStory.append(ContentStoryModel(images: ["ContentImage3"], id: "", title: "光是看着都很累，这些铁路线实在太忙了"))
-        contentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
-        contentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
-        offsetYValue.append((90 + 30 + 5 * 93, "今日热闻"))
-        
-        pastContentStory.append(DateHeaderModel(dateString: "10月9日  星期五"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage1"], id: "", title: "胳膊上中了一枪"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage2"], id: "", title: "哭的时候，为什么眼睛会变红？"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage3"], id: "", title: "光是看着都很累，这些铁路线实在太忙了"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
-        offsetYValue.append((offsetYValue.last!.0 + 30 + 5 * 93, "10月9日  星期五"))
-        
-        pastContentStory.append(DateHeaderModel(dateString: "10月8日  星期四"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage1"], id: "", title: "胳膊上中了一枪"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage2"], id: "", title: "哭的时候，为什么眼睛会变红？"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage3"], id: "", title: "光是看着都很累，这些铁路线实在太忙了"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage4"], id: "", title: "看看哪些镜头是超考验技术含量的，以后也好给电影打个公平的分"))
-        pastContentStory.append(ContentStoryModel(images: ["ContentImage5"], id: "", title: "妈妈你骗我，这里一定不是博物馆"))
-        offsetYValue.append((offsetYValue.last!.0 + 30 + 5 * 93, "10月8日  星期四"))
+        //获取文章内容
+        getTodayData()
         
         themes.append(ThemeModel(thumbnail: "", id: "", name: "日常心理学"))
         themes.append(ThemeModel(thumbnail: "", id: "", name: "用户推荐日报"))
@@ -92,18 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         themeContent = ThemeContentModel(stories: themeStory, background: "", name: "", editorsAvatars: ["avatar"])
         return true
-    }
-    
-    func getCalenderString(dateString: String) -> String {
-        var calenderString = ""
-        for character in dateString.characters {
-            if character != " " && character != "-"{
-                calenderString += "\(character)"
-            } else if character == " " {
-                break
-            }
-        }
-        return calenderString
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -127,7 +67,157 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // MARK: - 数据相关
+    func getTodayData() {
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
+            let data = JSON(resultData.value!)
+            //取到本日文章列表数据
+            let topStoryData = data["top_stories"]
+            let contentStoryData = data["stories"]
+            
+            //注入topStory
+            for i in 0 ..< topStoryData.count {
+                self.topStory.append(TopStoryModel(image: topStoryData[i]["image"].string!, id: String(topStoryData[i]["id"]), title: topStoryData[i]["title"].string!))
+            }
+            //注入contentStory
+            for i in 0 ..< contentStoryData.count {
+                self.contentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+            }
+            //设置offsetYValue
+            self.offsetYValue.append((120 + CGFloat(contentStoryData.count) * 93, "今日热闻"))
+            //发出完成通知
+            NSNotificationCenter.defaultCenter().postNotificationName("todayDataGet", object: nil)
+            
+            //获取过去三天的文章内容
+            self.getPastData()
+        }
+    }
+    
+    func getPastData() {
+        let aDayBeforeURL = getCalenderString(NSDate().dateByAddingTimeInterval(28800).description)
+        let aDayBefore = getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 86400).description)
+        Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + aDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+            let data = JSON(resultData.value!)
+            
+            //取得日期Cell数据
+            let tempDateString = self.getDetailString(aDayBefore) + " " + NSDate().dateByAddingTimeInterval(28800 - 86400).dayOfWeek()
+            self.pastContentStory.append(DateHeaderModel(dateString: tempDateString))
+            
+            //取得文章列表数据
+            let contentStoryData = data["stories"]
+            
+            //注入pastContentStory
+            for i in 0 ..< contentStoryData.count {
+                self.pastContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+            }
+            
+            //设置offsetYValue
+            self.offsetYValue.append((self.offsetYValue.last!.0 + 30 + CGFloat(contentStoryData.count) * 93, tempDateString))
+            
+            let twoDayBeforeURL = aDayBefore
+            let twoDayBefore = self.getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 2 * 86400).description)
+            Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + twoDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+                let data = JSON(resultData.value!)
+                
+                //取得日期Cell数据
+                let tempDateString = self.getDetailString(twoDayBefore) + " " + NSDate().dateByAddingTimeInterval(28800 - 2 * 86400).dayOfWeek()
+                self.pastContentStory.append(DateHeaderModel(dateString: tempDateString))
+                
+                //取得文章列表数据
+                let contentStoryData = data["stories"]
+                
+                //注入pastContentStory
+                for i in 0 ..< contentStoryData.count {
+                    self.pastContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+                }
+                
+                //设置offsetYValue
+                self.offsetYValue.append((self.offsetYValue.last!.0 + 30 + CGFloat(contentStoryData.count) * 93, tempDateString))
+                
+                let threeDayBeforeURL = twoDayBefore
+                let threeDayBefore = self.getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 3 * 86400).description)
+                Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + threeDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+                    let data = JSON(resultData.value!)
+                    
+                    //取得日期Cell数据
+                    let tempDateString = self.getDetailString(threeDayBefore) + " " + NSDate().dateByAddingTimeInterval(28800 - 3 * 86400).dayOfWeek()
+                    self.pastContentStory.append(DateHeaderModel(dateString: tempDateString))
+                    
+                    //取得文章列表数据
+                    let contentStoryData = data["stories"]
+                    
+                    //注入pastContentStory
+                    for i in 0 ..< contentStoryData.count {
+                        self.pastContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+                    }
+                    
+                    //设置offsetYValue
+                    self.offsetYValue.append((self.offsetYValue.last!.0 + 30 + CGFloat(contentStoryData.count) * 93, tempDateString))
+                    
+                    //发出完成通知 总感觉获取数据的方法不对..待修改
+                    NSNotificationCenter.defaultCenter().postNotificationName("pastDataGet", object: nil)
+                }
+            }
+        }
+    }
+    
+    
+    // MARK: - 日期相关
+    func getCalenderString(dateString: String) -> String {
+        var calenderString = ""
+        for character in dateString.characters {
+            if character != " " && character != "-"{
+                calenderString += "\(character)"
+            } else if character == " " {
+                break
+            }
+        }
+        return calenderString
+    }
+    
+    func getDetailString(dateString: String) -> String {
+        //拿到month
+        var month = ""
+        month = dateString.substringWithRange(Range(start: dateString.startIndex.advancedBy(4), end: dateString.startIndex.advancedBy(6)))
+        if month.hasPrefix("0") {
+            month.removeAtIndex(month.startIndex)
+        }
+        //拿到day
+        var day = ""
+        day = dateString.substringWithRange(Range(start: dateString.startIndex.advancedBy(6), end: dateString.startIndex.advancedBy(8)))
+        if day.hasPrefix("0") {
+            day.removeAtIndex(day.startIndex)
+        }
+        //拼接返回
+        return month + "月" + day + "日"
+    }
+}
 
-
+extension NSDate {
+    func dayOfWeek() -> String {
+        let interval = self.timeIntervalSince1970
+        let days = Int(interval / 86400)
+        let intValue = (days - 3) % 7
+        switch intValue {
+        case 0:
+            return "星期日"
+        case 1:
+            return "星期一"
+        case 2:
+            return "星期二"
+        case 3:
+            return "星期三"
+        case 4:
+            return "星期四"
+        case 5:
+            return "星期五"
+        case 6:
+            return "星期六"
+        default:
+            break
+        }
+        return "未取到数据"
+    }
 }
 

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate, ParallaxHeaderViewDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     
     var animator: ZFModalTransitionAnimator!
+    var cycleScrollView: SDCycleScrollView!
     var selectedNewsId = ""
     var selectedIndex: [Int] = []
     
@@ -23,6 +25,33 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let leftButton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self.revealViewController(), action: "revealToggle:")
         leftButton.tintColor = UIColor.whiteColor()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        //配置无限循环scrollView
+        cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.tableView.frame.width, 154), imageURLStringsGroup: nil)
+        
+        cycleScrollView.infiniteLoop = true
+        cycleScrollView.delegate = self
+        cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated
+        cycleScrollView.autoScrollTimeInterval = 6.0;
+        cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic
+        cycleScrollView.titleLabelTextFont = UIFont(name: "STHeitiSC-Medium", size: 21)
+        cycleScrollView.titleLabelBackgroundColor = UIColor.clearColor()
+        cycleScrollView.titleLabelHeight = 60
+        
+        //alpha在未设置的状态下默认为0
+        cycleScrollView.titleLabelAlpha = 1
+        
+        //将其添加到ParallaxView
+        let headerSubview: ParallaxHeaderView = ParallaxHeaderView.parallaxHeaderViewWithSubView(cycleScrollView, forSize: CGSizeMake(self.tableView.frame.width, 154)) as! ParallaxHeaderView
+        headerSubview.delegate  = self
+        
+        //将ParallaxView设置为tableHeaderView
+        self.tableView.tableHeaderView = headerSubview
+        
+        //如果不是第一次展示
+        if appCloud().firstDisplay == false {
+            updateData()
+        }
         
         //如果是第一次启动
         if appCloud().firstDisplay {
@@ -70,33 +99,20 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50
         
-        //配置无限循环scrollView
-        let images = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image].map { return UIImage(named: $0)! }
-        
-        let cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.tableView.frame.width, 154), imagesGroup: images)
-        
-        cycleScrollView.infiniteLoop = true
-        cycleScrollView.delegate = self
-        cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated
-        cycleScrollView.autoScrollTimeInterval = 6.0;
-        cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic
-        cycleScrollView.titlesGroup = [appCloud().topStory[0].title, appCloud().topStory[1].title, appCloud().topStory[2].title, appCloud().topStory[3].title, appCloud().topStory[4].title]
-        cycleScrollView.titleLabelTextFont = UIFont(name: "STHeitiSC-Medium", size: 21)
-        cycleScrollView.titleLabelBackgroundColor = UIColor.clearColor()
-        cycleScrollView.titleLabelHeight = 60
-        
-        //alpha在未设置的状态下默认为0
-        cycleScrollView.titleLabelAlpha = 1
-        
-        //将其添加到ParallaxView
-        let headerSubview: ParallaxHeaderView = ParallaxHeaderView.parallaxHeaderViewWithSubView(cycleScrollView, forSize: CGSizeMake(self.tableView.frame.width, 154)) as! ParallaxHeaderView
-        headerSubview.delegate  = self
-        
-        //将ParallaxView设置为tableHeaderView
-        self.tableView.tableHeaderView = headerSubview
-        
+        //收到广播
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "todayDataGet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "pastDataGet", object: nil)
     }
 
+    //收到广播后刷新数据
+    func updateData() {
+        cycleScrollView.imageURLStringsGroup = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image]
+        cycleScrollView.titlesGroup = [appCloud().topStory[0].title, appCloud().topStory[1].title, appCloud().topStory[2].title, appCloud().topStory[3].title, appCloud().topStory[4].title]
+        
+        self.tableView.reloadData()
+    }
+    
+    
     //tableView数据源
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -118,7 +134,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
                 cell.titleLabel.textColor = UIColor.blackColor()
             }
             
-            cell.imagesView.image = UIImage(named: data.images[0])
+            cell.imagesView.sd_setImageWithURL(NSURL(string: data.images[0]))
             cell.titleLabel.text = data.title
             
             return cell
@@ -146,7 +162,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             cell.titleLabel.textColor = UIColor.blackColor()
         }
         
-        cell.imagesView.image = UIImage(named: data.images[0])
+        cell.imagesView.sd_setImageWithURL(NSURL(string: data.images[0]))
         cell.titleLabel.text = data.title
         
         return cell
