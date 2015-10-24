@@ -29,6 +29,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var index = 1
     var isTopStory = false
     var hasImage = true
+    var isThemeStory = false
 
     //滑到对应位置时调整StatusBar
     var statusBarFlag = true {
@@ -90,20 +91,26 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //加载普通header
     func loadNormalHeader() {
-        //"载入上一篇"imageView
-        refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, -30, 15, 15))
-        refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
-        refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
-        self.webView.scrollView.addSubview(refreshImageView)
-        
         //载入上一篇Label
         let refreshLabel = UILabel(frame: CGRectMake(12, -45, self.view.frame.width, 45))
         refreshLabel.text = "载入上一篇"
+        if index == 0 {
+            refreshLabel.text = "已经是第一篇了"
+            refreshLabel.frame = CGRectMake(0, -45, self.view.frame.width, 45)
+        }
         refreshLabel.textAlignment = NSTextAlignment.Center
         refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
         refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
         self.webView.scrollView.addSubview(refreshLabel)
+        
+        if refreshLabel.text != "已经是第一篇了" {
+            //"载入上一篇"imageView
+            refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, -30, 15, 15))
+            refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
+            refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
+            refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+            self.webView.scrollView.addSubview(refreshImageView)
+        }
     }
     
     //加载图片
@@ -191,6 +198,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                     }
                 }
             } else {
+                self.hasImage = false
                 self.statusBarBackground.backgroundColor = UIColor.whiteColor()
                 self.loadNormalHeader()
             }
@@ -269,7 +277,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                 //如果此时是第一次检测到松手则加载上一篇
                 guard dragging || triggered else {
                     //index不能为零, 且不为topStory
-                    if index != 0 && isTopStory == false {
+                    if index != 0 {
                         loadNewArticle(true)
                         triggered = true
                     }
@@ -306,31 +314,39 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         let toView = toWebViewController.view
         toView.frame = self.view.frame
         
-        //找到上一篇文章的newsID
-        index--
-        if index < appCloud().contentStory.count {
-            let id = appCloud().contentStory[index].id
-            toWebViewController.index = index
-            toWebViewController.newsId = id
-        } else {
-            var newIndex = index - appCloud().contentStory.count
-            
-            //如果取到的不是文章则取上一篇
-            if appCloud().pastContentStory[newIndex] is DateHeaderModel {
-                index--
-                newIndex--
-            }
-            
-            //如果因上述情况newIndex = -1 则取contentStory中数据
-            if newIndex > -1 {
-                let id = (appCloud().pastContentStory[newIndex] as! ContentStoryModel).id
-                toWebViewController.index = index
-                toWebViewController.newsId = id
-            } else {
+        //数据相关
+        if isThemeStory == false {
+            //找到上一篇文章的newsID
+            index--
+            if index < appCloud().contentStory.count {
                 let id = appCloud().contentStory[index].id
                 toWebViewController.index = index
                 toWebViewController.newsId = id
+            } else {
+                var newIndex = index - appCloud().contentStory.count
+                
+                //如果取到的不是文章则取上一篇
+                if appCloud().pastContentStory[newIndex] is DateHeaderModel {
+                    index--
+                    newIndex--
+                }
+                
+                //如果因上述情况newIndex = -1 则取contentStory中数据
+                if newIndex > -1 {
+                    let id = (appCloud().pastContentStory[newIndex] as! ContentStoryModel).id
+                    toWebViewController.index = index
+                    toWebViewController.newsId = id
+                } else {
+                    let id = appCloud().contentStory[index].id
+                    toWebViewController.index = index
+                    toWebViewController.newsId = id
+                }
             }
+        } else {
+            index--
+            let id = appCloud().themeContent!.stories[index].id
+            toWebViewController.index = index
+            toWebViewController.newsId = id
         }
         
         //生成原View截图并添加到主View上

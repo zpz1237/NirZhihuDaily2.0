@@ -209,8 +209,10 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         }
         
         //拿到webViewController
-        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
-        webViewController.newsId = "Jst Try"
+        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as! WebViewController
+        webViewController.newsId = appCloud().themeContent!.stories[self.tableView.indexPathForSelectedRow!.row - 1].id
+        webViewController.index = indexPath.row - 1
+        webViewController.isThemeStory = true
 
         //实施转场
         self.navigationController?.pushViewController(webViewController, animated: true)
