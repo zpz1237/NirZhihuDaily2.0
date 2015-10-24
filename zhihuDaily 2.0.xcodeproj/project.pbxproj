@@ -33,7 +33,7 @@
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
-		DB98B6D01BDBCF3800883F54 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
+		DB98B6D31BDBD12F00883F54 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBB2FAB81BC3597100AA90FB /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB2FAB71BC3597100AA90FB /* podfile */; settings = {ASSET_TAGS = (); }; };
 		DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -89,8 +89,8 @@
 		DB803AA31BBE66E30081E032 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
-		DB98B6CE1BDBCF2700883F54 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSAnimatedImagesView.h; path = "../../../../Beta/zhihuDaily 2.0/zhihuDaily 2.0/JSAnimatedImagesView.h"; sourceTree = "<group>"; };
-		DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSAnimatedImagesView.m; path = "../../../../Beta/zhihuDaily 2.0/zhihuDaily 2.0/JSAnimatedImagesView.m"; sourceTree = "<group>"; };
+		DB98B6D11BDBD12F00883F54 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAnimatedImagesView.h; sourceTree = "<group>"; };
+		DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAnimatedImagesView.m; sourceTree = "<group>"; };
 		DBB2FAB71BC3597100AA90FB /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeContentTableViewCell.swift; sourceTree = "<group>"; };
 		DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEditorTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +294,8 @@
 		DBC515F51BBCCC9400EDFF48 /* zhihuDaily 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				DB98B6D11BDBD12F00883F54 /* JSAnimatedImagesView.h */,
+				DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */,
 				DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */,
 				DB803AA71BBE69C40081E032 /* StoryModel.swift */,
 				DBC516081BBCCDB300EDFF48 /* FrameWork */,
@@ -338,8 +340,6 @@
 		DBE2B52C1BBCD06400AD5316 /* JSAnimatedImagesView */ = {
 			isa = PBXGroup;
 			children = (
-				DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */,
-				DB98B6CE1BDBCF2700883F54 /* JSAnimatedImagesView.h */,
 			);
 			name = JSAnimatedImagesView;
 			path = "../../../Available/JSAnimatedImagesView-master/AnimatedImagesViewSampleApp/AnimatedImagesViewSampleApp";
@@ -479,7 +479,7 @@
 			files = (
 				DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */,
 				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
-				DB98B6D01BDBCF3800883F54 /* JSAnimatedImagesView.m in Sources */,
+				DB98B6D31BDBD12F00883F54 /* JSAnimatedImagesView.m in Sources */,
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
 				DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */,
