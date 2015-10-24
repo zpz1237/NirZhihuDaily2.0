@@ -33,6 +33,7 @@
 		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
 		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
+		DB98B6D01BDBCF3800883F54 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBB2FAB81BC3597100AA90FB /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB2FAB71BC3597100AA90FB /* podfile */; settings = {ASSET_TAGS = (); }; };
 		DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -40,7 +41,6 @@
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
 		DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC9BF101BC2268000B72D69 /* WebViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; settings = {ASSET_TAGS = (); }; };
 		DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DBE96A5C1BC4CAA60004A591 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -89,6 +89,8 @@
 		DB803AA31BBE66E30081E032 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		DB98B6CE1BDBCF2700883F54 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSAnimatedImagesView.h; path = "../../../../Beta/zhihuDaily 2.0/zhihuDaily 2.0/JSAnimatedImagesView.h"; sourceTree = "<group>"; };
+		DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSAnimatedImagesView.m; path = "../../../../Beta/zhihuDaily 2.0/zhihuDaily 2.0/JSAnimatedImagesView.m"; sourceTree = "<group>"; };
 		DBB2FAB71BC3597100AA90FB /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeContentTableViewCell.swift; sourceTree = "<group>"; };
 		DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEditorTableViewCell.swift; sourceTree = "<group>"; };
@@ -98,8 +100,6 @@
 		DBC516021BBCCC9400EDFF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBC9BF101BC2268000B72D69 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DBE2B52A1BBCD06400AD5316 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSAnimatedImagesView.h; path = ../../JSAnimatedImagesView.h; sourceTree = "<group>"; };
-		DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSAnimatedImagesView.m; path = ../../JSAnimatedImagesView.m; sourceTree = "<group>"; };
 		DBE2B5311BBCD0D700AD5316 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		DBE2B5341BBCD0FE00AD5316 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -338,8 +338,8 @@
 		DBE2B52C1BBCD06400AD5316 /* JSAnimatedImagesView */ = {
 			isa = PBXGroup;
 			children = (
-				DBE2B52A1BBCD06400AD5316 /* JSAnimatedImagesView.h */,
-				DBE2B52B1BBCD06400AD5316 /* JSAnimatedImagesView.m */,
+				DB98B6CF1BDBCF3800883F54 /* JSAnimatedImagesView.m */,
+				DB98B6CE1BDBCF2700883F54 /* JSAnimatedImagesView.h */,
 			);
 			name = JSAnimatedImagesView;
 			path = "../../../Available/JSAnimatedImagesView-master/AnimatedImagesViewSampleApp/AnimatedImagesViewSampleApp";
@@ -479,6 +479,7 @@
 			files = (
 				DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */,
 				DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */,
+				DB98B6D01BDBCF3800883F54 /* JSAnimatedImagesView.m in Sources */,
 				DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */,
 				DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */,
 				DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */,
@@ -507,7 +508,6 @@
 				DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */,
 				DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */,
 				DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */,
-				DBE2B52D1BBCD06400AD5316 /* JSAnimatedImagesView.m in Sources */,
 				DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
