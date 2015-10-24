@@ -26,18 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //获取文章内容
         getTodayData()
         
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "日常心理学"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "用户推荐日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "电影日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "不许无聊"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "设计日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "大公司日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "财经日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "互联网安全"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "开始游戏"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "音乐日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "动漫日报"))
-        themes.append(ThemeModel(thumbnail: "", id: "", name: "体育日报"))
+        //获取主题列表
+        getThemesData()
         
         //暂时使用首页contentStory里的数据
         let themeStory: [ContentStoryModel] = contentStory + contentStory
@@ -162,6 +152,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func getThemesData() {
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/themes").responseJSON { (_, _, dataResult) -> Void in
+            guard dataResult.error == nil else {
+                print("获取数据失败")
+                return
+            }
+            
+            //取到内容数组
+            let data = JSON(dataResult.value!)["others"]
+            for i in 0 ..< data.count {
+                self.themes.append(ThemeModel(id: String(data[i]["id"]), name: data[i]["name"].string!))
+            }
+            
+        }
+    }
     
     // MARK: - 日期相关
     func getCalenderString(dateString: String) -> String {
