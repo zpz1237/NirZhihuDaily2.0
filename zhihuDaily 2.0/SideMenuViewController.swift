@@ -87,4 +87,14 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //判定是否转场到主题日报文章列表
+        if let nav = segue.destinationViewController as? UINavigationController {
+            if let vc = nav.topViewController as? ThemeViewController {
+                let index = self.tableView.indexPathForSelectedRow!.row
+                vc.name = appCloud().themes[index - 1].name
+                vc.id = appCloud().themes[index - 1].id
+            }
+        }
+    }
 }

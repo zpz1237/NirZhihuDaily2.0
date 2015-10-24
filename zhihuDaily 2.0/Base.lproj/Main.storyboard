@@ -620,6 +620,7 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="navTitleLabel" destination="p15-qr-Sde" id="MZj-S2-0TV"/>
                         <outlet property="tableView" destination="Jfz-eR-Rlb" id="8Pl-Hk-Tld"/>
                     </connections>
                 </viewController>
@@ -676,6 +677,6 @@
         <image name="switch" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PgJ-Sp-ZXF"/>
+        <segue reference="IUO-ob-lY1"/>
     </inferredMetricsTieBreakers>
 </document>

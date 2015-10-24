@@ -28,11 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //获取主题列表
         getThemesData()
-        
-        //暂时使用首页contentStory里的数据
-        let themeStory: [ContentStoryModel] = contentStory + contentStory
-        
-        themeContent = ThemeContentModel(stories: themeStory, background: "", name: "", editorsAvatars: ["avatar"])
         return true
     }
 
@@ -61,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - 数据相关
     func getTodayData() {
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
+            guard resultData.error == nil else {
+                print("数据获取失败")
+                return
+            }
             let data = JSON(resultData.value!)
             //取到本日文章列表数据
             let topStoryData = data["top_stories"]
@@ -88,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let aDayBeforeURL = getCalenderString(NSDate().dateByAddingTimeInterval(28800).description)
         let aDayBefore = getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 86400).description)
         Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + aDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+            guard resultData.error == nil else {
+                print("数据获取失败")
+                return
+            }
             let data = JSON(resultData.value!)
             
             //取得日期Cell数据
@@ -108,6 +111,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let twoDayBeforeURL = aDayBefore
             let twoDayBefore = self.getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 2 * 86400).description)
             Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + twoDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+                guard resultData.error == nil else {
+                    print("数据获取失败")
+                    return
+                }
                 let data = JSON(resultData.value!)
                 
                 //取得日期Cell数据
@@ -128,6 +135,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let threeDayBeforeURL = twoDayBefore
                 let threeDayBefore = self.getCalenderString(NSDate().dateByAddingTimeInterval(28800 - 3 * 86400).description)
                 Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + threeDayBeforeURL).responseJSON { (_, _, resultData) -> Void in
+                    guard resultData.error == nil else {
+                        print("数据获取失败")
+                        return
+                    }
                     let data = JSON(resultData.value!)
                     
                     //取得日期Cell数据

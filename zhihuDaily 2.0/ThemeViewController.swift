@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import SDWebImage
 
 class ThemeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navTitleLabel: UILabel!
     
-    var selectedNewsId = ""
+    var id = ""
+    var name = ""
     var selectedIndex: [Int] = []
+    var navImageView: UIImageView!
+    var themeSubview: ParallaxHeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //清空原数据
+        self.appCloud().themeContent = nil
+        
+        //拿到新数据
+        refreshData()
         
         //创建leftBarButtonItem
         let leftButton = UIBarButtonItem(image: UIImage(named: "leftArrow"), style: .Plain, target: self.revealViewController(), action: "revealToggle:")
@@ -27,14 +40,14 @@ class ThemeViewController: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         //生成并配置HeaderImageView
-        let navImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 64))
+        navImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 64))
         navImageView.contentMode = UIViewContentMode.ScaleAspectFill
         navImageView.clipsToBounds = true
         let image = UIImage(named: "ThemeImage")!
         navImageView.image = image
         
         //将其添加到ParallaxView
-        let themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: image) as! ParallaxHeaderView
+        themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: navImageView.image) as! ParallaxHeaderView
         themeSubview.delegate = self
         
         //将ParallaxView设置为tableHeaderView，主View添加tableView
@@ -52,9 +65,50 @@ class ThemeViewController: UIViewController {
         self.tableView.showsVerticalScrollIndicator = false
     }
 
-    override func viewWillAppear(animated: Bool) {
+    func refreshData() {
+        //更改标题
+        navTitleLabel.text = name
         
-        //self.navigationController?.navigationBarHidden = false
+        //获取数据
+        Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/theme/" + id).responseJSON { (_, _, dataResult) -> Void in
+            guard dataResult.error == nil else {
+                print("数据获取失败")
+                return
+            }
+            let data = JSON(dataResult.value!)
+            
+            //取得Story
+            let storyData = data["stories"]
+            //暂时注入themeStory
+            var themeStory: [ContentStoryModel] = []
+            for i in 0 ..< storyData.count {
+                //判断是否含图
+                if storyData[i]["images"] != nil {
+                    themeStory.append(ContentStoryModel(images: [storyData[i]["images"][0].string!], id: String(storyData[i]["id"]), title: storyData[i]["title"].string!))
+                } else {
+                    //若不含图
+                    themeStory.append(ContentStoryModel(images: [""], id: String(storyData[i]["id"]), title: storyData[i]["title"].string!))
+                }
+            }
+            
+            //取得avatars
+            let avatarsData = data["editors"]
+            //暂时注入editorsAvatars
+            var editorsAvatars: [String] = []
+            for i in 0 ..< avatarsData.count {
+                editorsAvatars.append(avatarsData[i]["avatar"].string!)
+            }
+            
+            //更新图片
+//            self.navImageView.sd_setImageWithURL(NSURL(string: data["background"].string!))
+//            self.themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(self.navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: self.navImageView.image) as! ParallaxHeaderView
+            
+            //注入themeContent
+            self.appCloud().themeContent = ThemeContentModel(stories: themeStory, background: data["background"].string!, editorsAvatars: editorsAvatars)
+            
+            //刷新数据
+            self.tableView.reloadData()
+        }
     }
 
     //设置StatusBar颜色
@@ -82,6 +136,11 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
     
     //处理UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //如果还未获取到数据
+        if appCloud().themeContent == nil {
+            return 0
+        }
+        //如含有数据
         return appCloud().themeContent!.stories.count + 1
     }
     
@@ -93,7 +152,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
                 avatar.contentMode = .ScaleAspectFill
                 avatar.layer.cornerRadius = 10
                 avatar.clipsToBounds = true
-                avatar.image = UIImage(named: editorsAvatar)
+                avatar.sd_setImageWithURL(NSURL(string: editorsAvatar))
                 cell.contentView.addSubview(avatar)
             }
             return cell
@@ -103,7 +162,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         let tempContentStoryItem = appCloud().themeContent!.stories[indexPath.row - 1]
         
         //保证图片一定存在，选择合适的Cell类型
-        guard let image = UIImage(named: tempContentStoryItem.images[0]) else {
+        guard tempContentStoryItem.images[0] != "" else {
             let cell = tableView.dequeueReusableCellWithIdentifier("themeTextTableViewCell") as! ThemeTextTableViewCell
             //验证是否已被点击过
             if let _ = selectedIndex.indexOf(indexPath.row) {
@@ -124,7 +183,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
             cell.themeContentLabel.textColor = UIColor.blackColor()
         }
         cell.themeContentLabel.text = tempContentStoryItem.title
-        cell.themeContentImageView.image = image
+        cell.themeContentImageView.sd_setImageWithURL(NSURL(string: tempContentStoryItem.images[0]))
 
         return cell
     }
