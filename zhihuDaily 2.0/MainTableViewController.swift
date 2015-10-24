@@ -187,6 +187,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
+        webViewController.index = indexPath.row
         
         //找到对应newsID
         if indexPath.row < appCloud().contentStory.count {
@@ -234,6 +235,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         //设置webViewController
         webViewController.transitioningDelegate = self.animator
         webViewController.newsId = appCloud().topStory[index].id
+        webViewController.isTopStory = true
         
         //实施转场
         self.presentViewController(webViewController, animated: true) { () -> Void in

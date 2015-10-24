@@ -26,6 +26,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var dragging = false
     var triggered = false
     var newsId = ""
+    var index = 1
+    var isTopStory = false
     var hasImage = true
 
     //滑到对应位置时调整StatusBar
@@ -40,10 +42,20 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     var arrowState = false {
         didSet {
             if arrowState == true {
+                
+                guard index != 0 && isTopStory == false else {
+                    return
+                }
+                
                 UIView.animateWithDuration(0.2) { () -> Void in
                     self.refreshImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
                 }
             } else {
+                
+                guard index != 0 && isTopStory == false else {
+                    return
+                }
+                
                 UIView.animateWithDuration(0.2) { () -> Void in
                     self.refreshImageView.transform = CGAffineTransformIdentity
                 }
@@ -129,18 +141,25 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         //在blurView上添加"载入上一篇"Label
         let refreshLabel = UILabel(frame: CGRectMake(12, 15, self.view.frame.width, 45))
         refreshLabel.text = "载入上一篇"
+        if index == 0 || isTopStory {
+            refreshLabel.text = "已经是第一篇了"
+            refreshLabel.frame = CGRectMake(0, 15, self.view.frame.width, 45)
+        }
         refreshLabel.textAlignment = NSTextAlignment.Center
         refreshLabel.textColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
         refreshLabel.font = UIFont(name: "HelveticaNeue", size: 14)
         blurView.addSubview(refreshLabel)
-        //在blurView上添加"载入上一篇"图片
-        refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, 30, 15, 15))
-        refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
-        refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
-        blurView.addSubview(refreshImageView)
-        imageView.addSubview(blurView)
         
+        if refreshLabel.text != "已经是第一篇了" {
+            //在blurView上添加"载入上一篇"图片
+            refreshImageView = UIImageView(frame: CGRectMake(self.view.frame.width / 2 - 47, 30, 15, 15))
+            refreshImageView.contentMode = UIViewContentMode.ScaleAspectFill
+            refreshImageView.image = UIImage(named: "arrow")?.imageWithRenderingMode(.AlwaysTemplate)
+            refreshImageView.tintColor = UIColor(red: 215/255.0, green: 215/255.0, blue: 215/255.0, alpha: 1)
+            blurView.addSubview(refreshImageView)
+        }
+        
+        imageView.addSubview(blurView)
         //使Label不被遮挡
         imageView.bringSubviewToFront(titleLabel)
         imageView.bringSubviewToFront(sourceLabel)
@@ -212,8 +231,11 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                     arrowState = true
                     //如果此时是第一次检测到松手则加载上一篇
                     guard dragging || triggered else {
-                        loadNewArticle(true)
-                        triggered = true
+                        //index不能为零, 且不为topStory
+                        if index != 0 && isTopStory == false {
+                            loadNewArticle(true)
+                            triggered = true
+                        }
                         return
                     }
                 } else {
@@ -241,13 +263,16 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             
             webHeaderView.layoutWebHeaderViewForScrollViewOffset(scrollView.contentOffset)
         } else {
-            //如果下拉超过65pixels则改变图片方向
+            //如果下拉超过40pixels则改变图片方向
             if self.webView.scrollView.contentOffset.y <= -40 {
                 arrowState = true
                 //如果此时是第一次检测到松手则加载上一篇
                 guard dragging || triggered else {
-                    loadNewArticle(true)
-                    triggered = true
+                    //index不能为零, 且不为topStory
+                    if index != 0 && isTopStory == false {
+                        loadNewArticle(true)
+                        triggered = true
+                    }
                     return
                 }
             } else {
@@ -280,6 +305,33 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         let toWebViewController = self.storyboard!.instantiateViewControllerWithIdentifier("webViewController") as! WebViewController
         let toView = toWebViewController.view
         toView.frame = self.view.frame
+        
+        //找到上一篇文章的newsID
+        index--
+        if index < appCloud().contentStory.count {
+            let id = appCloud().contentStory[index].id
+            toWebViewController.index = index
+            toWebViewController.newsId = id
+        } else {
+            var newIndex = index - appCloud().contentStory.count
+            
+            //如果取到的不是文章则取上一篇
+            if appCloud().pastContentStory[newIndex] is DateHeaderModel {
+                index--
+                newIndex--
+            }
+            
+            //如果因上述情况newIndex = -1 则取contentStory中数据
+            if newIndex > -1 {
+                let id = (appCloud().pastContentStory[newIndex] as! ContentStoryModel).id
+                toWebViewController.index = index
+                toWebViewController.newsId = id
+            } else {
+                let id = appCloud().contentStory[index].id
+                toWebViewController.index = index
+                toWebViewController.newsId = id
+            }
+        }
         
         //生成原View截图并添加到主View上
         let fromView = self.view.snapshotViewAfterScreenUpdates(true)
@@ -316,6 +368,12 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         }
         return .Default
     }
+    
+    //获取总代理
+    func appCloud() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -325,7 +383,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension WebViewController: UIWebViewDelegate {
