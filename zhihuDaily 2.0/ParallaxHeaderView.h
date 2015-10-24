@@ -29,4 +29,5 @@
 - (void)layoutHeaderViewForScrollViewOffset:(CGPoint)offset;
 - (void)layoutWebHeaderViewForScrollViewOffset:(CGPoint)offset;
 - (void)layoutThemeHeaderViewForScrollViewOffset:(CGPoint)offset;
+- (void)refreshBlurViewForNewImage;
 @end

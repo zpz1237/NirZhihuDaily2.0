@@ -43,8 +43,6 @@ class ThemeViewController: UIViewController {
         navImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 64))
         navImageView.contentMode = UIViewContentMode.ScaleAspectFill
         navImageView.clipsToBounds = true
-        let image = UIImage(named: "ThemeImage")!
-        navImageView.image = image
         
         //将其添加到ParallaxView
         themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: navImageView.image) as! ParallaxHeaderView
@@ -100,8 +98,10 @@ class ThemeViewController: UIViewController {
             }
             
             //更新图片
-//            self.navImageView.sd_setImageWithURL(NSURL(string: data["background"].string!))
-//            self.themeSubview = ParallaxHeaderView.parallaxThemeHeaderViewWithSubView(self.navImageView, forSize: CGSizeMake(self.view.frame.width, 64), andImage: self.navImageView.image) as! ParallaxHeaderView
+            self.navImageView.sd_setImageWithURL(NSURL(string: data["background"].string!), completed: { (image, _, _, _) -> Void in
+                self.themeSubview.blurViewImage = image
+                self.themeSubview.refreshBlurViewForNewImage()
+            })
             
             //注入themeContent
             self.appCloud().themeContent = ThemeContentModel(stories: themeStory, background: data["background"].string!, editorsAvatars: editorsAvatars)
