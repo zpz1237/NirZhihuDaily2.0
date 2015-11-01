@@ -22,9 +22,7 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         super.viewDidLoad()
         
         //如果已有下载好的文字则使用
-        if NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) != nil {
-            text.text = NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) as! String
-        }
+        text.text = NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) as? String
         
         //下载下一次所需的启动页数据
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/start-image/1080*1776").responseJSON { (_, _, dataResult) -> Void in

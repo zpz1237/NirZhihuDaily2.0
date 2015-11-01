@@ -25,6 +25,8 @@ class ThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         //清空原数据
         self.appCloud().themeContent = nil
         

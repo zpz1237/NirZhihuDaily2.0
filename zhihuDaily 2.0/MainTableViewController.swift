@@ -204,7 +204,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.animator.dragable = true
         self.animator.bounces = false
         self.animator.behindViewAlpha = 0.7
-        self.animator.behindViewScale = 0.7
+        self.animator.behindViewScale = 0.9
         self.animator.transitionDuration = 0.7
         self.animator.direction = ZFModalTransitonDirection.Right
         
@@ -228,7 +228,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.animator.dragable = true
         self.animator.bounces = false
         self.animator.behindViewAlpha = 0.7
-        self.animator.behindViewScale = 0.7
+        self.animator.behindViewScale = 0.9
         self.animator.transitionDuration = 0.7
         self.animator.direction = ZFModalTransitonDirection.Right
         
