@@ -195,10 +195,12 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                 if let imageSource = JSON(dataResult.value!)["image_source"].string {
                     if let titleString = JSON(dataResult.value!)["title"].string {
                         self.loadParallaxHeader(image, imageSource: imageSource, titleString: titleString)
+                        self.setNeedsStatusBarAppearanceUpdate()
                     }
                 }
             } else {
                 self.hasImage = false
+                self.setNeedsStatusBarAppearanceUpdate()
                 self.statusBarBackground.backgroundColor = UIColor.whiteColor()
                 self.loadNormalHeader()
             }
@@ -347,6 +349,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             let id = appCloud().themeContent!.stories[index].id
             toWebViewController.index = index
             toWebViewController.newsId = id
+            toWebViewController.isThemeStory = true
         }
         
         //生成原View截图并添加到主View上
@@ -377,7 +380,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
         guard hasImage else {
             return .Default
         }
-        
         if statusBarFlag {
             //bug：当切换页面后该函数调用的self是最初的self，其他更改的都是新self，所以这里会有问题
             return .LightContent
