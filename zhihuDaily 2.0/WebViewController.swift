@@ -66,7 +66,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //避免因含有navBar而对scrollInsets做自动调整
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -221,12 +220,10 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //实现Parallax效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
-
         //判断是否含图
         if hasImage {
             let incrementY = scrollView.contentOffset.y
             if incrementY < 0 {
-                
                 //不断设置titleLabel及sourceLabel以保证frame正确
                 titleLabel.frame = CGRectMake(15, orginalHeight - 80 - incrementY, self.view.frame.width - 30, 60)
                 sourceLabel.frame = CGRectMake(15, orginalHeight - 20 - incrementY, self.view.frame.width - 30, 15)
@@ -261,11 +258,23 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             if incrementY > 223 {
                 if statusBarFlag {
                     statusBarFlag = false
+                    if var parent = self.parentViewController {
+                        while (parent.parentViewController != nil) {
+                            parent = parent.parentViewController!
+                        }
+                        (parent as! WebViewController).statusBarFlag = false
+                    }
                 }
                 statusBarBackground.backgroundColor = UIColor.whiteColor()
             } else {
                 guard statusBarFlag else {
                     statusBarFlag = true
+                    if var parent = self.parentViewController {
+                        while (parent.parentViewController != nil) {
+                            parent = parent.parentViewController!
+                        }
+                        (parent as! WebViewController).statusBarFlag = true
+                    }
                     return
                 }
                 statusBarBackground.backgroundColor = UIColor.clearColor()
