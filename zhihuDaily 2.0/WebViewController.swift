@@ -361,6 +361,13 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             toWebViewController.isThemeStory = true
         }
         
+        //取得已读新闻数组以供修改
+        var readNewsIdArray = NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) as! [String]
+        
+        //记录已被选中的id
+        readNewsIdArray.append(toWebViewController.newsId)
+        NSUserDefaults.standardUserDefaults().setObject(readNewsIdArray, forKey: Keys.readNewsId)
+        
         //生成原View截图并添加到主View上
         let fromView = self.view.snapshotViewAfterScreenUpdates(true)
         self.view.addSubview(fromView)

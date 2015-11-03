@@ -28,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //获取主题列表
         getThemesData()
+        
+        //初始化已读新闻数组
+        if NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) == nil {
+            let readNewsIdArray: [String] = []
+            NSUserDefaults.standardUserDefaults().setObject(readNewsIdArray, forKey: Keys.readNewsId)
+        }
         return true
     }
 

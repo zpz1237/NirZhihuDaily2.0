@@ -15,8 +15,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     var animator: ZFModalTransitionAnimator!
     var cycleScrollView: SDCycleScrollView!
-    var selectedNewsId = ""
-    var selectedIndex: [Int] = []
+    //var selectedIndex: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +102,10 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "todayDataGet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "pastDataGet", object: nil)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     //收到广播后刷新数据
     func updateData() {
@@ -123,12 +126,15 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //取得已读新闻数组以供配置
+        let readNewsIdArray = NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) as! [String]
+        
         if indexPath.row < appCloud().contentStory.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("tableContentViewCell") as! TableContentViewCell
             let data = appCloud().contentStory[indexPath.row]
             
             //验证是否已被点击过
-            if let _ = selectedIndex.indexOf(indexPath.row) {
+            if let _ = readNewsIdArray.indexOf(data.id) {
                 cell.titleLabel.textColor = UIColor.lightGrayColor()
             } else {
                 cell.titleLabel.textColor = UIColor.blackColor()
@@ -156,7 +162,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let data = appCloud().pastContentStory[newIndex] as! ContentStoryModel
         
         //验证是否已被点击过
-        if let _ = selectedIndex.indexOf(indexPath.row) {
+        if let _ = readNewsIdArray.indexOf(data.id) {
             cell.titleLabel.textColor = UIColor.lightGrayColor()
         } else {
             cell.titleLabel.textColor = UIColor.blackColor()
@@ -181,10 +187,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             return
         }
         
-        //记录已被选中的indexPath并改变其textColor
-        selectedIndex.append(indexPath.row)
-        (tableView.cellForRowAtIndexPath(indexPath) as! TableContentViewCell).titleLabel.textColor = UIColor.lightGrayColor()
-        
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as!WebViewController
         webViewController.index = indexPath.row
@@ -198,6 +200,13 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             let id = (appCloud().pastContentStory[newIndex] as! ContentStoryModel).id
             webViewController.newsId = id
         }
+        
+        //取得已读新闻数组以供修改
+        var readNewsIdArray = NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) as! [String]
+        
+        //记录已被选中的id
+        readNewsIdArray.append(webViewController.newsId)
+        NSUserDefaults.standardUserDefaults().setObject(readNewsIdArray, forKey: Keys.readNewsId)
         
         //对animator进行初始化
         animator = ZFModalTransitionAnimator(modalViewController: webViewController)

@@ -15,14 +15,11 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
     @IBOutlet weak var animatedImagesView: JSAnimatedImagesView!
     @IBOutlet weak var text: UILabel!
     
-    let launchImgKey = "launchImgKey"
-    let launchTextKey = "launchTextKey"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //如果已有下载好的文字则使用
-        text.text = NSUserDefaults.standardUserDefaults().objectForKey(launchTextKey) as? String
+        text.text = NSUserDefaults.standardUserDefaults().objectForKey(Keys.launchTextKey) as? String
         
         //下载下一次所需的启动页数据
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/start-image/1080*1776").responseJSON { (_, _, dataResult) -> Void in
@@ -34,13 +31,13 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
             //拿到text并保存
             let text = JSON(dataResult.value!)["text"].string!
             self.text.text = text
-            NSUserDefaults.standardUserDefaults().setObject(text, forKey: self.launchTextKey)
+            NSUserDefaults.standardUserDefaults().setObject(text, forKey: Keys.launchTextKey)
             
             //拿到图像URL后取出图像并保存
             let launchImageURL = JSON(dataResult.value!)["img"].string!
             Alamofire.request(.GET, launchImageURL).responseData({ (_, _, imgResult) -> Void in
                 let imgData = imgResult.value!
-                NSUserDefaults.standardUserDefaults().setObject(imgData, forKey: self.launchImgKey)
+                NSUserDefaults.standardUserDefaults().setObject(imgData, forKey: Keys.launchImgKey)
             })
         }
         
@@ -49,7 +46,7 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         
         //半透明遮罩层
         let blurView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
-        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.21)
+        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.45)
         animatedImagesView.addSubview(blurView)
         
         //渐变遮罩层
@@ -69,8 +66,8 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
     
     func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
         //如果已有下载好的图片则使用
-        if NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) != nil {
-            return UIImage(data: NSUserDefaults.standardUserDefaults().objectForKey(launchImgKey) as! NSData)
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(Keys.launchImgKey) {
+            return UIImage(data: data as! NSData)
         }
         
         return UIImage(named: "DemoLaunchImage")

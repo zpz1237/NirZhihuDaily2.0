@@ -18,7 +18,6 @@ class ThemeViewController: UIViewController {
     
     var id = ""
     var name = ""
-    var selectedIndex: [Int] = []
     var navImageView: UIImageView!
     var themeSubview: ParallaxHeaderView!
     
@@ -63,6 +62,10 @@ class ThemeViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .None
         self.tableView.showsVerticalScrollIndicator = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
 
     func refreshData() {
@@ -147,6 +150,9 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //取得已读新闻数组以供配置
+        let readNewsIdArray = NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) as! [String]
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("themeEditorTableViewCell") as! ThemeEditorTableViewCell
             for (index, editorsAvatar) in appCloud().themeContent!.editorsAvatars.enumerate() {
@@ -167,7 +173,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         guard tempContentStoryItem.images[0] != "" else {
             let cell = tableView.dequeueReusableCellWithIdentifier("themeTextTableViewCell") as! ThemeTextTableViewCell
             //验证是否已被点击过
-            if let _ = selectedIndex.indexOf(indexPath.row) {
+            if let _ = readNewsIdArray.indexOf(tempContentStoryItem.id) {
                 cell.themeTextLabel.textColor = UIColor.lightGrayColor()
             } else {
                 cell.themeTextLabel.textColor = UIColor.blackColor()
@@ -179,7 +185,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         //处理图片存在的情况
         let cell = tableView.dequeueReusableCellWithIdentifier("themeContentTableViewCell") as! ThemeContentTableViewCell
         //验证是否已被点击过
-        if let _ = selectedIndex.indexOf(indexPath.row) {
+        if let _ = readNewsIdArray.indexOf(tempContentStoryItem.id) {
             cell.themeContentLabel.textColor = UIColor.lightGrayColor()
         } else {
             cell.themeContentLabel.textColor = UIColor.blackColor()
@@ -203,19 +209,19 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
             return
         }
         
-        selectedIndex.append(indexPath.row)
-        if tableView.cellForRowAtIndexPath(indexPath) is ThemeContentTableViewCell {
-            (tableView.cellForRowAtIndexPath(indexPath) as! ThemeContentTableViewCell).themeContentLabel.textColor = UIColor.lightGrayColor()
-        } else {
-            (tableView.cellForRowAtIndexPath(indexPath) as! ThemeTextTableViewCell).themeTextLabel.textColor = UIColor.lightGrayColor()
-        }
-        
         //拿到webViewController
         let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("webViewController") as! WebViewController
         webViewController.newsId = appCloud().themeContent!.stories[self.tableView.indexPathForSelectedRow!.row - 1].id
         webViewController.index = indexPath.row - 1
         webViewController.isThemeStory = true
 
+        //取得已读新闻数组以供修改
+        var readNewsIdArray = NSUserDefaults.standardUserDefaults().objectForKey(Keys.readNewsId) as! [String]
+        
+        //记录已被选中的id
+        readNewsIdArray.append(webViewController.newsId)
+        NSUserDefaults.standardUserDefaults().setObject(readNewsIdArray, forKey: Keys.readNewsId)
+        
         //实施转场
         self.navigationController?.pushViewController(webViewController, animated: true)
     }
