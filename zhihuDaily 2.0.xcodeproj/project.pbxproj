@@ -8,42 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		59A2C857D4471928CAC6EDAF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E146B6A006CAA43AC853C4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1438731BCB3E1300620843 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
-		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438771BCBBDEB00620843 /* HomeSideCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438791BCBBE0800620843 /* ContentSideCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB1B6BF21BD0B5920054741B /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1B6BF11BD0B5920054741B /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
-		DB21F69B1BD64F7E009A8E1E /* ZFModalTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DB21F69A1BD64F7E009A8E1E /* ZFModalTransitionAnimator.m */; settings = {ASSET_TAGS = (); }; };
-		DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB01BBF8B1800713002 /* TADotView.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABD1BBF8B1800713002 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB21BBF8B1800713002 /* TAPageControl.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB41BBF8B1800713002 /* SDCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB61BBF8B1800713002 /* SDCycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEAC01BBF8B1800713002 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB81BBF8B1800713002 /* UIView+SDExtension.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC41BBF8C5000713002 /* ParallaxHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; settings = {ASSET_TAGS = (); }; };
-		DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB7488BE1BD46F6D0052041C /* ThemeTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7488BD1BD46F6D0052041C /* ThemeTextTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; settings = {ASSET_TAGS = (); }; };
-		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; settings = {ASSET_TAGS = (); }; };
-		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; settings = {ASSET_TAGS = (); }; };
-		DB98B6D31BDBD12F00883F54 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */; settings = {ASSET_TAGS = (); }; };
-		DBB2FAB81BC3597100AA90FB /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB2FAB71BC3597100AA90FB /* podfile */; settings = {ASSET_TAGS = (); }; };
-		DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DB1438741BCB3E1300620843 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1438731BCB3E1300620843 /* SWRevealViewController.m */; };
+		DB1438761BCB45E100620843 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438751BCB45E100620843 /* SideMenuViewController.swift */; };
+		DB1438781BCBBDEB00620843 /* HomeSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438771BCBBDEB00620843 /* HomeSideCell.swift */; };
+		DB14387A1BCBBE0800620843 /* ContentSideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1438791BCBBE0800620843 /* ContentSideCell.swift */; };
+		DB1B6BF21BD0B5920054741B /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1B6BF11BD0B5920054741B /* UIImage+ImageEffects.m */; };
+		DB21F69B1BD64F7E009A8E1E /* ZFModalTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DB21F69A1BD64F7E009A8E1E /* ZFModalTransitionAnimator.m */; };
+		DB256D521BCF3B7400049CC6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB256D511BCF3B7400049CC6 /* ThemeViewController.swift */; };
+		DB2DEAB91BBF8B1800713002 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAA91BBF8B1800713002 /* NSData+SDDataCache.m */; };
+		DB2DEABA1BBF8B1800713002 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAC1BBF8B1800713002 /* TAAbstractDotView.m */; };
+		DB2DEABB1BBF8B1800713002 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAAE1BBF8B1800713002 /* TAAnimatedDotView.m */; };
+		DB2DEABC1BBF8B1800713002 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB01BBF8B1800713002 /* TADotView.m */; };
+		DB2DEABD1BBF8B1800713002 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB21BBF8B1800713002 /* TAPageControl.m */; };
+		DB2DEABE1BBF8B1800713002 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB41BBF8B1800713002 /* SDCollectionViewCell.m */; };
+		DB2DEABF1BBF8B1800713002 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB61BBF8B1800713002 /* SDCycleScrollView.m */; };
+		DB2DEAC01BBF8B1800713002 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAB81BBF8B1800713002 /* UIView+SDExtension.m */; };
+		DB2DEAC51BBF8C5000713002 /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC41BBF8C5000713002 /* ParallaxHeaderView.m */; };
+		DB2DEAC71BBFCCD600713002 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DEAC61BBFCCD600713002 /* MainTableViewController.swift */; };
+		DB4518D81BBCE6530097A25A /* TableContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4518D71BBCE6530097A25A /* TableContentViewCell.swift */; };
+		DB4518DB1BBCE8820097A25A /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4518DA1BBCE8820097A25A /* myUILabel.m */; };
+		DB582AEE1BC8D128003E3F60 /* TableSeparatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB582AED1BC8D128003E3F60 /* TableSeparatorViewCell.swift */; };
+		DB7488BE1BD46F6D0052041C /* ThemeTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7488BD1BD46F6D0052041C /* ThemeTextTableViewCell.swift */; };
+		DB803A9D1BBE57D50081E032 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803A9C1BBE57D50081E032 /* PaletteViewController.swift */; };
+		DB803AA11BBE5BC50081E032 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA01BBE5BC50081E032 /* GradientView.m */; };
+		DB803AA51BBE66E30081E032 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA41BBE66E30081E032 /* UINavigationBar+Awesome.m */; };
+		DB803AA81BBE69C40081E032 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB803AA71BBE69C40081E032 /* StoryModel.swift */; };
+		DB98B6D31BDBD12F00883F54 /* JSAnimatedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */; };
+		DBB2FAB81BC3597100AA90FB /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = DBB2FAB71BC3597100AA90FB /* podfile */; };
+		DBB4B34E1BD23FB00059B654 /* ThemeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */; };
+		DBB4B3501BD2450C0059B654 /* ThemeEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */; };
 		DBC515F71BBCCC9400EDFF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC515F61BBCCC9400EDFF48 /* AppDelegate.swift */; };
 		DBC515FC1BBCCC9400EDFF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC515FA1BBCCC9400EDFF48 /* Main.storyboard */; };
-		DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC9BF101BC2268000B72D69 /* WebViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; settings = {ASSET_TAGS = (); }; };
-		DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DBE96A5C1BC4CAA60004A591 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		DBC9BF111BC2268000B72D69 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC9BF101BC2268000B72D69 /* WebViewController.swift */; };
+		DBCFB2F51BBE17B600C352C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCFB2F41BBE17B600C352C5 /* Assets.xcassets */; };
+		DBE2B5331BBCD0D700AD5316 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5321BBCD0D700AD5316 /* MSWeakTimer.m */; };
+		DBE2B5381BBCD27300AD5316 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2B5371BBCD27300AD5316 /* LaunchViewController.swift */; };
+		DBE96A5C1BC4CAA60004A591 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE96A5B1BC4CAA60004A591 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +91,7 @@
 		DB803AA71BBE69C40081E032 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		DB98B6D11BDBD12F00883F54 /* JSAnimatedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAnimatedImagesView.h; sourceTree = "<group>"; };
 		DB98B6D21BDBD12F00883F54 /* JSAnimatedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAnimatedImagesView.m; sourceTree = "<group>"; };
+		DB9A93C41BE9F71600EC5F14 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DBB2FAB71BC3597100AA90FB /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		DBB4B34D1BD23FB00059B654 /* ThemeContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeContentTableViewCell.swift; sourceTree = "<group>"; };
 		DBB4B34F1BD2450C0059B654 /* ThemeEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEditorTableViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		1C1BF2859E43525A7B2D6FDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB9A93C41BE9F71600EC5F14 /* libz.tbd */,
 				68E146B6A006CAA43AC853C4 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -614,6 +616,10 @@
 			baseConfigurationReference = 7153B3F99A238DC7B68AE0E4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";
@@ -627,6 +633,10 @@
 			baseConfigurationReference = EB632050F7B7B84C3E92C5F2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "zhihuDaily 2.0/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Azure.zhihuDaily-2-0";

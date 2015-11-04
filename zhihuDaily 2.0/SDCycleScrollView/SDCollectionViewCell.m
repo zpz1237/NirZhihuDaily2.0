@@ -107,7 +107,6 @@
     [[_blurView layer] sublayers][0].removeFromSuperlayer;
     _blurView.insertTwiceTransparentGradient;
     
-    NSLog(@"%f", _blurView.frame.size.height);
     //使titleLabel不被遮挡
     [self bringSubviewToFront:_titleLabel];
     

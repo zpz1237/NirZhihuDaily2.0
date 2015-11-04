@@ -180,42 +180,54 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
 
     //加载WebView
     func loadWebView(id: String) {
-        //获取网络数据，包括body css image image_source title 并拼接body与css后加载
+        //获取网络数据，包括body css image image_source title
         Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/" + id).responseJSON { (_, _, dataResult) -> Void in
             guard dataResult.error == nil else {
                 print("获取数据失败")
                 return
             }
             
-            let body = JSON(dataResult.value!)["body"].string!
-            let css = JSON(dataResult.value!)["css"][0].string!
-            
-            if let image = JSON(dataResult.value!)["image"].string {
-                if let imageSource = JSON(dataResult.value!)["image_source"].string {
-                    if let titleString = JSON(dataResult.value!)["title"].string {
-                        self.loadParallaxHeader(image, imageSource: imageSource, titleString: titleString)
-                        self.setNeedsStatusBarAppearanceUpdate()
+            //若body存在 拼接body与css后加载
+            if let body = JSON(dataResult.value!)["body"].string {
+                let css = JSON(dataResult.value!)["css"][0].string!
+                
+                if let image = JSON(dataResult.value!)["image"].string {
+                    if let imageSource = JSON(dataResult.value!)["image_source"].string {
+                        if let titleString = JSON(dataResult.value!)["title"].string {
+                            self.loadParallaxHeader(image, imageSource: imageSource, titleString: titleString)
+                            self.setNeedsStatusBarAppearanceUpdate()
+                        }
                     }
+                } else {
+                    self.hasImage = false
+                    self.setNeedsStatusBarAppearanceUpdate()
+                    self.statusBarBackground.backgroundColor = UIColor.whiteColor()
+                    self.loadNormalHeader()
                 }
+                
+                var html = "<html>"
+                html += "<head>"
+                html += "<link rel=\"stylesheet\" href="
+                html += css
+                html += "</head>"
+                html += "<body>"
+                html += body
+                html += "</body>"
+                html += "</html>"
+                
+                self.webView.loadHTMLString(html, baseURL: nil)
             } else {
+                //若是直接使用share_url的类型
                 self.hasImage = false
                 self.setNeedsStatusBarAppearanceUpdate()
                 self.statusBarBackground.backgroundColor = UIColor.whiteColor()
                 self.loadNormalHeader()
+                
+                let url = JSON(dataResult.value!)["share_url"].string!
+                self.webView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
             }
-            
-            var html = "<html>"
-            html += "<head>"
-            html += "<link rel=\"stylesheet\" href="
-            html += css
-            html += "</head>"
-            html += "<body>"
-            html += body
-            html += "</body>"
-            html += "</html>"
-            
-            self.webView.loadHTMLString(html, baseURL: nil)
         }
+        
     }
     
     //实现Parallax效果
@@ -420,12 +432,12 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
 extension WebViewController: UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         //暂时的处理方法，只允许查看文章内容 而不允许将其当做浏览器跳转，待修改
-        guard webView.request != nil else {
-            return true
-        }
-        if request != webView.request {
-            return false
-        }
+//        guard webView.request != nil else {
+//            return true
+//        }
+//        if request != webView.request {
+//            return false
+//        }
         return true
     }
 }

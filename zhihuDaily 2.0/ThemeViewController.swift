@@ -15,11 +15,14 @@ class ThemeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navTitleLabel: UILabel!
+    @IBOutlet weak var topConstant: NSLayoutConstraint!
     
     var id = ""
     var name = ""
+    var firstDisplay = true
     var navImageView: UIImageView!
     var themeSubview: ParallaxHeaderView!
+    var animator: ZFModalTransitionAnimator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +69,12 @@ class ThemeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         self.tableView.reloadData()
+        if !firstDisplay {
+            self.topConstant.constant = -44
+        } else {
+            self.topConstant.constant = -64
+            firstDisplay = false
+        }
     }
 
     func refreshData() {
@@ -222,7 +231,21 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
         readNewsIdArray.append(webViewController.newsId)
         NSUserDefaults.standardUserDefaults().setObject(readNewsIdArray, forKey: Keys.readNewsId)
         
+        //对animator进行初始化
+        animator = ZFModalTransitionAnimator(modalViewController: webViewController)
+        self.animator.dragable = true
+        self.animator.bounces = false
+        self.animator.behindViewAlpha = 0.7
+        self.animator.behindViewScale = 0.9
+        self.animator.transitionDuration = 0.7
+        self.animator.direction = ZFModalTransitonDirection.Right
+        
+        //设置webViewController
+        webViewController.transitioningDelegate = self.animator
+        
         //实施转场
-        self.navigationController?.pushViewController(webViewController, animated: true)
+        self.presentViewController(webViewController, animated: true) { () -> Void in
+            
+        }
     }
 }
