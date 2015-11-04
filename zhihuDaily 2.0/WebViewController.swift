@@ -228,10 +228,8 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                 titleLabel.frame = CGRectMake(15, orginalHeight - 80 - incrementY, self.view.frame.width - 30, 60)
                 sourceLabel.frame = CGRectMake(15, orginalHeight - 20 - incrementY, self.view.frame.width - 30, 15)
                 
-                //不断添加删除blurView.layer.sublayers![0]以保证frame正确
+                //保证frame正确
                 blurView.frame = CGRectMake(0, -85 - incrementY, self.view.frame.width, orginalHeight + 85)
-                blurView.layer.sublayers![0].removeFromSuperlayer()
-                blurView.insertTwiceTransparentGradient()
                 
                 //如果下拉超过65pixels则改变图片方向
                 if incrementY <= -65 {

@@ -69,6 +69,10 @@
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView = imageView;
     [self addSubview:imageView];
+    
+    GradientView *blurView = [[GradientView alloc] initWithFrame:self.bounds type:TRANSPARENT_GRADIENT_TWICE_TYPE];
+    _blurView = blurView;
+    [self addSubview: blurView];
 }
 
 - (void)setupTitleLabel
@@ -99,12 +103,11 @@
 {
     [super layoutSubviews];
     
-    //不断添加删除blurView以保证frame正确
-    _blurView.removeFromSuperview;
-    GradientView *blurView = [[GradientView alloc] initWithFrame:self.bounds type:TRANSPARENT_GRADIENT_TWICE_TYPE];
-    [self addSubview:blurView];
-    _blurView = blurView;
+    _blurView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    [[_blurView layer] sublayers][0].removeFromSuperlayer;
+    _blurView.insertTwiceTransparentGradient;
     
+    NSLog(@"%f", _blurView.frame.size.height);
     //使titleLabel不被遮挡
     [self bringSubviewToFront:_titleLabel];
     

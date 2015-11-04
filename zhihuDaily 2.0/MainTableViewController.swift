@@ -15,7 +15,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     var animator: ZFModalTransitionAnimator!
     var cycleScrollView: SDCycleScrollView!
-    //var selectedIndex: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
