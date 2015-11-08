@@ -23,6 +23,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         let leftButton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self.revealViewController(), action: "revealToggle:")
         leftButton.tintColor = UIColor.whiteColor()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         //配置无限循环scrollView
         cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, self.tableView.frame.width, 154), imageURLStringsGroup: nil)

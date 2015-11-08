@@ -114,6 +114,7 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
     
     //加载图片
     func loadParallaxHeader(imageURL: String, imageSource: String, titleString: String) {
+        
         //设置展示的imageView
         imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 223))
         imageView.contentMode = .ScaleAspectFill
@@ -192,11 +193,13 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
                 let css = JSON(dataResult.value!)["css"][0].string!
                 
                 if let image = JSON(dataResult.value!)["image"].string {
-                    if let imageSource = JSON(dataResult.value!)["image_source"].string {
-                        if let titleString = JSON(dataResult.value!)["title"].string {
+                    if let titleString = JSON(dataResult.value!)["title"].string {
+                        if let imageSource = JSON(dataResult.value!)["image_source"].string {
                             self.loadParallaxHeader(image, imageSource: imageSource, titleString: titleString)
-                            self.setNeedsStatusBarAppearanceUpdate()
+                        } else {
+                            self.loadParallaxHeader(image, imageSource: "(null)", titleString: titleString)
                         }
+                        self.setNeedsStatusBarAppearanceUpdate()
                     }
                 } else {
                     self.hasImage = false
@@ -407,7 +410,6 @@ class WebViewController: UIViewController, UIScrollViewDelegate, ParallaxHeaderV
             return .Default
         }
         if statusBarFlag {
-            //bug：当切换页面后该函数调用的self是最初的self，其他更改的都是新self，所以这里会有问题
             return .LightContent
         }
         return .Default

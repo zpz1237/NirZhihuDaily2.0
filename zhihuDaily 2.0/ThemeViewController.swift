@@ -42,6 +42,7 @@ class ThemeViewController: UIViewController {
         
         //为当前view添加手势识别
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         //生成并配置HeaderImageView
         navImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, 64))
