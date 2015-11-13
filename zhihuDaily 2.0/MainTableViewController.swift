@@ -276,7 +276,9 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         //依据contentOffsetY设置titleView的标题
         for separatorData in appCloud().offsetYValue {
             guard offsetY > separatorData.0 else {
-                dateLabel.text = separatorData.1
+                if dateLabel.text != separatorData.1 {
+                    dateLabel.text = separatorData.1
+                }
                 return
             }
         }

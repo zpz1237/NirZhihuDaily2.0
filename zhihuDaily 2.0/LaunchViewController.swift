@@ -69,7 +69,6 @@ class LaunchViewController: UIViewController, JSAnimatedImagesViewDataSource {
         if let data = NSUserDefaults.standardUserDefaults().objectForKey(Keys.launchImgKey) {
             return UIImage(data: data as! NSData)
         }
-        
         return UIImage(named: "DemoLaunchImage")
     }
 

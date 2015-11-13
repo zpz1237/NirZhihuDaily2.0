@@ -320,7 +320,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeSideCell" id="wzT-Gi-oKW" customClass="HomeSideCell" customModule="知乎日报" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzT-Gi-oKW" id="1Yj-oW-2xN">
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzT-Gi-oKW" id="1Yj-oW-2xN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -429,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THe-cY-I6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463" y="407"/>
+            <point key="canvasLocation" x="-456" y="407"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="PDx-x5-Vl6">
@@ -678,6 +678,6 @@
         <image name="switch" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PgJ-Sp-ZXF"/>
+        <segue reference="IUO-ob-lY1"/>
     </inferredMetricsTieBreakers>
 </document>
