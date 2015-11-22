@@ -37,7 +37,6 @@
         [self setupImageView];
         [self setupTitleLabel];
     }
-    
     return self;
 }
 
@@ -94,7 +93,6 @@
 
 - (void)setTitle:(NSString *)title
 {
-    
     _title = [title copy];
     _titleLabel.text = [NSString stringWithFormat:@"%@", title];
 }
@@ -102,7 +100,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
     _blurView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [[_blurView layer] sublayers][0].removeFromSuperlayer;
     _blurView.insertTwiceTransparentGradient;

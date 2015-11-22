@@ -409,9 +409,8 @@ NSString * const ID = @"cycleCell";
         cell.titleLabelTextFont = self.titleLabelTextFont;
         cell.hasConfigured = YES;
     }
-    
+
     cell.titleLabelAlpha = self.titleLabelAlpha;
-    
     return cell;
 }
 
