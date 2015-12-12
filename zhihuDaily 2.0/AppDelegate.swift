@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         dispatch_async(dataQueue) { () -> Void in
-            for i in 0..<7 {
+            for i in 0..<30 {
                 dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
                 self.requestData(dataOfDate: NSDate().dateByAddingTimeInterval(28800 - Double(i) * 86400)) {
                     dispatch_semaphore_signal(self.semaphore)
@@ -71,21 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - 数据相关
     /**
-     请求当日首页文章数据
-     */
-    func requestTodayData() {
-        requestData(dataOfDate: NSDate().dateByAddingTimeInterval(28800), completionHandler: nil)
-    }
-    
-    /**
      请求给定日期的首页文章数据
      
      - parameter date: 东八区区时
      - parameter completionHandler: 完成闭包
      */
     func requestData(dataOfDate date:NSDate, completionHandler:(()->())?) {
-        
-            if date.dayOfWeek() == NSDate().dateByAddingTimeInterval(28800).dayOfWeek() {
+            if getCalenderString(date.description) == getCalenderString(NSDate().dateByAddingTimeInterval(28800).description) {
                 Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
                     guard resultData.error == nil else {
                         print("数据获取失败")
