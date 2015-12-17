@@ -23,6 +23,8 @@ class ThemeViewController: UIViewController {
     var navImageView: UIImageView!
     var themeSubview: ParallaxHeaderView!
     var animator: ZFModalTransitionAnimator!
+    var loadCircleView: PNCircleChart!
+    var loadingView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,25 @@ class ThemeViewController: UIViewController {
         self.navigationController?.navigationBar.lt_setBackgroundColor(UIColor.clearColor())
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        //初始化下拉加载loadCircleView
+        let comp1 = self.navTitleLabel.frame.width/2
+        let comp2 = (self.navTitleLabel.text! as NSString).sizeWithAttributes(nil).width/2
+        print((self.navTitleLabel.text! as NSString).sizeWithAttributes(nil).height)
+        print(self.navTitleLabel.frame.height)
+        let loadCircleViewXPosition = comp1 - comp2 - 35
+        
+        loadCircleView = PNCircleChart(frame: CGRect(x: loadCircleViewXPosition, y: 3, width: 15, height: 15), total: 100, current: 50, clockwise: true, shadow: false, shadowColor: nil, displayCountingLabel: false, overrideLineWidth: 1)
+        loadCircleView.backgroundColor = UIColor.clearColor()
+        loadCircleView.strokeColor = UIColor.whiteColor()
+        loadCircleView.strokeChart()
+        loadCircleView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        self.navTitleLabel.addSubview(loadCircleView)
+        
+        //初始化下拉加载loadingView
+        loadingView = UIActivityIndicatorView(frame: CGRect(x: loadCircleViewXPosition+2.5, y: 5.5, width: 10, height: 10))
+        loadingView.startAnimating()
+        self.navTitleLabel.addSubview(loadingView)
+        
         //tableView基础设置
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -69,6 +90,7 @@ class ThemeViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         self.tableView.reloadData()
         if !firstDisplay {
             self.topConstant.constant = -44
