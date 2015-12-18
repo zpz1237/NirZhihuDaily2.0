@@ -15,7 +15,12 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     
     var animator: ZFModalTransitionAnimator!
     var cycleScrollView: SDCycleScrollView!
+    var loadCircleView: PNCircleChart!
+    var loadingView: UIActivityIndicatorView!
+    var dragging = false
+    var triggered = false
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,6 +103,22 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50
         
+        //初始化下拉加载loadCircleView
+        let comp1 = self.dateLabel.frame.width/2
+        let comp2 = (self.dateLabel.text! as NSString).sizeWithAttributes(nil).width/2
+        let loadCircleViewXPosition = comp1 - comp2 - 35
+        
+        loadCircleView = PNCircleChart(frame: CGRect(x: loadCircleViewXPosition, y: 3, width: 15, height: 15), total: 100, current: 0, clockwise: true, shadow: false, shadowColor: nil, displayCountingLabel: false, overrideLineWidth: 1)
+        loadCircleView.backgroundColor = UIColor.clearColor()
+        loadCircleView.strokeColor = UIColor.whiteColor()
+        loadCircleView.strokeChart()
+        loadCircleView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        self.dateLabel.addSubview(loadCircleView)
+        
+        //初始化下拉加载loadingView
+        loadingView = UIActivityIndicatorView(frame: CGRect(x: loadCircleViewXPosition+2.5, y: 5.5, width: 10, height: 10))
+        self.dateLabel.addSubview(loadingView)
+        
         //收到广播
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "todayDataGet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "pastDataGet", object: nil)
@@ -107,6 +128,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         self.tableView.reloadData()
     }
 
+    // MARK: - Data
     //收到广播后刷新数据
     func updateData() {
         cycleScrollView.imageURLStringsGroup = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image]
@@ -116,7 +138,7 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     }
     
     
-    //tableView数据源
+    // MARK: - TableView
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -252,6 +274,16 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         }
     }
     
+    // MARK: - ScrollViewDelegate
+    //记录下拉状态
+    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        dragging = false
+    }
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        dragging = true
+    }
+    
     override func  scrollViewDidScroll(scrollView: UIScrollView) {
         //Parallax效果
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
@@ -269,21 +301,42 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             (header.subviews[0].subviews[0].subviews[0] as! UICollectionView).reloadData()
             //NavBar透明度渐变
             self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(alpha))
+            if loadCircleView.hidden != true {
+                loadCircleView.hidden = true
+            }
         } else {
-            self.navigationController?.navigationBar.lt_setBackgroundColor(color.colorWithAlphaComponent(0))
+            let ratio = (-offsetY - 64)*2
+            if ratio <= 100 {
+                if triggered == false && loadCircleView.hidden == true {
+                    loadCircleView.hidden = false
+                }
+                loadCircleView.updateChartByCurrent(ratio)
+            } else {
+                if loadCircleView.current != 100 {
+                    loadCircleView.updateChartByCurrent(100)
+                }
+                //第一次检测到松手
+                if !dragging && !triggered {
+                    loadCircleView.hidden = true
+                    loadingView.startAnimating()
+                    triggered = true
+                }
+            }
         }
-        
+
         //依据contentOffsetY设置titleView的标题
         for separatorData in appCloud().offsetYValue {
             guard offsetY > separatorData.0 else {
                 if dateLabel.text != separatorData.1 {
                     dateLabel.text = separatorData.1
                 }
-                return
+                break
             }
         }
+        
     }
     
+    // MARK: - Other
     //获取总代理
     func appCloud() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate

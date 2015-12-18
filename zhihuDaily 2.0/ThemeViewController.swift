@@ -20,6 +20,8 @@ class ThemeViewController: UIViewController {
     var id = ""
     var name = ""
     var firstDisplay = true
+    var dragging = false
+    var triggered = false
     var navImageView: UIImageView!
     var themeSubview: ParallaxHeaderView!
     var animator: ZFModalTransitionAnimator!
@@ -66,11 +68,9 @@ class ThemeViewController: UIViewController {
         //初始化下拉加载loadCircleView
         let comp1 = self.navTitleLabel.frame.width/2
         let comp2 = (self.navTitleLabel.text! as NSString).sizeWithAttributes(nil).width/2
-        print((self.navTitleLabel.text! as NSString).sizeWithAttributes(nil).height)
-        print(self.navTitleLabel.frame.height)
         let loadCircleViewXPosition = comp1 - comp2 - 35
         
-        loadCircleView = PNCircleChart(frame: CGRect(x: loadCircleViewXPosition, y: 3, width: 15, height: 15), total: 100, current: 50, clockwise: true, shadow: false, shadowColor: nil, displayCountingLabel: false, overrideLineWidth: 1)
+        loadCircleView = PNCircleChart(frame: CGRect(x: loadCircleViewXPosition, y: 3, width: 15, height: 15), total: 100, current: 0, clockwise: true, shadow: false, shadowColor: nil, displayCountingLabel: false, overrideLineWidth: 1)
         loadCircleView.backgroundColor = UIColor.clearColor()
         loadCircleView.strokeColor = UIColor.whiteColor()
         loadCircleView.strokeChart()
@@ -79,7 +79,6 @@ class ThemeViewController: UIViewController {
         
         //初始化下拉加载loadingView
         loadingView = UIActivityIndicatorView(frame: CGRect(x: loadCircleViewXPosition+2.5, y: 5.5, width: 10, height: 10))
-        loadingView.startAnimating()
         self.navTitleLabel.addSubview(loadingView)
         
         //tableView基础设置
@@ -164,6 +163,38 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let header = self.tableView.tableHeaderView as! ParallaxHeaderView
         header.layoutThemeHeaderViewForScrollViewOffset(scrollView.contentOffset)
+        let offsetY = scrollView.contentOffset.y
+        if offsetY <= 0 {
+            let ratio = -offsetY*2
+            if ratio <= 100 {
+                if triggered == false && loadCircleView.hidden == true {
+                    loadCircleView.hidden = false
+                }
+                loadCircleView.updateChartByCurrent(ratio)
+            } else {
+                if loadCircleView.current != 100 {
+                    loadCircleView.updateChartByCurrent(100)
+                }
+                //第一次检测到松手
+                if !dragging && !triggered {
+                    loadCircleView.hidden = true
+                    loadingView.startAnimating()
+                    triggered = true
+                }
+            }
+        } else {
+            if loadCircleView.hidden != true {
+                loadCircleView.hidden = true
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        dragging = false
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        dragging = true
     }
     
     //设置滑动极限
