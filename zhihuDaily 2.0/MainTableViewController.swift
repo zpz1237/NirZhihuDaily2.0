@@ -130,7 +130,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     // MARK: - Data
     //收到广播后刷新数据
     func updateData() {
-        
         cycleScrollView.imageURLStringsGroup = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image]
         cycleScrollView.titlesGroup = [appCloud().topStory[0].title, appCloud().topStory[1].title, appCloud().topStory[2].title, appCloud().topStory[3].title, appCloud().topStory[4].title]
         (self.cycleScrollView.subviews[0] as! UICollectionView).scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.None, animated: false)

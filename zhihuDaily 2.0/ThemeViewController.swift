@@ -37,7 +37,7 @@ class ThemeViewController: UIViewController {
         self.appCloud().themeContent = nil
         
         //拿到新数据
-        refreshData()
+        refreshData(nil)
         
         //创建leftBarButtonItem
         let leftButton = UIBarButtonItem(image: UIImage(named: "leftArrow"), style: .Plain, target: self.revealViewController(), action: "revealToggle:")
@@ -99,7 +99,7 @@ class ThemeViewController: UIViewController {
         }
     }
 
-    func refreshData() {
+    func refreshData(completionHandler: (()->())?) {
         //更改标题
         navTitleLabel.text = name
         
@@ -144,6 +144,9 @@ class ThemeViewController: UIViewController {
             
             //刷新数据
             self.tableView.reloadData()
+            if let completionHandler = completionHandler {
+                completionHandler()
+            }
         }
     }
 
@@ -179,11 +182,14 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
                 if !dragging && !triggered {
                     loadCircleView.hidden = true
                     loadingView.startAnimating()
+                    refreshData({ () -> () in
+                        self.loadingView.stopAnimating()
+                    })
                     triggered = true
                 }
-                if triggered == true && offsetY == 0 {
-                    triggered = false
-                }
+            }
+            if triggered == true && offsetY == 0 {
+                triggered = false
             }
         } else {
             if loadCircleView.hidden != true {
