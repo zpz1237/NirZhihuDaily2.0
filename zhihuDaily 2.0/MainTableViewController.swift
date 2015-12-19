@@ -121,7 +121,6 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         
         //收到广播
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "todayDataGet", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "pastDataGet", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -131,8 +130,10 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
     // MARK: - Data
     //收到广播后刷新数据
     func updateData() {
+        
         cycleScrollView.imageURLStringsGroup = [appCloud().topStory[0].image, appCloud().topStory[1].image, appCloud().topStory[2].image, appCloud().topStory[3].image, appCloud().topStory[4].image]
         cycleScrollView.titlesGroup = [appCloud().topStory[0].title, appCloud().topStory[1].title, appCloud().topStory[2].title, appCloud().topStory[3].title, appCloud().topStory[4].title]
+        (self.cycleScrollView.subviews[0] as! UICollectionView).scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.None, animated: false)
         
         self.tableView.reloadData()
     }
@@ -169,6 +170,10 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
         }
         
         let newIndex = indexPath.row - appCloud().contentStory.count
+        
+        guard appCloud().pastContentStory.count != 0 else {
+            return UITableViewCell()
+        }
         
         if appCloud().pastContentStory[newIndex] is DateHeaderModel {
             let cell = tableView.dequeueReusableCellWithIdentifier("tableSeparatorViewCell") as! TableSeparatorViewCell
@@ -304,6 +309,9 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
             if loadCircleView.hidden != true {
                 loadCircleView.hidden = true
             }
+            if triggered == true && offsetY == -64 {
+                triggered = false
+            }
         } else {
             let ratio = (-offsetY - 64)*2
             if ratio <= 100 {
@@ -319,6 +327,9 @@ class MainTableViewController: UITableViewController, SDCycleScrollViewDelegate,
                 if !dragging && !triggered {
                     loadCircleView.hidden = true
                     loadingView.startAnimating()
+                    appCloud().requestAllNeededData({ () -> () in
+                        self.loadingView.stopAnimating()
+                    })
                     triggered = true
                 }
             }

@@ -22,19 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var themeContent: ThemeContentModel?
     var firstDisplay = true
     
+    var tempTopStory:[TopStoryModel] = []
+    var tempContentStory: [ContentStoryModel] = []
+    var tempOffsetYValue: [(CGFloat, String)] = []
+    var tempPastContentStory: [PastContentStoryItem] = []
+    
     let dataQueue = dispatch_queue_create("dataQueue", DISPATCH_QUEUE_SERIAL)
     let semaphore = dispatch_semaphore_create(1)
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        dispatch_async(dataQueue) { () -> Void in
-            for i in 0..<30 {
-                dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
-                self.requestData(dataOfDate: NSDate().dateByAddingTimeInterval(28800 - Double(i) * 86400)) {
-                    dispatch_semaphore_signal(self.semaphore)
-                }
-            }
-        }
+        requestAllNeededData(nil)
         
         //获取主题列表
         getThemesData()
@@ -71,72 +69,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - 数据相关
     /**
+    请求全部所需首页文章数据
+    */
+    func requestAllNeededData(completionHandler: (()->())?) {
+        self.tempTopStory.removeAll()
+        self.tempContentStory.removeAll()
+        self.tempPastContentStory.removeAll()
+        self.tempOffsetYValue.removeAll()
+        
+        dispatch_async(dataQueue) { () -> Void in
+            for i in 0..<10 {
+                dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
+                self.requestData(dataOfDate: NSDate().dateByAddingTimeInterval(28800 - Double(i) * 86400)) {
+                    dispatch_semaphore_signal(self.semaphore)
+                }
+            }
+            
+            dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
+            
+            self.topStory = self.tempTopStory
+            self.contentStory = self.tempContentStory
+            self.pastContentStory = self.tempPastContentStory
+            self.offsetYValue = self.tempOffsetYValue
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("todayDataGet", object: nil)
+                if let completionHandler = completionHandler {
+                    completionHandler()
+                }
+            })
+            
+            dispatch_semaphore_signal(self.semaphore)
+        }
+    }
+    
+    /**
      请求给定日期的首页文章数据
      
      - parameter date: 东八区区时
      - parameter completionHandler: 完成闭包
      */
     func requestData(dataOfDate date:NSDate, completionHandler:(()->())?) {
-            if getCalenderString(date.description) == getCalenderString(NSDate().dateByAddingTimeInterval(28800).description) {
-                Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
-                    guard resultData.error == nil else {
-                        print("数据获取失败")
-                        return
-                    }
-                    let data = JSON(resultData.value!)
-                    //取到本日文章列表数据
-                    let topStoryData = data["top_stories"]
-                    let contentStoryData = data["stories"]
-                    
-                    //注入topStory
-                    for i in 0 ..< topStoryData.count {
-                        self.topStory.append(TopStoryModel(image: topStoryData[i]["image"].string!, id: String(topStoryData[i]["id"]), title: topStoryData[i]["title"].string!))
-                    }
-                    //注入contentStory
-                    for i in 0 ..< contentStoryData.count {
-                        self.contentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
-                    }
-                    //设置offsetYValue
-                    self.offsetYValue.append((120 + CGFloat(contentStoryData.count) * 93, "今日热闻"))
-                    
-                    //发出完成通知
-                    NSNotificationCenter.defaultCenter().postNotificationName("todayDataGet", object: nil)
-                    if let completionHandler = completionHandler {
-                        completionHandler()
-                    }
+        if getCalenderString(date.description) == getCalenderString(NSDate().dateByAddingTimeInterval(28800).description) {
+            Alamofire.request(.GET, "http://news-at.zhihu.com/api/4/news/latest").responseJSON { (_, _, resultData) -> Void in
+                guard resultData.error == nil else {
+                    print("数据获取失败")
+                    return
                 }
-            } else {
-                let componentOfURL = self.getCalenderString(date.dateByAddingTimeInterval(86400).description)
-                let calenderStringOfDate = self.getCalenderString(date.description)
+                let data = JSON(resultData.value!)
+                //取到本日文章列表数据
+                let topStoryData = data["top_stories"]
+                let contentStoryData = data["stories"]
                 
-                Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + componentOfURL).responseJSON { (_, _, resultData) -> Void in
-                    guard resultData.error == nil else {
-                        print("数据获取失败")
-                        return
-                    }
-                    let data = JSON(resultData.value!)
-                    
-                    //取得日期Cell数据
-                    let tempDateString = self.getDetailString(calenderStringOfDate) + " " + date.dayOfWeek()
-                    self.pastContentStory.append(DateHeaderModel(dateString: tempDateString))
-                    
-                    //取得文章列表数据
-                    let contentStoryData = data["stories"]
-                    
-                    //注入pastContentStory
-                    for i in 0 ..< contentStoryData.count {
-                        self.pastContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
-                    }
-                    
-                    //设置offsetYValue
-                    self.offsetYValue.append((self.offsetYValue.last!.0 + 30 + CGFloat(contentStoryData.count) * 93, tempDateString))
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName("pastDataGet", object: nil)
-                    if let completionHandler = completionHandler {
-                        completionHandler()
-                    }
+                //注入topStory
+                for i in 0 ..< topStoryData.count {
+                    self.tempTopStory.append(TopStoryModel(image: topStoryData[i]["image"].string!, id: String(topStoryData[i]["id"]), title: topStoryData[i]["title"].string!))
+                }
+                
+                //注入contentStory
+                for i in 0 ..< contentStoryData.count {
+                    self.tempContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+                }
+                
+                //设置offsetYValue
+                self.tempOffsetYValue.append((120 + CGFloat(contentStoryData.count) * 93, "今日热闻"))
+                
+                if let completionHandler = completionHandler {
+                    completionHandler()
                 }
             }
+        } else {
+            let componentOfURL = self.getCalenderString(date.dateByAddingTimeInterval(86400).description)
+            let calenderStringOfDate = self.getCalenderString(date.description)
+            
+            Alamofire.request(.GET, "http://news.at.zhihu.com/api/4/news/before/" + componentOfURL).responseJSON { (_, _, resultData) -> Void in
+                guard resultData.error == nil else {
+                    print("数据获取失败")
+                    return
+                }
+                let data = JSON(resultData.value!)
+                
+                //注入pastContentStory
+                let tempDateString = self.getDetailString(calenderStringOfDate) + " " + date.dayOfWeek()
+                self.tempPastContentStory.append(DateHeaderModel(dateString: tempDateString))
+                
+                let contentStoryData = data["stories"]
+                
+                for i in 0 ..< contentStoryData.count {
+                    self.tempPastContentStory.append(ContentStoryModel(images: [contentStoryData[i]["images"][0].string!], id: String(contentStoryData[i]["id"]), title: contentStoryData[i]["title"].string!))
+                }
+                
+                //设置offsetYValue
+                self.tempOffsetYValue.append((self.tempOffsetYValue.last!.0 + 30 + CGFloat(contentStoryData.count) * 93, tempDateString))
+                
+                if let completionHandler = completionHandler {
+                    completionHandler()
+                }
+            }
+        }
         
     }
     

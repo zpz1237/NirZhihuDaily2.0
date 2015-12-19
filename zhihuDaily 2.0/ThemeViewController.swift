@@ -181,6 +181,9 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, Paral
                     loadingView.startAnimating()
                     triggered = true
                 }
+                if triggered == true && offsetY == 0 {
+                    triggered = false
+                }
             }
         } else {
             if loadCircleView.hidden != true {
