@@ -300,14 +300,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="BSJ-4F-GR2">
-                                                    <rect key="frame" x="23" y="11" width="21" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="PYb-Tp-qbb"/>
                                                         <constraint firstAttribute="width" constant="21" id="v1u-mD-O3Z"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="首页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAt-eo-fy6">
-                                                    <rect key="frame" x="59" y="13" width="30" height="18"/>
+                                                    <rect key="frame" x="52" y="13" width="30" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -325,7 +325,7 @@
                                                 <constraint firstItem="CAt-eo-fy6" firstAttribute="leading" secondItem="BSJ-4F-GR2" secondAttribute="trailing" constant="15" id="Bgc-XJ-XGa"/>
                                                 <constraint firstItem="Q3H-ks-djE" firstAttribute="leading" secondItem="1Yj-oW-2xN" secondAttribute="leading" constant="175" id="F1n-PO-Hqg"/>
                                                 <constraint firstItem="BSJ-4F-GR2" firstAttribute="centerY" secondItem="1Yj-oW-2xN" secondAttribute="centerY" id="Nwy-3C-8UH"/>
-                                                <constraint firstItem="BSJ-4F-GR2" firstAttribute="leading" secondItem="1Yj-oW-2xN" secondAttribute="leadingMargin" constant="15" id="gxs-8P-YVr"/>
+                                                <constraint firstItem="BSJ-4F-GR2" firstAttribute="leading" secondItem="1Yj-oW-2xN" secondAttribute="leadingMargin" constant="8" id="gxs-8P-YVr"/>
                                                 <constraint firstItem="Q3H-ks-djE" firstAttribute="centerY" secondItem="1Yj-oW-2xN" secondAttribute="centerY" id="qgA-BL-v2m"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -344,7 +344,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日常心理学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r1-KN-CYU">
-                                                    <rect key="frame" x="23" y="13" width="75" height="18"/>
+                                                    <rect key="frame" x="16" y="13" width="75" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -359,7 +359,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9r1-KN-CYU" firstAttribute="centerY" secondItem="Jpp-fM-WGs" secondAttribute="centerY" id="0lX-QY-8wO"/>
-                                                <constraint firstItem="9r1-KN-CYU" firstAttribute="leading" secondItem="Jpp-fM-WGs" secondAttribute="leadingMargin" constant="15" id="HVe-56-urh"/>
+                                                <constraint firstItem="9r1-KN-CYU" firstAttribute="leading" secondItem="Jpp-fM-WGs" secondAttribute="leadingMargin" constant="8" id="HVe-56-urh"/>
                                                 <constraint firstItem="TdO-eg-qWj" firstAttribute="centerY" secondItem="Jpp-fM-WGs" secondAttribute="centerY" id="dDo-3m-hDH"/>
                                                 <constraint firstItem="TdO-eg-qWj" firstAttribute="leading" secondItem="Jpp-fM-WGs" secondAttribute="leading" constant="175" id="ufd-nj-pEi"/>
                                             </constraints>
